@@ -72,6 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'bm';
 $query_builder = TRUE;
+$active_record = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
@@ -97,7 +98,7 @@ $db['default'] = array(
 
 $db['bm'] = array(
 	'dsn'	=> '',
-	'hostname' => '131.72.236.128',
+	'hostname' => 'www.bluemonkey.cl',
 	'username' => 'bluemon1_monoku',
 	'password' => 'monokudev2016',
 	'database' => 'bluemon1_siteweb',
