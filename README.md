@@ -6,7 +6,7 @@ Iso Quality
 
 2.- dentro de la carpeta iso (consola) ejecutar comando git init
 
-3.- agregar remoto con git remote add url_del_proyecto
+3.- agregar remoto con git remote add origin url_del_proyecto
 
 4.- trabajar sobre rama master
 
