@@ -167,6 +167,11 @@ ul.alert-dropdown {
         position: relative !important;
     }
 
+    .information {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
 }
 
 
@@ -261,7 +266,7 @@ ul.alert-dropdown {
 
 
 /*******************************/
-/* OVERRIDE BOOTSTRAP STYLES */
+/* OVERRIDE BOOTSTRAP STYLES AND CUSTOM OWN STYLES */
 
 .nav > li > a {
     padding: 15px !important;
@@ -294,4 +299,25 @@ ul.alert-dropdown {
 .navbar-fixed-top .navbar-collapse {
     background: #fff;
     z-index: 999;
+}
+
+.table {
+    font-size: 13px;
+}
+
+.btn-small {
+    padding: 0px 4px !important;
+}
+
+.information {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.form-control {
+    height: 32px !important;
+}
+
+#messager {
+    display: none;
 }

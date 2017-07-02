@@ -2,12 +2,25 @@
 <html>
 <head>
 	<title>ISO Quality Administrador</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/font-awesome/css/font-awesome.min.css">
 
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/sweetalert/dist/sweetalert.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/sweetalert/themes/google/google.css">
+
 	<script src="<?= base_url(); ?>assets/js/jquery.js"></script>
 	<script src="<?= base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?= base_url(); ?>assets/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="<?= base_url(); ?>assets/js/tooltipsy.min.js"></script>
+	<script src="<?= base_url(); ?>assets/js/main.js"></script>
+
+	<script>
+		var _URL = '<?= base_url();?>';
+	</script>
+
+	<script src="<?= base_url(); ?>assets/js/validate.js"></script>
 </head>
 <body>
 

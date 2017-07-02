@@ -12,7 +12,7 @@ function validate_session()
     }
 }
 
-
+//para imprimir la última consulta que se realiza a la base de datos y poder depurar bien una query
 function query_logger()
 {
 	$ci =& get_instance();
@@ -30,10 +30,15 @@ function dd($var)
 
 function alert_success($text)
 {
-	return '<div class="alert alert-success">'.$text.'</div>';
+	return '<div class="alert alert-success"><i class="fa fa-check"></i> '.$text.'</div>';
 }
 
 function alert_danger($text)
 {
-	return '<div class="alert alert-danger">'.$text.'</div>';
+	return '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> '.$text.'</div>';
+}
+
+function alert_info($text)
+{
+	return '<div class="alert alert-info"><i class="fa fa-info-circle"></i> '.$text.'</div>';
 }
