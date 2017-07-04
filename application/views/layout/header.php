@@ -72,35 +72,31 @@
                     <li>
                         <a href="<?= base_url(); ?>usuarios"><i class="fa fa-users"></i> Usuarios</a>
                     </li>
+                 
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#indicadores"><i class="fa fa-bar-chart"></i> Indicadores <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="indicadores" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#"></a>
                             </li>
                             <li>
                                 <a href="#">Dropdown Item</a>
                             </li>
                         </ul>
                     </li>
+
+
                     <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#procesos"><i class="fa fa-folder-open"></i> Procesos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="procesos" class="collapse">
+                            <li><a href="<?= base_url(); ?>areas">Áreas</a></li>
+                            <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
+                            <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
+                            <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
+
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
