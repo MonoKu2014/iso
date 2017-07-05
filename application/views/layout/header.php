@@ -101,6 +101,15 @@
                         </ul>
                     </li>
 
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#responsables"><i class="fa fa-users"></i> Responsables <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="responsables" class="collapse">
+                            <li><a href="<?= base_url(); ?>departamentos">Departamentos</a></li>
+                            <li><a href="<?= base_url(); ?>cargos">Cargos</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
