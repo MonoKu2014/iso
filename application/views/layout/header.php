@@ -68,11 +68,11 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                  
-                    <li><a href="<?= base_url(); ?>panel"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
-                    <li><a href="<?= base_url(); ?>usuarios"><i class="fa fa-users"></i> Usuarios</a></li>
+                    <li <?= active('panel')?> ><a href="<?= base_url(); ?>panel"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
+                    <li <?= active('usuarios')?> ><a href="<?= base_url(); ?>usuarios"><i class="fa fa-users"></i> Usuarios</a></li>
                  
 
-                    <li>
+                    <li <?= active('indicadores')?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#indicadores"><i class="fa fa-bar-chart"></i> Indicadores <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="indicadores" class="collapse">
                             <li><a href="<?= base_url(); ?>datos">Datos</a></li>
@@ -81,7 +81,7 @@
                     </li>
 
 
-                    <li>
+                    <li <?= active('documentos')?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#documentos"><i class="fa fa-file"></i> Documentos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="documentos" class="collapse">
                             <li><a href="<?= base_url(); ?>tipos_documentos">Tipos</a></li>
@@ -91,7 +91,7 @@
                     </li>
 
 
-                    <li>
+                    <li <?= active('procesos')?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#procesos"><i class="fa fa-folder-open"></i> Procesos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="procesos" class="collapse">
                             <li><a href="<?= base_url(); ?>areas">Áreas</a></li>
@@ -103,7 +103,7 @@
                     
 
 
-                    <li>
+                    <li <?= active('responsables')?>>
                         <a href="javascript:;" data-toggle="collapse" data-target="#responsables"><i class="fa fa-users"></i> Responsables <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="responsables" class="collapse">
                             <li><a href="<?= base_url(); ?>departamentos">Departamentos</a></li>

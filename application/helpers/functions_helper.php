@@ -5,7 +5,7 @@
 function validate_session()
 {
 	$ci =& get_instance();
-    if($ci->session->logged_in === false){
+    if($ci->session->id == ''){
     	$message = 'Debe iniciar sesión para acceder a este contenido';
     	$ci->session->set_flashdata('message', alert_danger($message));
         redirect(base_url());
@@ -41,4 +41,47 @@ function alert_danger($text)
 function alert_info($text)
 {
 	return '<div class="alert alert-info"><i class="fa fa-info-circle"></i> '.$text.'</div>';
+}
+
+
+function active($controller)
+{
+	$ci =& get_instance();
+
+	$nav = change_nav($ci->router->class);
+
+	if($nav == $controller){
+		return 'class="active"';
+	}
+
+	return '';
+}
+
+
+function change_nav($controller)
+{
+	if($controller == 'departamentos' || $controller == 'cargos'){
+		return 'responsables';
+	}
+
+	if($controller == 'areas' || $controller == 'procesos' || $controller == 'secciones' || $controller == 'indicadores'){
+		return 'procesos';
+	}
+
+	if($controller == 'tipos_documentos' || $controller == 'formatos_documentos' || $controller == 'clausulas_documentos'){
+		return 'documentos';
+	}
+
+	if($controller == 'datos' || $controller == 'tipo_datos'){
+		return 'indicadores';
+	}
+
+	if($controller == 'usuarios'){
+		return 'usuarios';
+	}
+
+	if($controller == 'panel'){
+		return 'panel';
+	}
+
 }

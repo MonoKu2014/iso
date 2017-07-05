@@ -5,14 +5,18 @@
 	<title>Iso Quality <?= date('Y'); ?></title>
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/animate.css">
+
+    <script src="<?= base_url(); ?>assets/js/jquery.js"></script>
+
 </head>
 <body>
 
 <div class="container">
-    <div class="card card-container">
-        
-        <img id="profile-img" class="profile-img-card" src="<?= base_url(); ?>assets/images/avatar.png" />
-        
+    <div class="card card-container text-center animated fadeIn" id="login">
+        <img class="img-responsive" src="<?= base_url(); ?>assets/images/logo_datamatica.png" />
+        <br>
+        <h4>ISO QUALITY</h4>
         <p>
         	<?= $this->session->flashdata('message');?>
         </p>
@@ -29,7 +33,43 @@
         </a>
 
     </div>
+
+
+    <div class="card card-container text-center" id="remember" style="display: none;">
+        <img class="img-responsive" src="<?= base_url(); ?>assets/images/logo_datamatica.png" />
+        <br>
+        <h4>ISO QUALITY</h4>
+        <p class="message"></p>
+        
+        <form class="form-signin" method="post" action="<?= base_url(); ?>login/access">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Recuperar</button>
+        </form>
+        
+        <a href="#" class="back-login">
+            Volver
+        </a>
+
+    </div>
+
+
 </div>
+
+<script>
+    $('.forgot-password').on('click', function(event){
+        event.preventDefault();
+        $('#login').hide();
+        $('#remember').fadeIn('fast');
+    });
+
+    $('.back-login').on('click', function(event){
+        event.preventDefault();
+        $('#remember').hide();
+        $('#login').fadeIn('fast');
+    });
+
+</script>
 
 </body>
 </html>

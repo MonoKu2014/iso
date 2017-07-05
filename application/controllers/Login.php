@@ -53,4 +53,18 @@ class Login extends CI_Controller {
 
 	}
 
+	public function salir()
+	{
+        $newdata = array(
+            'id'      	=> '',
+            'nombre'  	=> '',
+            'email'   	=> '',
+            'perfil'  	=> '',
+            'logged_in' => false
+        );
+        $this->session->set_userdata($newdata);
+        $this->session->sess_destroy();
+        redirect(base_url());
+	}
+
 }
