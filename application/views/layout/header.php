@@ -84,9 +84,9 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#documentos"><i class="fa fa-file"></i> Documentos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="documentos" class="collapse">
-                            <li><a href="<?= base_url(); ?>tipos">Tipos</a></li>
-                            <li><a href="<?= base_url(); ?>formatos">Formatos</a></li>
-                            <li><a href="<?= base_url(); ?>clausulas">Claúsulas</a></li>
+                            <li><a href="<?= base_url(); ?>tipos_documentos">Tipos</a></li>
+                            <li><a href="<?= base_url(); ?>formatos_documentos">Formatos</a></li>
+                            <li><a href="<?= base_url(); ?>clausulas_documentos">Claúsulas</a></li>
                         </ul>
                     </li>
 
