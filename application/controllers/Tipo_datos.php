@@ -42,7 +42,7 @@ class Tipo_datos extends CI_Controller {
         } else {
             
             $data = array(
-                'tipo'    => $this->input->post('tipo')
+                'tipo_dato'    => $this->input->post('tipo')
             );
 
             $insert = $this->tipo->insertar($data);
@@ -53,10 +53,10 @@ class Tipo_datos extends CI_Controller {
 
         if($error == 1){
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
-            redirect(base_url().'tipos/agregar');
+            redirect(base_url().'tipo_datos/agregar');
         } else {
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
-            redirect(base_url().'tipos');
+            redirect(base_url().'tipo_datos');
         }
     }
 
@@ -83,10 +83,10 @@ class Tipo_datos extends CI_Controller {
         } else {
             
             $data = array(
-                'tipo'    => $this->input->post('tipo')
+                'tipo_dato'    => $this->input->post('tipo')
             );
 
-            $update = $this->tipo->editar($data, $this->input->post('tipo_id'));
+            $update = $this->tipo->editar($data, $this->input->post('tipo_dato_id'));
             if($update === false){
                 $error = 1;
             }
@@ -94,10 +94,10 @@ class Tipo_datos extends CI_Controller {
 
         if($error == 1){
             $this->session->set_flashdata('message', alert_danger('No se ha podido actualizar el registro'));
-            redirect(base_url().'tipos/editar/'.$this->input->post('tipo_id'));
+            redirect(base_url().'tipo_datos/editar/'.$this->input->post('tipo_dato_id'));
         } else {
             $this->session->set_flashdata('message', alert_success('Registro actualizado con éxito'));
-            redirect(base_url().'tipos');
+            redirect(base_url().'tipo_datos');
         }
     }
 
@@ -108,10 +108,10 @@ class Tipo_datos extends CI_Controller {
         $delete = $this->tipo->eliminar($id);
         if($delete === false){
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
-            redirect(base_url().'tipos');
+            redirect(base_url().'tipo_datos');
         } else {
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
-            redirect(base_url().'tipos');
+            redirect(base_url().'tipo_datos');
         }
 
     }

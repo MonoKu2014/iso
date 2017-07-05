@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Tipos de datos
-                <a href="<?= base_url(); ?>tipo_datos/agregar" class="btn btn-default pull-right">
-                	<i class="fa fa-plus"></i> Agregar Tipo dato
+                Datos
+                <a href="<?= base_url(); ?>datos/agregar" class="btn btn-default pull-right">
+                	<i class="fa fa-plus"></i> Agregar dato
                 </a>
             </h2>
             <?= $this->session->flashdata('message');?>
@@ -19,22 +19,30 @@
     		<table class="table table-bordered table-striped table-hover table-condensed">
     			<thead>
     				<th>Id</th>
-    				<th>Nombre</th>
+    				<th>Código</th>
+    				<th>Tipo de dato</th>
+    				<th>Área</th>
+    				<th>Sección</th>
+                    <th>Proceso</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>
-    				<?php foreach ($tipos as $t): ?>
+    				<?php foreach ($datos as $d): ?>
     					<tr>
-    						<td><?= $t->tipo_dato_id;?></td>
-    						<td><?= $t->tipo_dato;?></td>
+    						<td><?= $d->dato_id;?></td>
+    						<td><?= $d->dato_codigo;?></td>
+                            <td><?= $d->dato_nombre;?></td>
+    						<td><?= $d->area;?></td>
+    						<td><?= $d->seccion;?></td>
+    						<td><?= $d->proceso_nombre;?></td>
     						<td>
 
 								<div class="btn-group">
-								  <a href="<?= base_url(); ?>tipo_datos/editar/<?= $t->tipo_dato_id;?>" class="btn btn-default btn-small hastip" title="Editar registro">
+								  <a href="<?= base_url(); ?>datos/editar/<?= $d->dato_id;?>" class="btn btn-default btn-small hastip" title="Editar registro">
 								  	<i class="fa fa-pencil"></i>
 								  </a>
 
-								  <a class="btn btn-default btn-small delete hastip" data-id="<?= $t->tipo_dato_id;?>" title="Eliminar registro">
+								  <a class="btn btn-default btn-small delete hastip" data-id="<?= $d->dato_id;?>" title="Eliminar registro">
 								  	<i class="fa fa-remove"></i>
 								  </a>
 								</div>
@@ -71,11 +79,10 @@ $('.delete').on('click', function(e){
 	  closeOnConfirm: false
 	},
 	function(){
-        window.location = _URL + 'tipo_datos/eliminar/' + data_id;
+        window.location = _URL + 'datos/eliminar/' + data_id;
 	});
 
 });
-
 
 
 </script>

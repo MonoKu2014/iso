@@ -298,8 +298,12 @@ ul.alert-dropdown {
 }
 
 .navbar-fixed-top .navbar-collapse {
-    background: #fff;
+    background: #f6f6f6;
     z-index: 999;
+}
+
+.navbar-brand {
+    font-weight: bold;
 }
 
 .table {
