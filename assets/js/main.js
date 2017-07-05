@@ -28,3 +28,7 @@ $('.hastip').tooltipsy({
         'text-shadow': 'none'
     }
 });
+
+$(document).ready(function(){
+    $('.table').dataTable();
+});
