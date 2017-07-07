@@ -77,6 +77,7 @@
                         <ul id="indicadores" class="collapse">
                             <li><a href="<?= base_url(); ?>datos">Datos</a></li>
                             <li><a href="<?= base_url(); ?>tipo_datos">Tipos de datos</a></li>
+                            <li><a href="<?= base_url(); ?>frecuencias">Frecuencias</a></li>
                         </ul>
                     </li>
 
