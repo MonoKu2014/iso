@@ -33,6 +33,7 @@ class Clausulas_documentos extends CI_Controller {
     public function guardar()
     {
         $error = 0;
+        $this->form_validation->set_rules('clausula_documento_codigo', 'Clausula_documento_codigo', 'required');
         $this->form_validation->set_rules('clausula_documento', 'Clausula_documento', 'required');
 
         if($this->form_validation->run() === FALSE){
@@ -42,7 +43,8 @@ class Clausulas_documentos extends CI_Controller {
         } else {
             
             $data = array(
-                'clausula_documento'    => $this->input->post('clausula_documento')
+                'clausula_documento_codigo'     => $this->input->post('clausula_documento_codigo'),
+                'clausula_documento'            => $this->input->post('clausula_documento')
             );
 
             $insert = $this->clausula_documento->insertar($data);
@@ -74,6 +76,8 @@ class Clausulas_documentos extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
+        
+        $this->form_validation->set_rules('clausula_documento_codigo', 'Clausula_documento_codigo', 'required');
         $this->form_validation->set_rules('clausula_documento', 'Clausula_documento', 'required');
 
         if($this->form_validation->run() === FALSE){
@@ -83,7 +87,8 @@ class Clausulas_documentos extends CI_Controller {
         } else {
             
             $data = array(
-                'clausula_documento'    => $this->input->post('clausula_documento')
+                'clausula_documento_codigo'     => $this->input->post('clausula_documento_codigo'),
+                'clausula_documento'            => $this->input->post('clausula_documento')
             );
 
             $update = $this->clausula_documento->editar($data, $this->input->post('clausula_documento_id'));

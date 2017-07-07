@@ -19,6 +19,7 @@
     		<table class="table table-bordered table-striped table-hover table-condensed">
     			<thead>
     				<th>Id</th>
+                    <th>Codigo Claúsula</th>
     				<th>Nombre</th>
     				<th>Acciones</th>
     			</thead>
@@ -26,6 +27,7 @@
     				<?php foreach ($clausulas_documentos as $a): ?>
     					<tr>
     						<td><?= $a->clausula_documento_id;?></td>
+                            <td><?= $a->clausula_documento_codigo;?></td>
     						<td><?= $a->clausula_documento;?></td>
     						<td>
 
