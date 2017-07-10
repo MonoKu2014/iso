@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Secciones
-                <a href="<?= base_url(); ?>secciones/agregar" class="btn btn-default pull-right">
+                <a href="<?= base_url(); ?>secciones/agregar" class="btn btn-info pull-right">
                 	<i class="fa fa-plus"></i> Agregar sección
                 </a>
             </h2>
@@ -37,15 +37,13 @@
                             <td><?= ($s->seccion_genera == 1) ? 'Sí' : 'No'; ?></td>
     						<td>
 
-								<div class="btn-group">
-								  <a href="<?= base_url(); ?>secciones/editar/<?= $s->seccion_id;?>" class="btn btn-default btn-small hastip" title="Editar registro">
-								  	<i class="fa fa-pencil"></i>
-								  </a>
+							  <a href="<?= base_url(); ?>secciones/editar/<?= $s->seccion_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
+							  	<i class="fa fa-pencil"></i>
+							  </a>
 
-								  <a class="btn btn-default btn-small delete hastip" data-id="<?= $s->seccion_id;?>" title="Eliminar registro">
-								  	<i class="fa fa-remove"></i>
-								  </a>
-								</div>
+							  <a class="btn btn-danger btn-small delete hastip" data-id="<?= $s->seccion_id;?>" title="Eliminar registro">
+							  	<i class="fa fa-remove"></i>
+							  </a>
 
     						</td>
 

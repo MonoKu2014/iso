@@ -14,7 +14,7 @@ class Datos extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['datos'] = $this->dato->obtener_datos();
         $this->load->view('layout/header');
 		$this->load->view('datos/index', $data);
@@ -23,8 +23,9 @@ class Datos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $data['areas'] = $this->dato->areas();
+        $data['tipos_datos'] = $this->dato->tipos_datos();
         $this->load->view('layout/header');
         $this->load->view('datos/agregar', $data);
         $this->load->view('layout/footer');
@@ -33,13 +34,50 @@ class Datos extends CI_Controller {
 
     public function guardar()
     {
+        $error = 0;
+        $this->form_validation->set_rules('codigo', 'Código', 'required');
+        $this->form_validation->set_rules('area', 'Área', 'required');
+        $this->form_validation->set_rules('seccion', 'Sección', 'required');
+        $this->form_validation->set_rules('proceso', 'Proceso', 'required');
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('tipo', 'Tipo', 'required');
 
+        if($this->form_validation->run() === FALSE){
+
+            $error = 1;
+
+        } else {
+
+            $data = array(
+                'dato_codigo'   => $this->input->post('codigo'),
+                'area_fk'       => $this->input->post('area'),
+                'seccion_fk'    => $this->input->post('seccion'),
+                'proceso_fk'    => $this->input->post('proceso'),
+                'dato_nombre'   => $this->input->post('nombre'),
+                'tipo_dato_fk'  => $this->input->post('tipo')
+            );
+
+            $insert = $this->dato->insertar($data);
+            if($insert === false){
+                $error = 1;
+            }
+        }
+
+        if($error == 1){
+            $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
+            redirect(base_url().'datos/agregar');
+        } else {
+            $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
+            redirect(base_url().'datos');
+        }
     }
 
 
 
     public function editar($id)
-    {   
+    {
+        $data['areas'] = $this->dato->areas();
+        $data['tipos_datos'] = $this->dato->tipos_datos();
         $data['dato'] = $this->dato->obtener_dato($id);
         $this->load->view('layout/header');
         $this->load->view('datos/editar', $data);
@@ -49,7 +87,42 @@ class Datos extends CI_Controller {
 
     public function guardar_edicion()
     {
+        $error = 0;
+        $this->form_validation->set_rules('codigo', 'Código', 'required');
+        $this->form_validation->set_rules('area', 'Área', 'required');
+        $this->form_validation->set_rules('seccion', 'Sección', 'required');
+        $this->form_validation->set_rules('proceso', 'Proceso', 'required');
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('tipo', 'Tipo', 'required');
 
+        if($this->form_validation->run() === FALSE){
+
+            $error = 1;
+
+        } else {
+
+            $data = array(
+                'dato_codigo'   => $this->input->post('codigo'),
+                'area_fk'       => $this->input->post('area'),
+                'seccion_fk'    => $this->input->post('seccion'),
+                'proceso_fk'    => $this->input->post('proceso'),
+                'dato_nombre'   => $this->input->post('nombre'),
+                'tipo_dato_fk'  => $this->input->post('tipo')
+            );
+
+            $insert = $this->dato->editar($data, $this->input->post('dato_id'));
+            if($insert === false){
+                $error = 1;
+            }
+        }
+
+        if($error == 1){
+            $this->session->set_flashdata('message', alert_danger('No se ha podido editar el registro'));
+            redirect(base_url().'datos/editar/'.$this->input->post('dato_id'));
+        } else {
+            $this->session->set_flashdata('message', alert_success('Registro editado con éxito'));
+            redirect(base_url().'datos');
+        }
     }
 
 

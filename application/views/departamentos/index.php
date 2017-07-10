@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Departamentos
-                <a href="<?= base_url(); ?>departamentos/agregar" class="btn btn-default pull-right">
+                <a href="<?= base_url(); ?>departamentos/agregar" class="btn btn-info pull-right">
                 	<i class="fa fa-plus"></i> Agregar Departamento
                 </a>
             </h2>
@@ -29,15 +29,13 @@
     						<td><?= $a->departamento;?></td>
     						<td>
 
-								<div class="btn-group">
-								  <a href="<?= base_url(); ?>departamentos/editar/<?= $a->departamento_id;?>" class="btn btn-default btn-small hastip" title="Editar registro">
-								  	<i class="fa fa-pencil"></i>
-								  </a>
+							  <a href="<?= base_url(); ?>departamentos/editar/<?= $a->departamento_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
+							  	<i class="fa fa-pencil"></i>
+							  </a>
 
-								  <a class="btn btn-default btn-small delete hastip" data-id="<?= $a->departamento_id;?>" title="Eliminar registro">
-								  	<i class="fa fa-remove"></i>
-								  </a>
-								</div>
+							  <a class="btn btn-danger btn-small delete hastip" data-id="<?= $a->departamento_id;?>" title="Eliminar registro">
+							  	<i class="fa fa-remove"></i>
+							  </a>
 
     						</td>
 

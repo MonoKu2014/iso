@@ -20,8 +20,11 @@ class Datos_Model extends CI_Model {
 
     public function obtener_dato($id)
     {
-        $this->db->where('dato_id', $id);
-        $query = $this->db->get('datos');
+        $this->db->where('d.dato_id', $id);
+        $this->db->join('procesos p', 'p.proceso_id = d.proceso_fk');
+        $this->db->join('secciones s', 's.seccion_id = d.seccion_fk');
+        $this->db->join('areas a', 'a.area_id = d.area_fk');
+        $query = $this->db->get('datos d');
         return $query->row();
     }
 
@@ -48,16 +51,10 @@ class Datos_Model extends CI_Model {
         return $this->db->get('areas')->result();
     }
 
-    public function secciones_por_area()
+    public function tipos_datos()
     {
-        $this->db->where('area_fk', $this->input->post('area_id'));
-        return $this->db->get('secciones')->result();
+        return $this->db->get('tipo_dato')->result();
     }
 
-    public function procesos_por_seccion()
-    {
-        $this->db->where('proceso_fk', $this->input->post('proceso_id'));
-        return $this->db->get('procesos')->result();     
-    }
 
 }

@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Agregar Dato
+                Editar Dato
                 <a href="<?= base_url(); ?>datos" class="btn btn-default pull-right">
-                	<i class="fa fa-chevron-left"></i> Volver
+                    <i class="fa fa-chevron-left"></i> Volver
                 </a>
             </h2>
         </div>
@@ -14,19 +14,20 @@
 
 
     <div class="row">
-    	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>datos/guardar" class="form">
+        <div class="col-lg-12">
+        <form method="post" action="<?= base_url(); ?>datos/guardar_edicion" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
+                <input type="hidden" name="dato_id" value="<?= $dato->dato_id; ?>">
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Código (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="codigo" data-validate="string" class="form-control input-sm required" placeholder="Código" required>
+                        <input type="text" name="codigo" data-validate="string" class="form-control input-sm required" placeholder="Código" required value="<?= $dato->dato_codigo; ?>">
                     </div>
                 </div>
 
@@ -38,7 +39,7 @@
                         <select class="form-control required" name="area" required data-validate="number" id="area">
                             <option value="">Seleccione área...</option>
                         <?php foreach ($areas as $a): ?>
-                            <option value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
+                            <option <?php if($dato->area_fk == $a->area_id){ echo 'selected'; } ?> value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -51,7 +52,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="seccion" required data-validate="number" id="seccion">
-                            <option value="">Seleccione sección...</option>
+                            <option value="<?= $dato->seccion_fk; ?>"><?= $dato->seccion; ?></option>
                         </select>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="proceso" required data-validate="number" id="proceso">
-                            <option value="">Seleccione proceso...</option>
+                            <option value="<?= $dato->proceso_fk; ?>"><?= $dato->proceso_nombre; ?></option>
                         </select>
                     </div>
                 </div>
@@ -74,7 +75,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre del dato" required>
+                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre del dato" required value="<?= $dato->dato_nombre; ?>">
                     </div>
                 </div>
 
@@ -87,7 +88,7 @@
                         <select class="form-control required" name="tipo" required data-validate="number" id="tipo">
                             <option value="">Seleccione tipo de dato...</option>
                         <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                            <option <?php if($dato->tipo_dato_fk == $t->tipo_dato_id){ echo 'selected'; } ?> value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -107,7 +108,7 @@
 
 
         </form>
-    	</div>
+        </div>
     </div>
 
 </div>

@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Usuarios
-                <a href="<?= base_url(); ?>usuarios/agregar" class="btn btn-default pull-right">
+                <a href="<?= base_url(); ?>usuarios/agregar" class="btn btn-info pull-right">
                 	<i class="fa fa-plus"></i> Agregar usuario
                 </a>
             </h2>
@@ -33,30 +33,25 @@
     						<td><?= $u->usuario_email;?></td>
     						<td><?= $u->perfil;?></td>
     						<td><?= $u->estado;?></td>
-    						<td>
+    						<td>								
+    						  <a href="<?= base_url(); ?>usuarios/editar/<?= $u->usuario_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
+    						  	<i class="fa fa-pencil"></i>
+    						  </a>
 
-								<div class="btn-group">
-								  <a href="<?= base_url(); ?>usuarios/editar/<?= $u->usuario_id;?>" class="btn btn-default btn-small hastip" title="Editar registro">
-								  	<i class="fa fa-pencil"></i>
-								  </a>
+    						  <a class="btn btn-danger btn-small delete hastip" data-id="<?= $u->usuario_id;?>" title="Eliminar registro">
+    						  	<i class="fa fa-remove"></i>
+    						  </a>
 
-								  <a class="btn btn-default btn-small delete hastip" data-id="<?= $u->usuario_id;?>" title="Eliminar registro">
-								  	<i class="fa fa-remove"></i>
-								  </a>
-
-                                  <?php if($u->estado_fk == 1){ ?>
-    								  <a class="btn btn-default btn-small deactivate hastip" data-id="<?= $u->usuario_id;?>" title="Desactivar registro">
-    								  	<i class="fa fa-toggle-off"></i>
-    								  </a>
-                                  <?php } else { ?>
-                                      <a class="btn btn-default btn-small activate hastip" data-id="<?= $u->usuario_id;?>" title="Activar registro">
-                                        <i class="fa fa-toggle-on"></i>
-                                      </a>
-                                  <?php } ?>
-								</div>
-
+                              <?php if($u->estado_fk == 1){ ?>
+    							  <a class="btn btn-warning btn-small deactivate hastip" data-id="<?= $u->usuario_id;?>" title="Desactivar registro">
+    							  	<i class="fa fa-power-off"></i>
+    							  </a>
+                              <?php } else { ?>
+                                  <a class="btn btn-success btn-small activate hastip" data-id="<?= $u->usuario_id;?>" title="Activar registro">
+                                    <i class="fa fa-power-off"></i>
+                                  </a>
+                              <?php } ?>
     						</td>
-
     					</tr>
     				<?php endforeach ?>
     			</tbody>
