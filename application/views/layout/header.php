@@ -100,8 +100,7 @@
                             <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
                             <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
                         </ul>
-                    </li>
-                    
+                    </li>      
 
 
                     <li <?= active('responsables')?>>
@@ -111,6 +110,18 @@
                             <li><a href="<?= base_url(); ?>cargos">Cargos</a></li>
                         </ul>
                     </li>
+
+
+                    <li <?= active('incidencias')?>>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#incidencias"><i class="fa fa-arrow-circle-up"></i> Incidencias <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="incidencias" class="collapse">
+                            <li><a href="<?= base_url(); ?>estados_incidencias">Estados</a></li>
+                            <li><a href="<?= base_url(); ?>tipos_incidencias">Tipos</a></li>
+                            <li><a href="<?= base_url(); ?>origenes_incidencias">Origen</a></li>
+                            <li><a href="<?= base_url(); ?>causas_incidencias">Causas</a></li>
+                        </ul>
+                    </li>
+
 
                 </ul>
             </div>
