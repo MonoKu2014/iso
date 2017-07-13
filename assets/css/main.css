@@ -308,6 +308,12 @@ ul.alert-dropdown {
 .information {
     padding: 5px;
     border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.bg-info {
+    background: #2d2dd4 !important;
 }
 
 .form-control {
@@ -321,4 +327,14 @@ ul.alert-dropdown {
 .jumbotron {
     border-radius: 0px !important;
     padding-top: 10px !important;
+}
+
+.table th {
+    background: #2d2dd4 !important;
+    color: #fff;
+    font-weight: bold;
+}
+
+.pagination > .active > a {
+    background: #2d2dd4 !important;
 }
