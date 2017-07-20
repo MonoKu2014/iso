@@ -8,6 +8,9 @@
                 <a href="<?= base_url(); ?>usuarios/agregar" class="btn btn-info pull-right">
                 	<i class="fa fa-plus"></i> Agregar usuario
                 </a>
+                <a href="<?= base_url(); ?>usuarios/exportar" class="btn btn-info pull-right">
+                    <i class="fa fa-file-excel-o"></i> Exportar
+                </a>
             </h2>
             <?= $this->session->flashdata('message');?>
         </div>

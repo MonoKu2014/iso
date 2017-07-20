@@ -72,16 +72,114 @@ function change_nav($controller)
 		return 'documentos';
 	}
 
+	if($controller == 'estados_incidencias' || $controller == 'tipos_incidencias' || $controller == 'origenes_incidencias' || $controller == 'causas_incidencias'){
+		return 'incidencias';
+	}
+
 	if($controller == 'datos' || $controller == 'tipo_datos'){
 		return 'indicadores';
 	}
 
-	if($controller == 'usuarios'){
-		return 'usuarios';
+    //para los que no necesitan un if
+    return $controller;
+
+}
+
+
+//retorna la letra asociada a la columna de conteo del exportar a excel
+function excel_final_letter($index)
+{
+	$letters = range('A', 'Z');
+	return $letters[$index];
+}
+
+
+function header_correction($header)
+{
+	$find = strpos($header, '_');
+	if($find){
+		return str_replace('_', ' ', $header);
 	}
 
-	if($controller == 'panel'){
-		return 'panel';
-	}
+	return $header;
+}
 
+
+
+
+function main_export($filename, $registers, $fields)
+{
+
+	$ci =& get_instance();
+
+    $ci->load->library('Excel.php');
+
+    $ci->excel->getProperties()->setCreator("ISO Quality")
+                                 ->setTitle("Registros Exportados")
+                                 ->setSubject("Registros Exportados");
+     
+     
+    $ci->excel->setActiveSheetIndex(0);
+
+    $col = 0;
+    foreach ($fields as $field) {
+        $ci->excel->getActiveSheet()->setCellValueByColumnAndRow($col, 1, header_correction(strtoupper($field)));
+        $col++;
+    }
+
+    $letters = 'A1:' . excel_final_letter($col - 1) . '1';
+
+
+    $ci->excel->getActiveSheet()
+        ->getStyle($letters)
+        ->getFill()
+        ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+        ->getStartColor()
+        ->setRGB('0066cb');
+
+    $ci->excel->getActiveSheet()
+        ->getStyle($letters)
+        ->getFont()->setBold(false)
+        ->setSize(12)
+        ->getColor()->setRGB('FFFFFF');
+
+
+    $ci->excel->setActiveSheetIndex(0);
+
+
+    $row = 2;
+    foreach($registers as $register)
+    {
+        $col = 0;
+        foreach ($fields as $field)
+        {
+            $ci->excel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $register->$field);
+            $col++;
+        }
+
+        $row++;
+    }
+
+    $ci->excel->getActiveSheet()->setTitle($filename);
+     
+    $ci->excel->setActiveSheetIndex(0);
+
+
+    foreach ($ci->excel->getWorksheetIterator() as $worksheet) {
+        $ci->excel->setActiveSheetIndex($ci->excel->getIndex($worksheet));
+        $sheet = $ci->excel->getActiveSheet();
+        $cellIterator = $sheet->getRowIterator()->current()->getCellIterator();
+        $cellIterator->setIterateOnlyExistingCells(true);
+        foreach ($cellIterator as $cell) {
+            $sheet->getColumnDimension($cell->getColumn())->setAutoSize(true);
+        }
+    }
+
+
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="'.$filename.'"');
+    header('Cache-Control: max-age=0');
+     
+    $objWriter = PHPExcel_IOFactory::createWriter($ci->excel, 'Excel2007');
+    $objWriter->save('php://output');
 }

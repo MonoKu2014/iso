@@ -165,4 +165,17 @@ class Usuarios extends CI_Controller {
     }
 
 
+    public function exportar()
+    {
+
+        $usuarios = $this->usuario->consulta_exportar()->result();
+
+        $cabeceras = $this->usuario->consulta_exportar()->list_fields();
+
+        $nombre_archivo = 'Usuarios_'.date('d-m-Y').'.xlsx';
+
+        main_export($nombre_archivo, $usuarios, $cabeceras);
+
+    }
+
 }

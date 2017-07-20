@@ -295,6 +295,7 @@ ul.alert-dropdown {
 
 .navbar-brand {
     font-weight: bold;
+    color: #0066cb;
 }
 
 .table {
@@ -309,11 +310,10 @@ ul.alert-dropdown {
     padding: 5px;
     border-radius: 4px;
     color: #fff;
-    font-weight: bold;
 }
 
 .bg-info {
-    background: #2d2dd4 !important;
+    background: #0066cb !important;
 }
 
 .form-control {
@@ -330,11 +330,33 @@ ul.alert-dropdown {
 }
 
 .table th {
-    background: #2d2dd4 !important;
+    background: #0066cb !important;
     color: #fff;
     font-weight: bold;
 }
 
 .pagination > .active > a {
-    background: #2d2dd4 !important;
+    background: #0066cb !important;
+}
+
+.page-header > .btn {
+    margin-right: 5px !important;
+}
+
+.page-header > .btn-info {
+    background: #0066cb;
+    border: 1px solid #fff;
+}
+
+.page-header {
+    background: #0066cb;
+    color: #fff;
+    padding: 9px;
+    font-size: 2em;
+}
+
+.container-fluid {
+    border: 1px solid #f1e1e1;
+    padding: 5px;
+    margin: 13px 2px 0px 2px !important;
 }
