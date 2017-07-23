@@ -14,7 +14,7 @@ class Areas extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['areas'] = $this->area->obtener_areas();
         $this->load->view('layout/header');
 		$this->load->view('areas/index', $data);
@@ -23,7 +23,7 @@ class Areas extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('areas/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Areas extends CI_Controller {
         $this->form_validation->set_rules('area', 'Area', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'area'    => $this->input->post('area')
             );
@@ -63,7 +63,7 @@ class Areas extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['area'] = $this->area->obtener_area($id);
         $this->load->view('layout/header');
         $this->load->view('areas/editar', $data);
@@ -77,11 +77,11 @@ class Areas extends CI_Controller {
         $this->form_validation->set_rules('area', 'Area', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'area'    => $this->input->post('area')
             );
@@ -105,6 +105,12 @@ class Areas extends CI_Controller {
 
     public function eliminar($id)
     {
+
+        if($this->area->tiene_procesos($id) > 0){
+            $this->session->set_flashdata('message', alert_danger('No puede eliminar el área, ya que tiene secciones asociadas'));
+            redirect(base_url().'areas');
+        }
+
         $delete = $this->area->eliminar($id);
         if($delete === false){
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
@@ -115,6 +121,21 @@ class Areas extends CI_Controller {
         }
 
     }
+
+
+    public function exportar()
+    {
+
+        $usuarios = $this->area->consulta_exportar()->result();
+
+        $cabeceras = $this->area->consulta_exportar()->list_fields();
+
+        $nombre_archivo = 'Areas_'.date('d-m-Y').'.xlsx';
+
+        main_export($nombre_archivo, $usuarios, $cabeceras);
+
+    }
+
 
 
 }

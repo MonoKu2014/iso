@@ -14,7 +14,7 @@ class Secciones extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['secciones'] = $this->secciones->obtener_secciones();
         $this->load->view('layout/header');
 		$this->load->view('secciones/index', $data);
@@ -23,7 +23,8 @@ class Secciones extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
+        $data['areas'] = $this->secciones->obtener_areas();
         $this->load->view('layout/header');
         $this->load->view('secciones/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +37,11 @@ class Secciones extends CI_Controller {
         $this->form_validation->set_rules('secciones', 'secciones', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'secciones'    => $this->input->post('secciones')
             );
@@ -63,7 +64,7 @@ class Secciones extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['secciones'] = $this->secciones->obtener_secciones($id);
         $this->load->view('layout/header');
         $this->load->view('secciones/editar', $data);
@@ -77,11 +78,11 @@ class Secciones extends CI_Controller {
         $this->form_validation->set_rules('secciones', 'secciones', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'secciones'    => $this->input->post('secciones')
             );

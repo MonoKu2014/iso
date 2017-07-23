@@ -15,6 +15,12 @@ class Areas_Model extends CI_Model {
     }
 
 
+    public function consulta_exportar()
+    {
+        return $query = $this->db->get('areas');
+    }
+
+
     public function obtener_area($id)
     {
         $this->db->where('area_id', $id);
@@ -31,6 +37,13 @@ class Areas_Model extends CI_Model {
     {
         $this->db->where('area_id', $id);
         return $this->db->delete('areas');
+    }
+
+
+    public function tiene_procesos($id)
+    {
+        $this->db->where('area_fk', $id);
+        return $this->db->count_all_results('procesos');
     }
 
 

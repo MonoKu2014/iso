@@ -43,4 +43,10 @@ class Secciones_Model extends CI_Model {
         return $this->db->update('secciones', $data);
     }
 
+    public function obtener_areas()
+    {
+        $query = $this->db->get('areas');
+        return $query->result();
+    }
+
 }

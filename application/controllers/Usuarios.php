@@ -30,7 +30,7 @@ class Usuarios extends CI_Controller {
         $data['estados'] = $this->usuario->obtener_estados();
         $this->load->view('layout/header');
         $this->load->view('usuarios/agregar', $data);
-        $this->load->view('layout/footer');        
+        $this->load->view('layout/footer');
     }
 
 
@@ -44,11 +44,11 @@ class Usuarios extends CI_Controller {
         $this->form_validation->set_rules('estado', 'Estado', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'usuario_nombre'    => $this->input->post('nombre'),
                 'usuario_email'     => $this->input->post('email'),
@@ -80,7 +80,7 @@ class Usuarios extends CI_Controller {
         $data['estados'] = $this->usuario->obtener_estados();
         $this->load->view('layout/header');
         $this->load->view('usuarios/editar', $data);
-        $this->load->view('layout/footer'); 
+        $this->load->view('layout/footer');
     }
 
 
@@ -94,11 +94,11 @@ class Usuarios extends CI_Controller {
         $this->form_validation->set_rules('estado', 'Estado', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'usuario_nombre'    => $this->input->post('nombre'),
                 'usuario_email'     => $this->input->post('email'),
@@ -119,7 +119,7 @@ class Usuarios extends CI_Controller {
         } else {
             $this->session->set_flashdata('message', alert_success('Registro editado con éxito'));
             redirect(base_url().'usuarios');
-        }   
+        }
     }
 
 
