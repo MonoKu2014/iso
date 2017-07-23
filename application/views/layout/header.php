@@ -115,6 +115,7 @@
                 <li <?= active('procesos')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#procesos"><i class="fa fa-folder-open"></i> Procesos <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="procesos" class="collapse">
+                        <li><a href="<?= base_url(); ?>documentos">Documentos</a></li>
                         <li><a href="<?= base_url(); ?>areas">Áreas</a></li>
                         <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
                         <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
