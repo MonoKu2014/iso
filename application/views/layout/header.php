@@ -114,6 +114,7 @@
                         <ul id="responsables" class="collapse">
                             <li><a href="<?= base_url(); ?>departamentos">Departamentos</a></li>
                             <li><a href="<?= base_url(); ?>cargos">Cargos</a></li>
+                            <li><a href="<?= base_url(); ?>responsables">Responsables</a></li>
                         </ul>
                     </li>
 
