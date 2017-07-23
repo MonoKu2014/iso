@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Dashboard <small>Datamatica</small>
+                Dashboard <small style="color: #fff;">Datamatica</small>
             </h1>
         </div>
     </div>
@@ -14,6 +14,7 @@
 
     <div class="row">
         <div class="col-lg-12">
+            <?= $this->session->flashdata('message');?>
             <h2>
                 Detalle de Indicadores globales
             </h2>

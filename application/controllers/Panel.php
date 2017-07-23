@@ -20,4 +20,12 @@ class Panel extends CI_Controller {
 	}
 
 
+    public function sin_permisos()
+    {
+        $this->load->view('layout/header');
+        $this->load->view('panel/sin_permiso');
+        $this->load->view('layout/footer');        
+    }
+
+
 }

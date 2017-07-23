@@ -69,7 +69,12 @@
                 <ul class="nav navbar-nav side-nav">
                  
                     <li <?= active('panel')?> ><a href="<?= base_url(); ?>panel"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
+
+                    <?php if(can_see('usuarios')){ ?>
                     <li <?= active('usuarios')?> ><a href="<?= base_url(); ?>usuarios"><i class="fa fa-users"></i> Usuarios</a></li>
+                    <?php } ?>
+
+
                     <li <?= active('perfiles')?> ><a href="<?= base_url(); ?>perfiles"><i class="fa fa-gears"></i> Perfiles</a></li>
                  
 

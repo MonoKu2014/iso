@@ -182,4 +182,91 @@ function main_export($filename, $registers, $fields)
      
     $objWriter = PHPExcel_IOFactory::createWriter($ci->excel, 'Excel2007');
     $objWriter->save('php://output');
+
+}
+
+
+function have_perm($id_profile)
+{
+
+    $ci =& get_instance();
+
+    $controller = $ci->router->fetch_class();
+
+    $ci->db->where('perfil_fk', $id_profile);
+    $ci->db->where('controlador', $controller);
+    $permissions = $ci->db->get('permisos')->row();
+
+    return $permissions;
+
+}
+
+
+function can_access($action)
+{
+
+    $ci =& get_instance();
+    $id_profile = $ci->session->perfil;
+
+    $permissions = have_perm($id_profile);
+
+    if(count($permissions) == 0){
+        return false;
+    }
+
+    if($permissions->$action == 0){
+        return false;
+    }
+
+    return true;
+
+}
+
+
+//si no tiene permisos de lectura, no le permito avanzar
+function can_read()
+{
+    $ci =& get_instance();
+    $controller = $ci->router->fetch_class();
+    $id_profile = $ci->session->perfil;
+    $ci->db->where('perfil_fk', $id_profile);
+    $ci->db->where('controlador', $controller);
+    $permissions = $ci->db->get('permisos')->row();
+
+    if($permissions->leer == 0){
+        $message = 'Usted no tiene permisos para acceder a este contenido';
+        $ci->session->set_flashdata('message', alert_danger($message));
+        redirect(base_url().'panel/sin_permisos');
+    }
+}
+
+
+function can_see($controller)
+{
+
+    $permissions = have_perm_menu($controller);
+
+    if(count($permissions) == 0){
+        return false;
+    }
+
+    if($permissions->leer == 0){
+        return false;
+    }
+
+    return true;
+
+}
+
+
+function have_perm_menu($controller)
+{
+
+    $ci =& get_instance();
+    $id_profile = $ci->session->perfil;
+    $ci->db->where('perfil_fk', $id_profile);
+    $ci->db->where('controlador', $controller);
+    $permissions = $ci->db->get('permisos')->row();
+    return $permissions;
+
 }

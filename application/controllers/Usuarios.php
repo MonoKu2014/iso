@@ -9,12 +9,14 @@ class Usuarios extends CI_Controller {
         parent::__construct();
         //validate session es para validar que la sesión este iniciada
         validate_session();
+        //valida si el usuario que esta ingresando, tiene permisos de lectura a este módulo
+        can_read();
         $this->load->model('usuarios_Model', 'usuario');
     }
 
 
 	public function index()
-	{	
+	{
         $data['usuarios'] = $this->usuario->obtener_usuarios();
         $this->load->view('layout/header');
 		$this->load->view('usuarios/index', $data);

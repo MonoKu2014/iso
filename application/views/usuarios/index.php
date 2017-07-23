@@ -5,12 +5,18 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Usuarios
-                <a href="<?= base_url(); ?>usuarios/agregar" class="btn btn-info pull-right">
-                	<i class="fa fa-plus"></i> Agregar usuario
-                </a>
-                <a href="<?= base_url(); ?>usuarios/exportar" class="btn btn-info pull-right">
-                    <i class="fa fa-file-excel-o"></i> Exportar
-                </a>
+
+                <?php if(can_access('crear')){ ?>
+                    <a href="<?= base_url(); ?>usuarios/agregar" class="btn btn-info pull-right">
+                    	<i class="fa fa-plus"></i> Agregar usuario
+                    </a>
+                <?php } ?>
+
+                <?php if(can_access('exportar')){ ?>
+                    <a href="<?= base_url(); ?>usuarios/exportar" class="btn btn-info pull-right">
+                        <i class="fa fa-file-excel-o"></i> Exportar
+                    </a>
+                <?php } ?>
             </h2>
             <?= $this->session->flashdata('message');?>
         </div>
@@ -36,14 +42,19 @@
     						<td><?= $u->usuario_email;?></td>
     						<td><?= $u->perfil;?></td>
     						<td><?= $u->estado;?></td>
-    						<td>								
+    						<td>	
+
+                              <?php if(can_access('editar')){ ?>							
     						  <a href="<?= base_url(); ?>usuarios/editar/<?= $u->usuario_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
     						  	<i class="fa fa-pencil"></i>
     						  </a>
+                              <?php } ?>
 
+                              <?php if(can_access('eliminar')){ ?>
     						  <a class="btn btn-danger btn-small delete hastip" data-id="<?= $u->usuario_id;?>" title="Eliminar registro">
     						  	<i class="fa fa-remove"></i>
     						  </a>
+                              <?php } ?>
 
                               <?php if($u->estado_fk == 1){ ?>
     							  <a class="btn btn-warning btn-small deactivate hastip" data-id="<?= $u->usuario_id;?>" title="Desactivar registro">
