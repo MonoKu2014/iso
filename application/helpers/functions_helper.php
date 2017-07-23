@@ -16,7 +16,7 @@ function validate_session()
 function query_logger()
 {
 	$ci =& get_instance();
-	dd($ci->db->last_query());	
+	dd($ci->db->last_query());
 }
 
 
@@ -117,8 +117,8 @@ function main_export($filename, $registers, $fields)
     $ci->excel->getProperties()->setCreator("ISO Quality")
                                  ->setTitle("Registros Exportados")
                                  ->setSubject("Registros Exportados");
-     
-     
+
+
     $ci->excel->setActiveSheetIndex(0);
 
     $col = 0;
@@ -161,7 +161,7 @@ function main_export($filename, $registers, $fields)
     }
 
     $ci->excel->getActiveSheet()->setTitle($filename);
-     
+
     $ci->excel->setActiveSheetIndex(0);
 
 
@@ -179,7 +179,7 @@ function main_export($filename, $registers, $fields)
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="'.$filename.'"');
     header('Cache-Control: max-age=0');
-     
+
     $objWriter = PHPExcel_IOFactory::createWriter($ci->excel, 'Excel2007');
     $objWriter->save('php://output');
 
@@ -265,8 +265,18 @@ function have_perm_menu($controller)
     $ci =& get_instance();
     $id_profile = $ci->session->perfil;
     $ci->db->where('perfil_fk', $id_profile);
-    $ci->db->where('controlador', $controller);
+    $ci->db->where('modulo_fk', $controller);
     $permissions = $ci->db->get('permisos')->row();
     return $permissions;
 
+}
+
+
+function is_checked($value)
+{
+    if($value == 1){
+        return 'checked';
+    }
+
+    return '';
 }

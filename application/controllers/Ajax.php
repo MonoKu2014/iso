@@ -54,5 +54,29 @@ class Ajax extends CI_Controller {
     }
 
 
+    public function guardar_permiso()
+    {
+        $perfil_id = $this->input->post('perfil_id');
+        $modulo_id = $this->input->post('modulo_id');
+        $accion = $this->input->post('accion');
+
+        if($accion == 1){ $accion = 'leer'; }
+        if($accion == 2){ $accion = 'crear'; }
+        if($accion == 3){ $accion = 'editar'; }
+        if($accion == 4){ $accion = 'eliminar'; }
+        if($accion == 5){ $accion = 'exportar'; }
+
+        $permiso = $this->ajax->ver_permiso($perfil_id, $modulo_id, $accion);
+
+        ($permiso == 1) ? $actualizacion = 0 : $actualizacion = 1;
+
+        $data = array($accion => $actualizacion);
+
+        $actualizar = $this->ajax->cambiar_permiso($perfil_id, $modulo_id, $data);
+        query_logger();
+
+    }
+
+
 
 }

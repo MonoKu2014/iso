@@ -29,6 +29,15 @@ $('.hastip').tooltipsy({
     }
 });
 
+
+
 $(document).ready(function(){
-    $('.table').dataTable();
+
+    //para que en el listado de permisos no se active el plugin de datatables, en todos los demas listado si se activará
+    if(window.location.href.indexOf('permisos') == -1){
+        $('.table').dataTable();
+    }
+
 });
+
+

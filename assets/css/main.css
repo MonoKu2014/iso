@@ -361,3 +361,9 @@ ul.alert-dropdown {
     padding: 5px;
     margin: 13px 2px 0px 2px !important;
 }
+
+#permisos input[type=checkbox] {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+}
