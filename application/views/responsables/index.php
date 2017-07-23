@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
- 
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -24,6 +24,8 @@
                     <th>Título</th>
                     <th>Fono Particular</th>
                     <th>Email</th>
+                    <th>CV</th>
+                    <th>Imagen</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>
@@ -35,6 +37,8 @@
                             <td><?= $a->responsable_titulo;?></td>
                             <td><?= $a->responsable_fono_particular;?></td>
     						<td><?= $a->responsable_email;?></td>
+                            <td><?= $a->responsable_curriculum;?></td>
+                            <td><?= $a->responsable_foto;?></td>
     						<td>
 
 							  <a href="<?= base_url(); ?>responsables/editar/<?= $a->responsable_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
@@ -59,7 +63,7 @@
 
 
 <script>
-	
+
 
 $('.delete').on('click', function(e){
 	e.preventDefault();

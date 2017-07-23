@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
- 
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -15,7 +15,7 @@
 
     <div class="row">
     	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>responsables/guardar" class="form">
+        <form method="post" action="<?= base_url(); ?>responsables/guardar" class="form" enctype="multipart/form-data">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
@@ -44,7 +44,7 @@
                         </select>
                     </div>
                 </div>
-                
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Cargo (*)
@@ -59,7 +59,7 @@
                         </select>
                     </div>
                 </div>
-               
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Nombre (*)
@@ -86,10 +86,10 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="curriculum" data-validate="string" class="form-control input-sm" placeholder="Curriculum">
+                        <input type="file" name="curriculum" class="form-control input-sm" placeholder="Curriculum">
                     </div>
                 </div>
-                
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Teléfono Comercial (*)
@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="foto" data-validate="string" class="form-control input-sm" placeholder="Foto">
+                        <input type="file" name="foto" class="form-control input-sm" placeholder="Foto">
                     </div>
                 </div>
 
