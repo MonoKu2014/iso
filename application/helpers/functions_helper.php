@@ -280,3 +280,23 @@ function is_checked($value)
 
     return '';
 }
+
+
+function cv($cv)
+{
+    if($cv == ''){
+        return 'Sin CV';
+    }
+
+    return '<a target="_blank" href="'.base_url().'assets/curriculums/'.$cv.'">'.$cv.'</a>';
+}
+
+
+function foto($foto)
+{
+    if($foto == ''){
+        return 'Sin foto';
+    }
+
+    return '<a target="_blank" href="'.base_url().'assets/fotos/'.$foto.'">'.$foto.'</a>';
+}

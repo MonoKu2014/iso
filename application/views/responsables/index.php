@@ -37,8 +37,8 @@
                             <td><?= $a->responsable_titulo;?></td>
                             <td><?= $a->responsable_fono_particular;?></td>
     						<td><?= $a->responsable_email;?></td>
-                            <td><?= $a->responsable_curriculum;?></td>
-                            <td><?= $a->responsable_foto;?></td>
+                            <td><?= cv($a->responsable_curriculum);?></td>
+                            <td><?= foto($a->responsable_foto);?></td>
     						<td>
 
 							  <a href="<?= base_url(); ?>responsables/editar/<?= $a->responsable_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
