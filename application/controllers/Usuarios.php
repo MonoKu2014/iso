@@ -10,7 +10,7 @@ class Usuarios extends CI_Controller {
         //validate session es para validar que la sesión este iniciada
         validate_session();
         //valida si el usuario que esta ingresando, tiene permisos de lectura a este módulo
-        can_read();
+        can_read(1);
         $this->load->model('usuarios_Model', 'usuario');
     }
 

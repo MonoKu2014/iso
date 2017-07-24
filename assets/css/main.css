@@ -358,7 +358,7 @@ ul.alert-dropdown {
 .container-fluid {
     border: 1px solid #f1e1e1;
     background: #fefefe;
-    padding: 5px;
+    padding: 5px 5px 60px 5px;
     margin: 13px 2px 0px 2px !important;
 }
 

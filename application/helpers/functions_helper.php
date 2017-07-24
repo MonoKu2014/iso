@@ -186,15 +186,15 @@ function main_export($filename, $registers, $fields)
 }
 
 
-function have_perm($id_profile)
+function have_perm($id_profile, $controller)
 {
 
     $ci =& get_instance();
 
-    $controller = $ci->router->fetch_class();
+    //$controller = $ci->router->fetch_class();
 
     $ci->db->where('perfil_fk', $id_profile);
-    $ci->db->where('controlador', $controller);
+    $ci->db->where('modulo_fk', $controller);
     $permissions = $ci->db->get('permisos')->row();
 
     return $permissions;
@@ -202,13 +202,13 @@ function have_perm($id_profile)
 }
 
 
-function can_access($action)
+function can_access($action, $controller)
 {
 
     $ci =& get_instance();
     $id_profile = $ci->session->perfil;
 
-    $permissions = have_perm($id_profile);
+    $permissions = have_perm($id_profile, $controller);
 
     if(count($permissions) == 0){
         return false;
@@ -224,13 +224,13 @@ function can_access($action)
 
 
 //si no tiene permisos de lectura, no le permito avanzar
-function can_read()
+function can_read($controller)
 {
     $ci =& get_instance();
-    $controller = $ci->router->fetch_class();
+    //$controller = $ci->router->fetch_class();
     $id_profile = $ci->session->perfil;
     $ci->db->where('perfil_fk', $id_profile);
-    $ci->db->where('controlador', $controller);
+    $ci->db->where('modulo_fk', $controller);
     $permissions = $ci->db->get('permisos')->row();
 
     if($permissions->leer == 0){

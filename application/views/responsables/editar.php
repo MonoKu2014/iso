@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
- 
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -15,20 +15,22 @@
 
     <div class="row">
     	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>responsables/guardar_edicion" class="form">
+        <form method="post" action="<?= base_url(); ?>responsables/guardar_edicion" class="form" enctype="multipart/form-data">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
                 <input type="hidden" name="responsable_id" value="<?= $responsable->responsable_id; ?>">
-                
+                <input type="hidden" name="cv_actual" value="<?= $responsable->responsable_curriculum; ?>">
+                <input type="hidden" name="foto_actual" value="<?= $responsable->responsable_foto; ?>">
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Funcionario (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="funcionario" data-validate="string" class="form-control input-sm required" placeholder="Funcionario" required value="<?= $responsable->responsable_funcionario; ?>">
+                        <input type="text" name="funcionario" class="form-control input-sm required" placeholder="Funcionario" required value="<?= $responsable->responsable_funcionario; ?>">
                     </div>
                 </div>
 
@@ -46,7 +48,7 @@
                         </select>
                     </div>
                 </div>
-                
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Cargo (*)
@@ -61,14 +63,14 @@
                         </select>
                     </div>
                 </div>
-               
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Nombre (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre" required value="<?= $responsable->responsable; ?>">
+                        <input type="text" name="nombre" class="form-control input-sm required" placeholder="Nombre" required value="<?= $responsable->responsable; ?>">
                     </div>
                 </div>
 
@@ -78,20 +80,23 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="titulo" data-validate="string" class="form-control input-sm required" placeholder="Título" required value="<?= $responsable->responsable_titulo; ?>">
+                        <input type="text" name="titulo" class="form-control input-sm required" placeholder="Título" required value="<?= $responsable->responsable_titulo; ?>">
                     </div>
                 </div>
 
+
+                <div class="col-xs-12 alert alert-info" style="padding: 1px;width: 98%;">
+                    <p><b>Currículum actual:</b> <?= cv($responsable->responsable_curriculum);?></p>
+                </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Curriculum
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="curriculum" data-validate="string" class="form-control input-sm" placeholder="Curriculum" value="<?= $responsable->responsable_curriculum; ?>">
+                        <input type="file" name="curriculum" class="form-control input-sm" placeholder="Curriculum" value="<?= $responsable->responsable_curriculum; ?>">
                     </div>
                 </div>
-                
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Teléfono Comercial (*)
@@ -128,7 +133,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="email" data-validate="string" class="form-control input-sm required" placeholder="E-mail" required value="<?= $responsable->responsable_email; ?>">
+                        <input type="text" name="email" class="form-control input-sm required" placeholder="E-mail" required value="<?= $responsable->responsable_email; ?>">
                     </div>
                 </div>
 
@@ -148,12 +153,16 @@
                 </div>
 
 
+                <div class="col-xs-12 alert alert-info" style="padding: 1px;width: 98%;">
+                    <p><b>Foto actual:</b> <?= foto($responsable->responsable_foto);?></p>
+                </div>
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Foto
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="foto" data-validate="string" class="form-control input-sm" placeholder="Foto">
+                        <input type="file" name="foto" class="form-control input-sm" placeholder="Foto" >
                     </div>
                 </div>
 

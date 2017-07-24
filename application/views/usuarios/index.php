@@ -1,18 +1,18 @@
 <div class="container-fluid">
 
- 
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
                 Usuarios
 
-                <?php if(can_access('crear')){ ?>
+                <?php if(can_access('crear', 1)){ ?>
                     <a href="<?= base_url(); ?>usuarios/agregar" class="btn btn-info pull-right">
                     	<i class="fa fa-plus"></i> Agregar usuario
                     </a>
                 <?php } ?>
 
-                <?php if(can_access('exportar')){ ?>
+                <?php if(can_access('exportar', 1)){ ?>
                     <a href="<?= base_url(); ?>usuarios/exportar" class="btn btn-info pull-right">
                         <i class="fa fa-file-excel-o"></i> Exportar
                     </a>
@@ -42,15 +42,15 @@
     						<td><?= $u->usuario_email;?></td>
     						<td><?= $u->perfil;?></td>
     						<td><?= $u->estado;?></td>
-    						<td>	
+    						<td>
 
-                              <?php if(can_access('editar')){ ?>							
+                              <?php if(can_access('editar', 1)){ ?>
     						  <a href="<?= base_url(); ?>usuarios/editar/<?= $u->usuario_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
     						  	<i class="fa fa-pencil"></i>
     						  </a>
                               <?php } ?>
 
-                              <?php if(can_access('eliminar')){ ?>
+                              <?php if(can_access('eliminar', 1)){ ?>
     						  <a class="btn btn-danger btn-small delete hastip" data-id="<?= $u->usuario_id;?>" title="Eliminar registro">
     						  	<i class="fa fa-remove"></i>
     						  </a>
@@ -78,7 +78,7 @@
 
 
 <script>
-	
+
 
 $('.delete').on('click', function(e){
 	e.preventDefault();

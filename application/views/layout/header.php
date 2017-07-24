@@ -83,7 +83,7 @@
                 <?php } ?>
 
 
-                <?php if(can_see(1)){ ?>
+                <?php if(can_see(2)){ ?>
                 <li <?= active('perfiles')?> >
                     <a href="<?= base_url(); ?>perfiles">
                         <i class="fa fa-gears"></i> Perfiles

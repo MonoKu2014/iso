@@ -57,7 +57,7 @@ class Responsables extends CI_Controller {
 
             $curriculum = $_FILES['curriculum'];
             $temporal   = $curriculum['tmp_name'];
-            $cv     = $curriculum['name'];
+            $cv         = $curriculum['name'];
 
             if($cv != ''){
                 $directorio = 'assets/curriculums/';
@@ -65,13 +65,13 @@ class Responsables extends CI_Controller {
             }
 
 
-            $curriculum = $_FILES['foto'];
-            $temporal   = $curriculum['tmp_name'];
-            $foto     = $curriculum['name'];
+            $foto     = $_FILES['foto'];
+            $temporal = $foto['tmp_name'];
+            $imagen   = $foto['name'];
 
-            if($foto != ''){
+            if($imagen != ''){
                 $directorio = 'assets/fotos/';
-                copy($temporal, $directorio.$foto);
+                copy($temporal, $directorio.$imagen);
             }
 
 
@@ -87,7 +87,7 @@ class Responsables extends CI_Controller {
                 'responsable_fono_celular'      => $this->input->post('telefono_celular'),
                 'responsable_email'             => $this->input->post('email'),
                 'estado_fk'                     => $this->input->post('estado'),
-                'responsable_foto'              => $foto
+                'responsable_foto'              => $imagen
             );
 
             $insert = $this->responsable->insertar($data);
@@ -129,13 +129,11 @@ class Responsables extends CI_Controller {
         $this->form_validation->set_rules('cargo', 'Cargo', 'required');
         $this->form_validation->set_rules('nombre', 'Nombre', 'required');
         $this->form_validation->set_rules('titulo', 'Titulo', 'required');
-        $this->form_validation->set_rules('curriculum', 'Curriculum');
         $this->form_validation->set_rules('telefono_comercial', 'Telefono_comercial', 'required');
         $this->form_validation->set_rules('telefono_particular', 'Telefono_particular', 'required');
         $this->form_validation->set_rules('telefono_celular', 'Telefono_celular', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('estado', 'Estado', 'required');
-        $this->form_validation->set_rules('foto', 'Foto');
 
         if($this->form_validation->run() === FALSE){
 
@@ -143,19 +141,44 @@ class Responsables extends CI_Controller {
 
         } else {
 
+
+            $curriculum = $_FILES['curriculum'];
+            $temporal   = $curriculum['tmp_name'];
+            $cv         = $curriculum['name'];
+
+            if($cv != ''){
+                $directorio = 'assets/curriculums/';
+                copy($temporal, $directorio.$cv);
+            } else {
+                $cv = $this->input->post('cv_actual');
+            }
+
+
+            $foto       = $_FILES['foto'];
+            $temporal   = $foto['tmp_name'];
+            $imagen     = $foto['name'];
+
+            if($imagen != ''){
+                $directorio = 'assets/fotos/';
+                copy($temporal, $directorio.$imagen);
+            } else {
+                $imagen = $this->input->post('foto_actual');
+            }
+
+
             $data = array(
                 'responsable_funcionario'       => $this->input->post('funcionario'),
                 'departamento_fk'               => $this->input->post('departamento'),
                 'cargo_fk'                      => $this->input->post('cargo'),
                 'responsable'                   => $this->input->post('nombre'),
                 'responsable_titulo'            => $this->input->post('titulo'),
-                'responsable_curriculum'        => $this->input->post('curriculum'),
+                'responsable_curriculum'        => $cv,
                 'responsable_fono_comercial '   => $this->input->post('telefono_comercial'),
                 'responsable_fono_particular'   => $this->input->post('telefono_particular'),
                 'responsable_fono_celular'      => $this->input->post('telefono_celular'),
                 'responsable_email'             => $this->input->post('email'),
                 'estado_fk'                     => $this->input->post('estado'),
-                'responsable_foto'              => $this->input->post('foto')
+                'responsable_foto'              => $imagen
             );
 
             $update = $this->responsable->editar($data, $this->input->post('responsable_id'));
