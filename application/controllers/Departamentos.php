@@ -14,7 +14,7 @@ class Departamentos extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['departamentos'] = $this->departamento->obtener_departamentos();
         $this->load->view('layout/header');
 		$this->load->view('departamentos/index', $data);
@@ -23,7 +23,7 @@ class Departamentos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('departamentos/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Departamentos extends CI_Controller {
         $this->form_validation->set_rules('departamento', 'Departamento', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'departamento'    => $this->input->post('departamento')
             );
@@ -63,7 +63,7 @@ class Departamentos extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['departamento'] = $this->departamento->obtener_departamento($id);
         $this->load->view('layout/header');
         $this->load->view('departamentos/editar', $data);
@@ -77,11 +77,11 @@ class Departamentos extends CI_Controller {
         $this->form_validation->set_rules('departamento', 'Departamento', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'departamento'    => $this->input->post('departamento')
             );
@@ -113,6 +113,20 @@ class Departamentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'departamentos');
         }
+
+    }
+
+
+    public function exportar()
+    {
+
+        $datos = $this->departamento->consulta_exportar()->result();
+
+        $cabeceras = $this->departamento->consulta_exportar()->list_fields();
+
+        $nombre_archivo = 'Departamentos_'.date('d-m-Y').'.xlsx';
+
+        main_export($nombre_archivo, $datos, $cabeceras);
 
     }
 

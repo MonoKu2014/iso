@@ -14,7 +14,7 @@ class Clausulas_documentos extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['clausulas_documentos'] = $this->clausula_documento->obtener_clausulas_documentos();
         $this->load->view('layout/header');
 		$this->load->view('clausulas_documentos/index', $data);
@@ -23,7 +23,7 @@ class Clausulas_documentos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('clausulas_documentos/agregar');
         $this->load->view('layout/footer');
@@ -37,11 +37,11 @@ class Clausulas_documentos extends CI_Controller {
         $this->form_validation->set_rules('clausula_documento', 'Clausula_documento', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'clausula_documento_codigo'     => $this->input->post('clausula_documento_codigo'),
                 'clausula_documento'            => $this->input->post('clausula_documento')
@@ -65,7 +65,7 @@ class Clausulas_documentos extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['clausula_documento'] = $this->clausula_documento->obtener_clausula_documento($id);
         $this->load->view('layout/header');
         $this->load->view('clausulas_documentos/editar', $data);
@@ -76,16 +76,16 @@ class Clausulas_documentos extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-        
+
         $this->form_validation->set_rules('clausula_documento_codigo', 'Clausula_documento_codigo', 'required');
         $this->form_validation->set_rules('clausula_documento', 'Clausula_documento', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'clausula_documento_codigo'     => $this->input->post('clausula_documento_codigo'),
                 'clausula_documento'            => $this->input->post('clausula_documento')
@@ -120,6 +120,22 @@ class Clausulas_documentos extends CI_Controller {
         }
 
     }
+
+
+
+    public function exportar()
+    {
+
+        $datos = $this->clausula_documento->consulta_exportar()->result();
+
+        $cabeceras = $this->clausula_documento->consulta_exportar()->list_fields();
+
+        $nombre_archivo = 'Clausulas_Documentos_'.date('d-m-Y').'.xlsx';
+
+        main_export($nombre_archivo, $datos, $cabeceras);
+
+    }
+
 
 
 }

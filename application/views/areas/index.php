@@ -1,6 +1,13 @@
 <div class="container-fluid">
 
 
+<ol class="breadcrumb">
+  <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+  <li>Parámetros</li>
+  <li class="active">Áreas</li>
+</ol>
+
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">

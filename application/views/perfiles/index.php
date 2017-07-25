@@ -1,6 +1,13 @@
 <div class="container-fluid">
 
- 
+
+<ol class="breadcrumb">
+  <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+  <li>Administración</li>
+  <li class="active">Perfiles</li>
+</ol>
+
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -30,7 +37,7 @@
     					<tr>
     						<td><?= $p->perfil_id;?></td>
     						<td><?= $p->perfil;?></td>
-    						<td>								
+    						<td>
     						  <a href="<?= base_url(); ?>perfiles/editar/<?= $p->perfil_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
     						  	<i class="fa fa-pencil"></i>
     						  </a>
@@ -56,7 +63,7 @@
 
 
 <script>
-	
+
 
 $('.delete').on('click', function(e){
 	e.preventDefault();

@@ -68,46 +68,46 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
 
-                <li <?= active('panel')?> >
+                <li <?= active('panel')?>>
                     <a href="<?= base_url(); ?>panel">
                         <i class="fa fa-fw fa-dashboard"></i> Dashboard
                     </a>
                 </li>
 
-                <?php if(can_see(1)){ ?>
-                <li <?= active('usuarios')?> >
-                    <a href="<?= base_url(); ?>usuarios">
-                        <i class="fa fa-users"></i> Usuarios
+
+                <li <?= active('administracion')?>>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#administracion">
+                        <i class="fa fa-bar-cogs"></i> Administración <i class="fa fa-fw fa-caret-down"></i>
                     </a>
-                </li>
-                <?php } ?>
+                    <ul id="administracion" class="collapse">
+                        <?php if(can_see(1)){ ?>
+                        <li><a href="<?= base_url(); ?>usuarios">Usuarios</a></li>
+                        <?php } ?>
 
-
-                <?php if(can_see(2)){ ?>
-                <li <?= active('perfiles')?> >
-                    <a href="<?= base_url(); ?>perfiles">
-                        <i class="fa fa-gears"></i> Perfiles
-                    </a>
-                </li>
-                <?php } ?>
-
-
-                <li <?= active('indicadores')?>>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#indicadores"><i class="fa fa-bar-chart"></i> Indicadores <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="indicadores" class="collapse">
-                        <li><a href="<?= base_url(); ?>datos">Datos</a></li>
-                        <li><a href="<?= base_url(); ?>tipo_datos">Tipos de datos</a></li>
-                        <li><a href="<?= base_url(); ?>frecuencias">Frecuencias</a></li>
+                        <?php if(can_see(2)){ ?>
+                        <li><a href="<?= base_url(); ?>perfiles">Perfiles</a></li>
+                        <?php } ?>
                     </ul>
                 </li>
 
 
-                <li <?= active('documentos')?>>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#documentos"><i class="fa fa-file"></i> Documentos <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="documentos" class="collapse">
-                        <li><a href="<?= base_url(); ?>tipos_documentos">Tipos</a></li>
-                        <li><a href="<?= base_url(); ?>formatos_documentos">Formatos</a></li>
-                        <li><a href="<?= base_url(); ?>clausulas_documentos">Claúsulas</a></li>
+
+
+                <li <?= active('parametros')?>>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#parametros"><i class="fa fa-bar-chart"></i> Parámetros <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="parametros" class="collapse">
+                        <li><a href="<?= base_url(); ?>datos">Datos Indicadores</a></li>
+                        <li><a href="<?= base_url(); ?>tipo_datos">Tipo datos Indicadores</a></li>
+                        <li><a href="<?= base_url(); ?>frecuencias">Frecuencias Indicadores</a></li>
+                        <li><a href="<?= base_url(); ?>tipos_documentos">Tipos Documentos</a></li>
+                        <li><a href="<?= base_url(); ?>formatos_documentos">Formatos Documentos</a></li>
+                        <li><a href="<?= base_url(); ?>clausulas_documentos">Claúsulas Documentos</a></li>
+                        <li><a href="<?= base_url(); ?>departamentos">Departamentos Responsables</a></li>
+                        <li><a href="<?= base_url(); ?>cargos">Cargos Responsables</a></li>
+                        <li><a href="<?= base_url(); ?>estados_incidencias">Estados Incidencias</a></li>
+                        <li><a href="<?= base_url(); ?>tipos_incidencias">Tipos Incidencias</a></li>
+                        <li><a href="<?= base_url(); ?>origenes_incidencias">Origen Incidencias</a></li>
+                        <li><a href="<?= base_url(); ?>causas_incidencias">Causas Incidencias</a></li>
                     </ul>
                 </li>
 
@@ -115,32 +115,12 @@
                 <li <?= active('procesos')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#procesos"><i class="fa fa-folder-open"></i> Procesos <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="procesos" class="collapse">
+                        <li><a href="<?= base_url(); ?>responsables">Responsables</a></li>
                         <li><a href="<?= base_url(); ?>documentos">Documentos</a></li>
                         <li><a href="<?= base_url(); ?>areas">Áreas</a></li>
                         <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
                         <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
                         <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
-                    </ul>
-                </li>
-
-
-                <li <?= active('responsables')?>>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#responsables"><i class="fa fa-users"></i> Responsables <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="responsables" class="collapse">
-                        <li><a href="<?= base_url(); ?>departamentos">Departamentos</a></li>
-                        <li><a href="<?= base_url(); ?>cargos">Cargos</a></li>
-                        <li><a href="<?= base_url(); ?>responsables">Responsables</a></li>
-                    </ul>
-                </li>
-
-
-                <li <?= active('incidencias')?>>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#incidencias"><i class="fa fa-arrow-circle-up"></i> Incidencias <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="incidencias" class="collapse">
-                        <li><a href="<?= base_url(); ?>estados_incidencias">Estados</a></li>
-                        <li><a href="<?= base_url(); ?>tipos_incidencias">Tipos</a></li>
-                        <li><a href="<?= base_url(); ?>origenes_incidencias">Origen</a></li>
-                        <li><a href="<?= base_url(); ?>causas_incidencias">Causas</a></li>
                     </ul>
                 </li>
 

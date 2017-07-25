@@ -14,7 +14,7 @@ class Cargos extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['cargos'] = $this->cargo->obtener_cargos();
         $this->load->view('layout/header');
 		$this->load->view('cargos/index', $data);
@@ -23,7 +23,7 @@ class Cargos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('cargos/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Cargos extends CI_Controller {
         $this->form_validation->set_rules('cargo', 'Cargo', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'cargo'    => $this->input->post('cargo')
             );
@@ -63,7 +63,7 @@ class Cargos extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['cargo'] = $this->cargo->obtener_cargo($id);
         $this->load->view('layout/header');
         $this->load->view('cargos/editar', $data);
@@ -77,11 +77,11 @@ class Cargos extends CI_Controller {
         $this->form_validation->set_rules('cargo', 'Cargo', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'cargo'    => $this->input->post('cargo')
             );
@@ -115,6 +115,21 @@ class Cargos extends CI_Controller {
         }
 
     }
+
+
+    public function exportar()
+    {
+
+        $datos = $this->cargo->consulta_exportar()->result();
+
+        $cabeceras = $this->cargo->consulta_exportar()->list_fields();
+
+        $nombre_archivo = 'Cargos_'.date('d-m-Y').'.xlsx';
+
+        main_export($nombre_archivo, $datos, $cabeceras);
+
+    }
+
 
 
 }

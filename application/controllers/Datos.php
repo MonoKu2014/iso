@@ -141,4 +141,19 @@ class Datos extends CI_Controller {
     }
 
 
+
+    public function exportar()
+    {
+
+        $datos = $this->dato->consulta_exportar()->result();
+
+        $cabeceras = $this->dato->consulta_exportar()->list_fields();
+
+        $nombre_archivo = 'Datos_Indicadores_'.date('d-m-Y').'.xlsx';
+
+        main_export($nombre_archivo, $datos, $cabeceras);
+
+    }
+
+
 }

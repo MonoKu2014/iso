@@ -1,6 +1,12 @@
-
-
 <div class="container-fluid">
+
+
+<ol class="breadcrumb">
+  <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+  <li>Administración</li>
+  <li><a href="<?= base_url();?>perfiles">Perfiles</a></li>
+  <li class="active">Editar Permisos</li>
+</ol>
 
 
     <div class="row">

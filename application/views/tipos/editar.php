@@ -1,6 +1,14 @@
 <div class="container-fluid">
 
- 
+
+<ol class="breadcrumb">
+  <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+  <li>Parámetros</li>
+  <li><a href="<?= base_url();?>tipo_datos">Tipo Datos Indicadores</a></li>
+  <li class="active">Editar</li>
+</ol>
+
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">

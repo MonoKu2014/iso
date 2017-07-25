@@ -1,5 +1,11 @@
 <div class="container-fluid">
 
+<ol class="breadcrumb">
+  <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+  <li>Administración</li>
+  <li class="active">Usuarios</li>
+</ol>
+
 
     <div class="row">
         <div class="col-lg-12">

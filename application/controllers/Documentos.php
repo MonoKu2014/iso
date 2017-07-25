@@ -24,7 +24,9 @@ class Documentos extends CI_Controller {
 
     public function agregar()
     {
-
+        $this->load->view('layout/header');
+        $this->load->view('documentos/agregar');
+        $this->load->view('layout/footer');
     }
 
 

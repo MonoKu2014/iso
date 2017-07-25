@@ -14,7 +14,7 @@ class Causas_incidencias extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['causas_incidencias'] = $this->causa_incidencia->obtener_causas_incidencias();
         $this->load->view('layout/header');
 		$this->load->view('causas_incidencias/index', $data);
@@ -23,7 +23,7 @@ class Causas_incidencias extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('causas_incidencias/agregar');
         $this->load->view('layout/footer');
@@ -37,11 +37,11 @@ class Causas_incidencias extends CI_Controller {
         $this->form_validation->set_rules('causa_incidencia', 'causa_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'causa_incidencia_codigo'     => $this->input->post('causa_incidencia_codigo'),
                 'causa_incidencia'            => $this->input->post('causa_incidencia')
@@ -65,7 +65,7 @@ class Causas_incidencias extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['causa_incidencia'] = $this->causa_incidencia->obtener_causa_incidencia($id);
         $this->load->view('layout/header');
         $this->load->view('causas_incidencias/editar', $data);
@@ -76,16 +76,16 @@ class Causas_incidencias extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-        
+
         $this->form_validation->set_rules('causa_incidencia_codigo', 'Causa_incidencia_codigo', 'required');
         $this->form_validation->set_rules('causa_incidencia', 'Causa_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'causa_incidencia_codigo'     => $this->input->post('causa_incidencia_codigo'),
                 'causa_incidencia'            => $this->input->post('causa_incidencia')
@@ -118,6 +118,20 @@ class Causas_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'causas_incidencias');
         }
+
+    }
+
+
+    public function exportar()
+    {
+
+        $datos = $this->causa_incidencia->consulta_exportar()->result();
+
+        $cabeceras = $this->causa_incidencia->consulta_exportar()->list_fields();
+
+        $nombre_archivo = 'Causas_Incidencias_'.date('d-m-Y').'.xlsx';
+
+        main_export($nombre_archivo, $datos, $cabeceras);
 
     }
 

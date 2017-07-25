@@ -60,29 +60,28 @@ function active($controller)
 
 function change_nav($controller)
 {
-	if($controller == 'departamentos' || $controller == 'cargos'){
-		return 'responsables';
-	}
+    if($controller == 'departamentos' || $controller == 'cargos'){
+        return 'parametros';
+    }
+    if($controller == 'areas' || $controller == 'procesos' || $controller == 'secciones' || $controller == 'indicadores'){
+        return 'procesos';
+    }
+    if($controller == 'tipos_documentos' || $controller == 'formatos_documentos' || $controller == 'clausulas_documentos'){
+        return 'parametros';
+    }
+    if($controller == 'estados_incidencias' || $controller == 'tipos_incidencias' || $controller == 'origenes_incidencias' || $controller == 'causas_incidencias'){
+        return 'parametros';
+    }
+    if($controller == 'datos' || $controller == 'tipo_datos'){
+        return 'parametros';
+    }
 
-	if($controller == 'areas' || $controller == 'procesos' || $controller == 'secciones' || $controller == 'indicadores'){
-		return 'procesos';
-	}
-
-	if($controller == 'tipos_documentos' || $controller == 'formatos_documentos' || $controller == 'clausulas_documentos'){
-		return 'documentos';
-	}
-
-	if($controller == 'estados_incidencias' || $controller == 'tipos_incidencias' || $controller == 'origenes_incidencias' || $controller == 'causas_incidencias'){
-		return 'incidencias';
-	}
-
-	if($controller == 'datos' || $controller == 'tipo_datos'){
-		return 'indicadores';
-	}
+    if($controller == 'usuarios' || $controller == 'perfiles'){
+        return 'administracion';
+    }
 
     //para los que no necesitan un if
     return $controller;
-
 }
 
 
