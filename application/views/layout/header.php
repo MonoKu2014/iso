@@ -96,18 +96,47 @@
                 <li <?= active('parametros')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#parametros"><i class="fa fa-bar-chart"></i> Parámetros <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="parametros" class="collapse">
-                        <li><a href="<?= base_url(); ?>datos">Datos Indicadores</a></li>
-                        <li><a href="<?= base_url(); ?>tipo_datos">Tipo datos Indicadores</a></li>
-                        <li><a href="<?= base_url(); ?>frecuencias">Frecuencias Indicadores</a></li>
-                        <li><a href="<?= base_url(); ?>tipos_documentos">Tipos Documentos</a></li>
-                        <li><a href="<?= base_url(); ?>formatos_documentos">Formatos Documentos</a></li>
-                        <li><a href="<?= base_url(); ?>clausulas_documentos">Claúsulas Documentos</a></li>
-                        <li><a href="<?= base_url(); ?>departamentos">Departamentos Responsables</a></li>
-                        <li><a href="<?= base_url(); ?>cargos">Cargos Responsables</a></li>
-                        <li><a href="<?= base_url(); ?>estados_incidencias">Estados Incidencias</a></li>
-                        <li><a href="<?= base_url(); ?>tipos_incidencias">Tipos Incidencias</a></li>
-                        <li><a href="<?= base_url(); ?>origenes_incidencias">Origen Incidencias</a></li>
-                        <li><a href="<?= base_url(); ?>causas_incidencias">Causas Incidencias</a></li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#responsables_down">
+                            <i class="fa fa-caret-right"></i> Responsables</a>
+                            <ul id="responsables_down" class="collapse">
+                                <li><a class="last" href="<?= base_url(); ?>departamentos">Departamentos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>cargos">Cargos</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#documentos_down">
+                            <i class="fa fa-caret-right"></i> Documentos</a>
+                            <ul id="documentos_down" class="collapse">
+                                <li><a class="last" href="<?= base_url(); ?>clausulas_documentos">Claúsulas</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>formatos_documentos">Formatos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>tipos_documentos">Tipos</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#indicadores_down">
+                            <i class="fa fa-caret-right"></i> Indicadores</a>
+                            <ul id="indicadores_down" class="collapse">
+                                <li><a class="last" href="<?= base_url(); ?>tipo_datos">Tipos Datos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>datos">Datos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>frecuencias">Frecuencias</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#incidencias_down">
+                            <i class="fa fa-caret-right"></i> Incidencias</a>
+                            <ul id="incidencias_down" class="collapse">
+                                <li><a class="last" href="<?= base_url(); ?>estados_incidencias">Estados</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>tipos_incidencias">Tipos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>origenes_incidencias">Origen</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>causas_incidencias">Causas</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
 
