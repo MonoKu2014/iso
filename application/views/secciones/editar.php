@@ -1,19 +1,17 @@
 <div class="container-fluid">
 
-    <ol class="breadcrumb">
-        <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Procesos</li>
-        <li><a href="<?= base_url();?>secciones">Secciones</a></li>
-        <li class="active">Agregar</li>
-    </ol>
-
-
+        <ol class="breadcrumb">
+          <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+          <li>Procesos</li>
+          <li><a href="<?= base_url();?>secciones">Secciones</a></li>
+          <li class="active">Editar</li>
+        </ol>
 
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Agregar sección
+                Editar Seccion
                 <a href="<?= base_url(); ?>secciones" class="btn btn-default pull-right">
                 	<i class="fa fa-chevron-left"></i> Volver
                 </a>
@@ -24,12 +22,13 @@
 
     <div class="row">
     	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>secciones/guardar" class="form">
+        <form method="post" action="<?= base_url(); ?>secciones/guardar_edicion" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
+                <input type="hidden" name="seccion_id" value="<?= $seccion->seccion_id; ?>">
                 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Sección (*)
@@ -134,7 +133,8 @@
                         <?php endforeach ?>
                         </select>
                     </div>
-                </div> 
+                </div>  
+
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
