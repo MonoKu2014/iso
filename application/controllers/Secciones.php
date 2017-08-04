@@ -25,8 +25,11 @@ class Secciones extends CI_Controller {
     public function agregar()
     {
         $data['areas'] = $this->secciones->obtener_areas();
+        $data['estados'] = $this->secciones->obtener_estados();
+        $data['frecuencias'] = $this->secciones->obtener_frecuencias();
+        $data['responsables'] = $this->secciones->obtener_responsables();
         $this->load->view('layout/header');
-        $this->load->view('secciones/agregar');
+        $this->load->view('secciones/agregar', $data);
         $this->load->view('layout/footer');
     }
 

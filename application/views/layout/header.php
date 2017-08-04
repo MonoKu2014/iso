@@ -75,22 +75,25 @@
                 </li>
 
 
-                <li <?= active('administracion')?>>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#administracion">
-                        <i class="fa fa-bar-cogs"></i> Administración <i class="fa fa-fw fa-caret-down"></i>
-                    </a>
-                    <ul id="administracion" class="collapse">
-                        <?php if(can_see(1)){ ?>
-                        <li><a href="<?= base_url(); ?>usuarios">Usuarios</a></li>
-                        <?php } ?>
-
-                        <?php if(can_see(2)){ ?>
-                        <li><a href="<?= base_url(); ?>perfiles">Perfiles</a></li>
-                        <?php } ?>
+                <li <?= active('elementos')?>>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#elementos"><i class="fa fa-sitemap"></i> Elementos <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="elementos" class="collapse">
+                    <li><a href="<?= base_url(); ?>responsables">Responsables</a></li>
+                        <li><a href="<?= base_url(); ?>documentos">Documentos</a></li>
                     </ul>
                 </li>
 
 
+
+                <li <?= active('procesos')?>>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#procesos"><i class="fa fa-folder-open"></i> Estructura <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="procesos" class="collapse">
+                        <li><a href="<?= base_url(); ?>areas">Áreas</a></li>
+                        <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
+                        <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
+                        <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+                    </ul>
+                </li>
 
 
                 <li <?= active('parametros')?>>
@@ -141,17 +144,37 @@
                 </li>
 
 
-                <li <?= active('procesos')?>>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#procesos"><i class="fa fa-folder-open"></i> Procesos <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="procesos" class="collapse">
-                        <li><a href="<?= base_url(); ?>responsables">Responsables</a></li>
-                        <li><a href="<?= base_url(); ?>documentos">Documentos</a></li>
-                        <li><a href="<?= base_url(); ?>areas">Áreas</a></li>
-                        <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
-                        <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
-                        <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+
+                <li <?= active('consultas')?>>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#consultas">
+                        <i class="fa fa-bar-cogs"></i> Consultas <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="consultas" class="collapse">
+                        <li><a href="<?= base_url(); ?>">Reporte 1</a></li>
+                        <li><a href="<?= base_url(); ?>">Reporte 2</a></li>
                     </ul>
                 </li>
+
+
+
+
+
+                <li <?= active('administracion')?>>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#administracion">
+                        <i class="fa fa-bar-cogs"></i> Administración <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="administracion" class="collapse">
+                        <?php if(can_see(1)){ ?>
+                        <li><a href="<?= base_url(); ?>usuarios">Usuarios</a></li>
+                        <?php } ?>
+
+                        <?php if(can_see(2)){ ?>
+                        <li><a href="<?= base_url(); ?>perfiles">Perfiles</a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
+
+
 
 
                 </ul>

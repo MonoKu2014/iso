@@ -23,6 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
+
+date_default_timezone_set('America/Santiago');
+
+
 //CONFIGURANDO URL DINÁMICA, PARA MONTAR EN CUALQUIER SERVIDOR
 $dynamic_url = "http://".$_SERVER['HTTP_HOST'];
 $dynamic_url .= dirname($_SERVER['SCRIPT_NAME']);
@@ -524,4 +529,8 @@ $config['rewrite_short_tags'] = FALSE;
 | Comma-separated:	'10.0.1.200,192.168.5.0/24'
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
+
 $config['proxy_ips'] = '';
+
+
+setlocale(LC_ALL,"es_ES");

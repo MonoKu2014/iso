@@ -24,8 +24,10 @@ class Documentos extends CI_Controller {
 
     public function agregar()
     {
+        $data['clausulas'] = $this->documentos->obtener_clausulas();
+        $data['areas'] = $this->documentos->obtener_areas();
         $this->load->view('layout/header');
-        $this->load->view('documentos/agregar');
+        $this->load->view('documentos/agregar', $data);
         $this->load->view('layout/footer');
     }
 

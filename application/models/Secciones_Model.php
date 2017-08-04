@@ -49,4 +49,24 @@ class Secciones_Model extends CI_Model {
         return $query->result();
     }
 
+
+    public function obtener_estados()
+    {
+        $query = $this->db->get('estados');
+        return $query->result();
+    }
+
+
+    public function obtener_responsables()
+    {
+        $query = $this->db->get('responsables');
+        return $query->result();
+    }
+
+    public function obtener_frecuencias()
+    {
+        $query = $this->db->get('frecuencias');
+        return $query->result();
+    }
+
 }

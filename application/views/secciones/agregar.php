@@ -30,18 +30,16 @@
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
-                
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Sección (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="seccion" required data-validate="number" id="seccion">
-                            <option value="">Seleccione sección...</option>
-                        </select>
+                        <input type="text" class="form-control required" name="seccion">
                     </div>
                 </div>
-                
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Área (*)
@@ -65,8 +63,8 @@
                     <div class="form-group">
                         <select class="form-control required" name="responsable" required data-validate="number" id="responsable">
                             <option value="">Seleccione Responsable</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($responsables as $r): ?>
+                            <option value="<?= $r->responsable_id; ?>"><?= $r->responsable; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -80,8 +78,8 @@
                     <div class="form-group">
                         <select class="form-control required" name="estado" required data-validate="number" id="estado">
                             <option value="">Seleccione Estado</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($estados as $e): ?>
+                            <option value="<?= $e->estado_id; ?>"><?= $e->estado; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -95,12 +93,12 @@
                     <div class="form-group">
                         <select class="form-control required" name="frecuencia" required data-validate="number" id="frecuencia">
                             <option value="">Seleccione Frecuencia</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($frecuencias as $f): ?>
+                            <option value="<?= $f->frecuencia_id; ?>"><?= $f->frecuencia; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
-                </div>             
+                </div>
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
@@ -129,12 +127,11 @@
                     <div class="form-group">
                         <select class="form-control required" name="indicadores" required data-validate="number" id="indicadores">
                             <option value="">Seleccione Indicadores</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
-                        <?php endforeach ?>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
-                </div> 
+                </div>
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">

@@ -19,6 +19,17 @@ class Documentos_Model extends CI_Model {
     }
 
 
+    public function obtener_clausulas()
+    {
+        $query = $this->db->get('clausulas_documentos');
+        return $query->result();
+    }
 
+
+    public function obtener_areas()
+    {
+        $query = $this->db->get('areas');
+        return $query->result();
+    }
 
 }

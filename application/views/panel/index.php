@@ -4,7 +4,10 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Dashboard <small style="color: #fff;">Datamatica</small>
+                Bienvenido Sr: <small style="color: #fff;"><?= $this->session->nombre; ?></small>
+                <small class="pull-right" style="color: #fff;font-size: 13px;">
+                    Hoy es <?= strftime("%A %d de %B del %Y"); ?>
+                </small>
             </h1>
         </div>
     </div>
@@ -16,7 +19,7 @@
         <div class="col-lg-12">
             <?= $this->session->flashdata('message');?>
             <h2>
-                Detalle de Indicadores globales
+                Usted tiene pendientes:
             </h2>
         </div>
     </div>
@@ -30,11 +33,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-percent fa-5x"></i>
+                            <i class="fa fa-info fa-4x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">94%</div>
-                            <div>Procesos cumplidos</div>
+                            <div class="huge">3</div>
+                            <div>Modificaciones <br>de Documentos</div>
                         </div>
                     </div>
                 </div>
@@ -54,11 +57,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-check fa-5x"></i>
+                            <i class="fa fa-info fa-4x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">90</div>
-                            <div>Indicadores al día</div>
+                            <div class="huge">7</div>
+                            <div>Registros <br>de Indicadores</div>
                         </div>
                     </div>
                 </div>
@@ -72,17 +75,17 @@
             </div>
         </div>
 
-    	
+
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-info fa-5x"></i>
+                            <i class="fa fa-info fa-4x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">20</div>
-                            <div>Indicadores en peligro</div>
+                            <div class="huge">4</div>
+                            <div>Cambios <br>de Documentos</div>
                         </div>
                     </div>
                 </div>
@@ -97,7 +100,7 @@
         </div>
 
 
-        <div class="col-lg-3 col-md-6">
+       <!-- <div class="col-lg-3 col-md-6">
             <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
@@ -118,7 +121,7 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div> -->
     </div>
 
 

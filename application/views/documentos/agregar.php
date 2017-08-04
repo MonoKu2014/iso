@@ -21,14 +21,48 @@
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Estado (*)
+                    Documento (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="estado_incidencia" data-validate="string" class="form-control input-sm required" placeholder="Estado" required>
+                        <input type="text" name="documento" data-validate="string" class="form-control input-sm required" placeholder="Nombre documento" required>
                     </div>
                 </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Claúsula (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <select class="form-control required" name="clausula" required data-validate="number" id="area">
+                            <option value="">Seleccione claúsula...</option>
+                        <?php foreach ($clausulas as $c): ?>
+                            <option value="<?= $c->clausula_documento_id; ?>"><?= $c->clausula_documento_codigo.' - '.$c->clausula_documento; ?></option>
+                        <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Área (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <select class="form-control required" name="area" required data-validate="number" id="area">
+                            <option value="">Seleccione área...</option>
+                        <?php foreach ($areas as $a): ?>
+                            <option value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
+                        <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+
+
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
