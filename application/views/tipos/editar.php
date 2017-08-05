@@ -35,7 +35,7 @@
                 <input type="hidden" name="tipo_dato_id" value="<?= $tipo->tipo_dato_id; ?>">
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="tipo" data-validate="string" class="form-control input-sm required" placeholder="Tipo de dato" required value="<?= $tipo->tipo_dato; ?>">
+                        <input type="text" name="tipo" data-validate="string" class="form-control required" placeholder="Tipo de dato" required value="<?= $tipo->tipo_dato; ?>">
                     </div>
                 </div>
 

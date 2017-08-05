@@ -2,7 +2,7 @@
 
 <ol class="breadcrumb">
   <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-  <li>Procesos</li>
+  <li>Estructura</li>
   <li><a href="<?= base_url();?>procesos">Procesos</a></li>
   <li class="active">Agregar</li>
 </ol>
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
-                <p id="message"></p>                
+                <p id="message"></p>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Área (*)
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="codigo" data-validate="string" class="form-control input-sm required" placeholder="Código del proceso" required>
+                        <input type="text" name="codigo" data-validate="string" class="form-control required" placeholder="Código del proceso" required>
                     </div>
                 </div>
 
@@ -74,8 +74,8 @@
                     <div class="form-group">
                         <select class="form-control required" name="responsable" required data-validate="number" id="responsable">
                             <option value="">Seleccione Responsable</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($responsables as $r): ?>
+                            <option value="<?= $r->responsable_id; ?>"><?= $r->responsable; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -89,8 +89,8 @@
                     <div class="form-group">
                         <select class="form-control required" name="estado" required data-validate="number" id="estado">
                             <option value="">Seleccione Estado</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($estados as $e): ?>
+                            <option value="<?= $e->estado_id; ?>"><?= $e->estado; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre del proceso" required>
+                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del proceso" required>
                     </div>
                 </div>
 
@@ -111,10 +111,10 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="objetivo" data-validate="string" class="form-control input-sm required" placeholder="Objetivo del proceso" required>
+                        <input type="text" name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del proceso" required>
                     </div>
                 </div>
-                
+
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
@@ -133,3 +133,17 @@
     </div>
 
 </div>
+
+<script>
+
+$('#area').on('change', function(){
+    $.ajax({
+        type: 'post',
+        url: _URL + 'ajax/secciones_por_area/' + $(this).val(),
+        success: function(response){
+            $('#seccion').html(response);
+        }
+    });
+});
+
+</script>

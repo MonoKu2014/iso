@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
- 
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="estado_incidencia" data-validate="string" class="form-control input-sm required" placeholder="Estado" required value="<?= $estado_incidencia->estado_incidencia; ?>">
+                        <input type="text" name="estado_incidencia" data-validate="string" class="form-control required" placeholder="Estado" required value="<?= $estado_incidencia->estado_incidencia; ?>">
                     </div>
                 </div>
 

@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="funcionario" class="form-control input-sm required" placeholder="Funcionario" required value="<?= $responsable->responsable_funcionario; ?>">
+                        <input type="text" name="funcionario" class="form-control required" placeholder="Funcionario" required value="<?= $responsable->responsable_funcionario; ?>">
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" class="form-control input-sm required" placeholder="Nombre" required value="<?= $responsable->responsable; ?>">
+                        <input type="text" name="nombre" class="form-control required" placeholder="Nombre" required value="<?= $responsable->responsable; ?>">
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="titulo" class="form-control input-sm required" placeholder="Título" required value="<?= $responsable->responsable_titulo; ?>">
+                        <input type="text" name="titulo" class="form-control required" placeholder="Título" required value="<?= $responsable->responsable_titulo; ?>">
                     </div>
                 </div>
 
@@ -94,7 +94,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="file" name="curriculum" class="form-control input-sm" placeholder="Curriculum" value="<?= $responsable->responsable_curriculum; ?>">
+                        <input type="file" name="curriculum" class="form-control" placeholder="Curriculum" value="<?= $responsable->responsable_curriculum; ?>">
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="telefono_comercial" data-validate="number" class="form-control input-sm required" placeholder="Teléfono Comercial" required value="<?= $responsable->responsable_fono_comercial; ?>">
+                        <input type="text" name="telefono_comercial" data-validate="number" class="form-control required" placeholder="Teléfono Comercial" required value="<?= $responsable->responsable_fono_comercial; ?>">
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="telefono_particular" data-validate="number" class="form-control input-sm required" placeholder="Teléfono Particular" required value="<?= $responsable->responsable_fono_particular; ?>">
+                        <input type="text" name="telefono_particular" data-validate="number" class="form-control required" placeholder="Teléfono Particular" required value="<?= $responsable->responsable_fono_particular; ?>">
                     </div>
                 </div>
 
@@ -123,7 +123,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="telefono_celular" data-validate="number" class="form-control input-sm required" placeholder="Teléfono Celular" required value="<?= $responsable->responsable_fono_celular; ?>">
+                        <input type="text" name="telefono_celular" data-validate="number" class="form-control required" placeholder="Teléfono Celular" required value="<?= $responsable->responsable_fono_celular; ?>">
                     </div>
                 </div>
 
@@ -133,7 +133,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="email" class="form-control input-sm required" placeholder="E-mail" required value="<?= $responsable->responsable_email; ?>">
+                        <input type="text" name="email" class="form-control required" placeholder="E-mail" required value="<?= $responsable->responsable_email; ?>">
                     </div>
                 </div>
 
@@ -162,7 +162,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="file" name="foto" class="form-control input-sm" placeholder="Foto" >
+                        <input type="file" name="foto" class="form-control" placeholder="Foto" >
                     </div>
                 </div>
 

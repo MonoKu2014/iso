@@ -3,7 +3,7 @@
 
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Procesos</li>
+        <li>Estructura</li>
         <li class="active">Procesos</li>
     </ol>
 

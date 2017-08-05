@@ -2,7 +2,7 @@
 
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Procesos</li>
+        <li>Estructura</li>
         <li><a href="<?= base_url();?>secciones">Secciones</a></li>
         <li class="active">Agregar</li>
     </ol>
@@ -34,9 +34,15 @@
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Sección (*)
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
+                <div class="col-xs-12 col-sm-6 col-md-7">
                     <div class="form-group">
                         <input type="text" class="form-control required" name="seccion">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <input type="checkbox" value="1" name="sin_proceso"> Sin proceso
+                        <i class="fa fa-question-circle hastip pointer" title="Sí marca esta opción la sección que está a punto de crear no tendrá proceso asociado"></i>
                     </div>
                 </div>
 
@@ -106,7 +112,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre de la sección" required>
+                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre de la sección" required>
                     </div>
                 </div>
 
@@ -115,7 +121,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="objetivo" data-validate="string" class="form-control input-sm required" placeholder="Objetivo de la sección" required>
+                        <input type="text" name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo de la sección" required>
                     </div>
                 </div>
 
@@ -127,8 +133,8 @@
                     <div class="form-group">
                         <select class="form-control required" name="indicadores" required data-validate="number" id="indicadores">
                             <option value="">Seleccione Indicadores</option>
-                            <option value="Sí">Sí</option>
-                            <option value="No">No</option>
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
                         </select>
                     </div>
                 </div>

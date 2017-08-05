@@ -23,8 +23,10 @@ class Procesos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $data['areas'] = $this->proceso->areas();
+        $data['estados'] = $this->proceso->obtener_estados();
+        $data['responsables'] = $this->proceso->obtener_responsables();
         $this->load->view('layout/header');
         $this->load->view('procesos/agregar', $data);
         $this->load->view('layout/footer');
@@ -34,7 +36,14 @@ class Procesos extends CI_Controller {
     public function guardar()
     {
         $error = 0;
-        $this->form_validation->set_rules('proceso', 'Proceso', 'required');
+
+        $this->form_validation->set_rules('area', '', 'required');
+        $this->form_validation->set_rules('seccion', '', 'required');
+        $this->form_validation->set_rules('codigo', '', 'required');
+        $this->form_validation->set_rules('responsable', '', 'required');
+        $this->form_validation->set_rules('estado', '', 'required');
+        $this->form_validation->set_rules('nombre', '', 'required');
+        $this->form_validation->set_rules('objetivo', '', 'required');
 
         if($this->form_validation->run() === FALSE){
 
@@ -43,7 +52,13 @@ class Procesos extends CI_Controller {
         } else {
 
             $data = array(
-                'proceso'    => $this->input->post('proceso')
+                'area_fk'           => $this->input->post('area'),
+                'seccion_fk'        => $this->input->post('seccion'),
+                'responsable_fk'    => $this->input->post('responsable'),
+                'estado_fk'         => $this->input->post('estado'),
+                'proceso_nombre'    => $this->input->post('nombre'),
+                'proceso_objetivo'  => $this->input->post('objetivo'),
+                'proceso_codigo'    => $this->input->post('codigo')
             );
 
             $insert = $this->proceso->insertar($data);
@@ -66,6 +81,9 @@ class Procesos extends CI_Controller {
     public function editar($id)
     {
         $data['proceso'] = $this->proceso->obtener_proceso($id);
+        $data['areas'] = $this->proceso->areas();
+        $data['estados'] = $this->proceso->obtener_estados();
+        $data['responsables'] = $this->proceso->obtener_responsables();
         $this->load->view('layout/header');
         $this->load->view('procesos/editar', $data);
         $this->load->view('layout/footer');
@@ -75,7 +93,14 @@ class Procesos extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-        $this->form_validation->set_rules('proceso', 'Proceso', 'required');
+
+        $this->form_validation->set_rules('area', '', 'required');
+        $this->form_validation->set_rules('seccion', '', 'required');
+        $this->form_validation->set_rules('codigo', '', 'required');
+        $this->form_validation->set_rules('responsable', '', 'required');
+        $this->form_validation->set_rules('estado', '', 'required');
+        $this->form_validation->set_rules('nombre', '', 'required');
+        $this->form_validation->set_rules('objetivo', '', 'required');
 
         if($this->form_validation->run() === FALSE){
 
@@ -84,7 +109,13 @@ class Procesos extends CI_Controller {
         } else {
 
             $data = array(
-                'proceso'    => $this->input->post('proceso')
+                'area_fk'           => $this->input->post('area'),
+                'seccion_fk'        => $this->input->post('seccion'),
+                'responsable_fk'    => $this->input->post('responsable'),
+                'estado_fk'         => $this->input->post('estado'),
+                'proceso_nombre'    => $this->input->post('nombre'),
+                'proceso_objetivo'  => $this->input->post('objetivo'),
+                'proceso_codigo'    => $this->input->post('codigo')
             );
 
             $update = $this->proceso->editar($data, $this->input->post('proceso_id'));
@@ -94,10 +125,10 @@ class Procesos extends CI_Controller {
         }
 
         if($error == 1){
-            $this->session->set_flashdata('message', alert_danger('No se ha podido actualizar el registro'));
+            $this->session->set_flashdata('message', alert_danger('No se ha podido editar el registro'));
             redirect(base_url().'procesos/editar/'.$this->input->post('proceso_id'));
         } else {
-            $this->session->set_flashdata('message', alert_success('Registro actualizado con éxito'));
+            $this->session->set_flashdata('message', alert_success('Registro editado con éxito'));
             redirect(base_url().'procesos');
         }
     }

@@ -2,7 +2,7 @@
 
         <ol class="breadcrumb">
           <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-          <li>Procesos</li>
+          <li>Estructura</li>
           <li><a href="<?= base_url();?>secciones">Secciones</a></li>
           <li class="active">Editar</li>
         </ol>
@@ -29,20 +29,24 @@
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
                 <input type="hidden" name="seccion_id" value="<?= $seccion->seccion_id; ?>">
-                
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Sección (*)
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
+                <div class="col-xs-12 col-sm-6 col-md-7">
                     <div class="form-group">
-                        <select class="form-control required" name="seccion" required data-validate="number" id="seccion">
-                            <option value="">Seleccione sección...</option>
-                        </select>
+                        <input type="text" class="form-control required" name="seccion" value="<?= $seccion->seccion; ?>">
                     </div>
                 </div>
-                
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <input type="checkbox" value="1" name="sin_proceso" <?= is_checked($seccion->sin_proceso); ?> > Sin proceso
+                        <i class="fa fa-question-circle hastip pointer" title="Sí marca esta opción la sección que está a punto de crear no tendrá proceso asociado"></i>
+                    </div>
+                </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+
+               <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Área (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
@@ -50,7 +54,7 @@
                         <select class="form-control required" name="area" required data-validate="number" id="area">
                             <option value="">Seleccione área...</option>
                         <?php foreach ($areas as $a): ?>
-                            <option value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
+                            <option <?php if($a->area_id == $seccion->area_fk){ echo 'selected'; } ?> value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -64,8 +68,8 @@
                     <div class="form-group">
                         <select class="form-control required" name="responsable" required data-validate="number" id="responsable">
                             <option value="">Seleccione Responsable</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($responsables as $r): ?>
+                            <option <?php if($r->responsable_id == $seccion->responsable_fk){ echo 'selected'; } ?> value="<?= $r->responsable_id; ?>"><?= $r->responsable; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -79,8 +83,8 @@
                     <div class="form-group">
                         <select class="form-control required" name="estado" required data-validate="number" id="estado">
                             <option value="">Seleccione Estado</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($estados as $e): ?>
+                            <option <?php if($e->estado_id == $seccion->estado_fk){ echo 'selected'; } ?> value="<?= $e->estado_id; ?>"><?= $e->estado; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -94,12 +98,12 @@
                     <div class="form-group">
                         <select class="form-control required" name="frecuencia" required data-validate="number" id="frecuencia">
                             <option value="">Seleccione Frecuencia</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
+                        <?php foreach ($frecuencias as $f): ?>
+                            <option <?php if($f->frecuencia_id == $seccion->frecuencia_fk){ echo 'selected'; } ?> value="<?= $f->frecuencia_id; ?>"><?= $f->frecuencia; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
-                </div>             
+                </div>
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
@@ -107,7 +111,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre de la sección" required>
+                        <input type="text" name="nombre" value="<?= $seccion->seccion_nombre; ?>" data-validate="string" class="form-control required" placeholder="Nombre de la sección" required>
                     </div>
                 </div>
 
@@ -116,7 +120,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="objetivo" data-validate="string" class="form-control input-sm required" placeholder="Objetivo de la sección" required>
+                        <input type="text" value="<?= $seccion->seccion_objetivo; ?>" name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo de la sección" required>
                     </div>
                 </div>
 
@@ -128,12 +132,11 @@
                     <div class="form-group">
                         <select class="form-control required" name="indicadores" required data-validate="number" id="indicadores">
                             <option value="">Seleccione Indicadores</option>
-                        <?php foreach ($tipos_datos as $t): ?>
-                            <option value="<?= $t->tipo_dato_id; ?>"><?= $t->tipo_dato; ?></option>
-                        <?php endforeach ?>
+                            <option <?php if($seccion->seccion_genera == 1){ echo 'selected'; } ?> value="1">Sí</option>
+                            <option <?php if($seccion->seccion_genera == 0){ echo 'selected'; } ?> value="0">No</option>
                         </select>
                     </div>
-                </div>  
+                </div>
 
 
                 <div class="row">

@@ -26,6 +26,9 @@ class Documentos extends CI_Controller {
     {
         $data['clausulas'] = $this->documentos->obtener_clausulas();
         $data['areas'] = $this->documentos->obtener_areas();
+        $data['tipos_documentos'] = $this->documentos->obtener_tipos_documentos();
+        $data['responsables'] = $this->documentos->obtener_responsables();
+        $data['estados_documentos'] = $this->documentos->obtener_estados_documentos();
         $this->load->view('layout/header');
         $this->load->view('documentos/agregar', $data);
         $this->load->view('layout/footer');

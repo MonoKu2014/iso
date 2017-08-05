@@ -25,11 +25,29 @@ class Documentos_Model extends CI_Model {
         return $query->result();
     }
 
-
     public function obtener_areas()
     {
         $query = $this->db->get('areas');
         return $query->result();
     }
+
+    public function obtener_tipos_documentos()
+    {
+        $query = $this->db->get('tipos_documentos');
+        return $query->result();
+    }
+
+    public function obtener_responsables()
+    {
+        $query = $this->db->get('responsables');
+        return $query->result();
+    }
+
+    public function obtener_estados_documentos()
+    {
+        $query = $this->db->get('estados_documentos');
+        return $query->result();
+    }
+
 
 }

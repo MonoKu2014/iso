@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre" required>
+                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre" required>
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="email" data-validate="email" class="form-control input-sm required" placeholder="Email" required>
+                        <input type="text" name="email" data-validate="email" class="form-control required" placeholder="Email" required>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="password" data-validate="string" class="form-control input-sm required" placeholder="Contraseña" required>
+                        <input type="text" name="password" data-validate="string" class="form-control required" placeholder="Contraseña" required>
                     </div>
                 </div>
 

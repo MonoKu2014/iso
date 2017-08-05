@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="codigo" data-validate="string" class="form-control input-sm required" placeholder="Código" required value="<?= $dato->dato_codigo; ?>">
+                        <input type="text" name="codigo" data-validate="string" class="form-control required" placeholder="Código" required value="<?= $dato->dato_codigo; ?>">
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre del dato" required value="<?= $dato->dato_nombre; ?>">
+                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del dato" required value="<?= $dato->dato_nombre; ?>">
                     </div>
                 </div>
 

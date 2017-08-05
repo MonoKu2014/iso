@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
- 
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="clausula_documento_codigo" data-validate="string" class="form-control input-sm required" placeholder="Código Claúsula" required>
+                        <input type="text" name="clausula_documento_codigo" data-validate="string" class="form-control required" placeholder="Código Claúsula" required>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="clausula_documento" data-validate="string" class="form-control input-sm required" placeholder="Claúsula" required>
+                        <input type="text" name="clausula_documento" data-validate="string" class="form-control required" placeholder="Claúsula" required>
                     </div>
                 </div>
 

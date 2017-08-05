@@ -412,3 +412,7 @@ ul.alert-dropdown {
 .last:hover {
     text-decoration: none;
 }
+
+.pointer {
+    cursor: pointer;
+}

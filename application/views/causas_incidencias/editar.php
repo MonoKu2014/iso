@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="causa_incidencia_codigo" data-validate="string" class="form-control input-sm required" placeholder="Código Causa" required value="<?= $causa_incidencia->causa_incidencia_codigo; ?>">
+                        <input type="text" name="causa_incidencia_codigo" data-validate="string" class="form-control required" placeholder="Código Causa" required value="<?= $causa_incidencia->causa_incidencia_codigo; ?>">
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="causa_incidencia" data-validate="string" class="form-control input-sm required" placeholder="Causa" required value="<?= $causa_incidencia->causa_incidencia; ?>">
+                        <input type="text" name="causa_incidencia" data-validate="string" class="form-control required" placeholder="Causa" required value="<?= $causa_incidencia->causa_incidencia; ?>">
                     </div>
                 </div>
 

@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="frecuencia" data-validate="string" class="form-control input-sm required" placeholder="Frecuencia" required value="<?= $frecuencia->frecuencia; ?>">
+                        <input type="text" name="frecuencia" data-validate="string" class="form-control required" placeholder="Frecuencia" required value="<?= $frecuencia->frecuencia; ?>">
                     </div>
                 </div>
 

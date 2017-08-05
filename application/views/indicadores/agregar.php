@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="indicador" data-validate="string" class="form-control input-sm required" placeholder="indicador" required>
+                        <input type="text" name="indicador" data-validate="string" class="form-control required" placeholder="indicador" required>
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control input-sm required" placeholder="Nombre del indicador" required>
+                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del indicador" required>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                    <textarea name="objetivo" data-validate="string" class="form-control input-sm required" placeholder="Objetivo del indicador" required></textarea>                       
+                    <textarea name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del indicador" required></textarea>
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@
                             <option value="">Seleccione...</option>
                         </select>
                     </div>
-                </div>           
+                </div>
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
@@ -133,7 +133,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="real" data-validate="number" class="form-control input-sm required" placeholder="Indicador real" required>
+                        <input type="text" name="real" data-validate="number" class="form-control required" placeholder="Indicador real" required>
                     </div>
                 </div>
 
@@ -142,7 +142,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="minimo" data-validate="number" class="form-control input-sm required" placeholder="Indicador mínimo ideal" required>
+                        <input type="text" name="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required>
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="maximo" data-validate="number" class="form-control input-sm required" placeholder="Indicador máximo ideal" required>
+                        <input type="text" name="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required>
                     </div>
                 </div>
 

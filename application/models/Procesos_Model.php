@@ -17,8 +17,9 @@ class Procesos_Model extends CI_Model {
 
     public function obtener_proceso($id)
     {
-        $this->db->where('proceso_id', $id);
-        $query = $this->db->get('procesos');
+        $this->db->where('p.proceso_id', $id);
+        $this->db->join('secciones s', 's.seccion_id = p.seccion_fk');
+        $query = $this->db->get('procesos p');
         return $query->row();
     }
 
@@ -45,6 +46,18 @@ class Procesos_Model extends CI_Model {
         return $this->db->get('areas')->result();
     }
 
-    
+    public function obtener_estados()
+    {
+        $query = $this->db->get('estados');
+        return $query->result();
+    }
+
+
+    public function obtener_responsables()
+    {
+        $query = $this->db->get('responsables');
+        return $query->result();
+    }
+
 
 }

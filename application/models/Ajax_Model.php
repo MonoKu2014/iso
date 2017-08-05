@@ -2,6 +2,8 @@
 
 class Ajax_Model extends CI_Model {
 
+    const SIN_PROCESO = 1;
+    const CON_PROCESO = 0;
 
     public function __construct()
     {
@@ -11,6 +13,7 @@ class Ajax_Model extends CI_Model {
     public function obtener_secciones_por_area($id_area)
     {
         $this->db->where('area_fk', $id_area);
+        $this->db->where('sin_proceso', self::CON_PROCESO);
         $query = $this->db->get('secciones');
         return $query->result();
     }
