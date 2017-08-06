@@ -33,7 +33,6 @@ class Ajax extends CI_Controller {
     }
 
 
-
     public function procesos_por_seccion($id_seccion)
     {
         $procesos = $this->ajax->obtener_procesos_por_seccion($id_seccion);
@@ -46,6 +45,26 @@ class Ajax extends CI_Controller {
             $select .= '<option value="">Seleccione proceso...</option>';
             foreach($procesos as $p){
                 $select .= '<option value="'.$p->proceso_id.'">'.$p->proceso_nombre.'</option>';
+            }
+        }
+
+        echo $select;
+
+    }
+    
+
+    public function datos_por_procesos($id_proceso)
+    {
+        $datos = $this->ajax->obtener_datos_por_procesos($id_proceso);
+
+        $select = '';
+
+        if(count($datos) == 0){
+            $select .= '<option value="">Proceso sin datos</option>';
+        } else {
+            $select .= '<option value="">Seleccione dato...</option>';
+            foreach($datos as $d){
+                $select .= '<option value="'.$d->dato_id.'">'.$d->dato_nombre.'</option>';
             }
         }
 

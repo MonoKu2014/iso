@@ -40,4 +40,9 @@ class Indicadores_Model extends CI_Model {
         return $this->db->update('indicadores', $data);
     }
 
+    public function areas()
+    {
+        return $this->db->get('areas')->result();
+    }
+
 }
