@@ -299,3 +299,13 @@ function foto($foto)
 
     return '<a target="_blank" href="'.base_url().'assets/fotos/'.$foto.'">'.$foto.'</a>';
 }
+
+
+function copia($copia)
+{
+    if($copia == ''){
+        return 'Sin documento adjunto';
+    }
+
+    return '<a target="_blank" href="'.base_url().'assets/documentos/'.$copia.'">'.$copia.'</a>';
+}

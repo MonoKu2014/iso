@@ -27,6 +27,7 @@
                     <th>Área</th>
                     <th>Sección</th>
                     <th>Tipo.Doc</th>
+                    <th>Copia</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>
@@ -38,6 +39,7 @@
                             <td><?= $d->area;?></td>
                             <td><?= $d->seccion;?></td>
                             <td><?= $d->tipo_documento;?></td>
+                            <td><?= copia($d->copia);?></td>
     						<td>
 
 							  <a href="<?= base_url(); ?>documentos/editar/<?= $d->documento_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">

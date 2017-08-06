@@ -19,6 +19,31 @@ class Documentos_Model extends CI_Model {
     }
 
 
+    public function insertar($data)
+    {
+        return $this->db->insert('documentos', $data);
+    }
+
+    public function eliminar($id)
+    {
+        $this->db->where('documento_id', $id);
+        return $this->db->delete('documentos');
+    }
+
+    public function editar($data, $id)
+    {
+        $this->db->where('documento_id', $id);
+        return $this->db->update('documentos', $data);
+    }
+
+    public function obtener_documento($id)
+    {
+        $this->db->where('documento_id', $id);
+        $this->db->join('secciones s', 's.seccion_id = d.seccion_fk');
+        $query = $this->db->get('documentos d');
+        return $query->row();
+    }
+
     public function obtener_clausulas()
     {
         $query = $this->db->get('clausulas_documentos');
