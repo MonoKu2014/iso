@@ -23,27 +23,77 @@ class Indicadores extends CI_Controller {
 
 
     public function agregar()
-    {
+    {   
+        $data['areas'] = $this->indicador->areas();
         $this->load->view('layout/header');
-        $this->load->view('indicadores/agregar');
+        $this->load->view('indicadores/agregar', $data);
         $this->load->view('layout/footer');
     }
 
 
     public function guardar()
     {
+        //var_dump($this->input->post());
+        var_dump($this->input->post('real'));
+        exit();
+
         $error = 0;
-        $this->form_validation->set_rules('indicador', 'Indicador', 'required');
+        $this->form_validation->set_rules('indicador', '', 'required');
+        $this->form_validation->set_rules('nombre', '', 'required');
+        $this->form_validation->set_rules('area', '', 'required');
+        $this->form_validation->set_rules('seccion', '', 'required');
+        $this->form_validation->set_rules('proceso', '', 'required');
+        $this->form_validation->set_rules('objetivo', '', 'required');
+        $this->form_validation->set_rules('superior', '', 'required');
+        $this->form_validation->set_rules('inferior', '', 'required');
+        $this->form_validation->set_rules('evaluacion_positiva', '', 'required');
+        $this->form_validation->set_rules('real', '', 'required');
+        $this->form_validation->set_rules('minimo', '', 'required');
+        $this->form_validation->set_rules('maximo', '', 'required');
 
         if($this->form_validation->run() === FALSE){
 
             $error = 1;
 
         } else {
+            /* Valor Mínimo*/
+            if($this->input->post('evaluacion_positiva') == 1){
 
-            $data = array(
-                'indicador'    => $this->input->post('indicador')
-            );
+                $data = array(
+                    'indicador_codigo'              => $this->input->post('indicador'),
+                    'indicador_nombre'              => $this->input->post('nombre'),
+                    'area_fk'                       => $this->input->post('area'),
+                    'seccion_fk'                    => $this->input->post('seccion'),
+                    'proceso_fk'                    => $this->input->post('proceso'),
+                    'indicador_objetivo'            => $this->input->post('objetivo'),
+                    'dato_superior_fk'              => $this->input->post('superior'),
+                    'dato_inferior_fk'              => $this->input->post('inferior'),
+                    'evaluacion_positiva_minima'    => 1,
+                    'evaluacion_positiva_maxima'    => 0,
+                    'indicador_real'                => $this->input->post('real'),
+                    'indicador_minimo'              => $this->input->post('minimo'),
+                    'indicador_maximo'              => $this->input->post('maximo')
+                );
+
+            } else {
+
+                $data = array(
+                    'indicador_codigo'              => $this->input->post('indicador'),
+                    'indicador_nombre'              => $this->input->post('nombre'),
+                    'area_fk'                       => $this->input->post('area'),
+                    'seccion_fk'                    => $this->input->post('seccion'),
+                    'proceso_fk'                    => $this->input->post('proceso'),
+                    'indicador_objetivo'            => $this->input->post('objetivo'),
+                    'dato_superior_fk'              => $this->input->post('superior'),
+                    'dato_inferior_fk'              => $this->input->post('inferior'),
+                    'evaluacion_positiva_minima'    => 0,
+                    'evaluacion_positiva_maxima'    => 1,
+                    'indicador_real'                => $this->input->post('real'),
+                    'indicador_minimo'              => $this->input->post('minimo'),
+                    'indicador_maximo'              => $this->input->post('maximo')
+                );
+            }            
+            
 
             $insert = $this->indicador->insertar($data);
             if($insert === false){

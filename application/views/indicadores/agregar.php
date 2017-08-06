@@ -121,9 +121,18 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="evaluacion" required data-validate="number" id="evaluacion">
-                            <option value="">Seleccione...</option>
-                        </select>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="evaluacion_positiva" id="menor_minimo" value="1" checked>
+                            Menor a mínimo ideal
+                          </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="evaluacion_positiva" id="mayor_maximo" value="2">
+                            Mayor a máximo ideal
+                          </label>
+                        </div>
                     </div>
                 </div>
 
@@ -133,7 +142,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="real" data-validate="number" class="form-control required" placeholder="Indicador real" required>
+                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real" disabled="disabled">
                     </div>
                 </div>
 
@@ -142,7 +151,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required>
+                        <input type="text" name="minimo" id="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required onkeyup="sumar();">
                     </div>
                 </div>
 
@@ -151,7 +160,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required>
+                        <input type="text" name="maximo" id="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required onkeyup="sumar();">
                     </div>
                 </div>
 
@@ -173,3 +182,61 @@
     </div>
 
 </div>
+
+<script>
+
+    $('#area').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/secciones_por_area/' + $(this).val(),
+            success: function(response){
+                $('#seccion').html(response);
+            }
+        });
+    });
+
+
+    $('#seccion').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/procesos_por_seccion/' + $(this).val(),
+            success: function(response){
+                $('#proceso').html(response);
+            }
+        });
+    });
+
+
+    $('#proceso').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
+            success: function(response){
+                $('#superior').html(response);
+            }
+        });
+    });
+
+
+    $('#proceso').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
+            success: function(response){
+                $('#inferior').html(response);
+            }
+        });
+    });
+
+
+    function sumar(){
+
+        var valor_minimo = $('#minimo').val();
+        var valor_maximo = $('#maximo').val();
+        var resultado = parseFloat(valor_minimo) + parseFloat(valor_maximo);
+        var resultado2 = resultado / 2;
+        $('#real').val(resultado2);
+    }        
+
+
+</script>
