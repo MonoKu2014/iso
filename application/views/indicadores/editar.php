@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="indicador" data-validate="string" class="form-control required" placeholder="indicador" required>
+                        <input type="text" name="indicador" data-validate="string" class="form-control required" placeholder="indicador" required value="<?= $indicador->indicador_codigo;?>">
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del indicador" required>
+                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del indicador" required value="<?= $indicador->indicador_nombre;?>">
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                         <select class="form-control required" name="area" required data-validate="number" id="area">
                             <option value="">Seleccione área...</option>
                         <?php foreach ($areas as $a): ?>
-                            <option value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
+                            <option <?php if($a->area_id == $indicador->area_fk){ echo 'selected'; } ?> value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -69,7 +69,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="seccion" required data-validate="number" id="seccion">
-                            <option value="">Seleccione sección...</option>
+                            <option value="<?= $indicador->seccion_fk; ?>"><?= $indicador->seccion; ?></option>
                         </select>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="proceso" required data-validate="number" id="proceso">
-                            <option value="">Seleccione proceso...</option>
+                            <option value="<?= $indicador->proceso_fk; ?>"><?= $indicador->proceso_nombre; ?></option>
                         </select>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                    <textarea name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del indicador" required></textarea>
+                    <input name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del indicador" required value="<?= $indicador->indicador_objetivo;?>"></input>
                     </div>
                 </div>
 
@@ -100,7 +100,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="superior" required data-validate="number" id="superior">
-                            <option value="">Seleccione...</option>
+                            <option value="<?= $indicador->dato_superior_fk; ?>"><?= $indicador->dato_nombre; ?></option>
                         </select>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="inferior" required data-validate="number" id="inferior">
-                            <option value="">Seleccione...</option>
+                            <option value="<?= $indicador->dato_inferior_fk; ?>"><?= $indicador->dato_nombre; ?></option>
                         </select>
                     </div>
                 </div>
@@ -122,9 +122,18 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="evaluacion" required data-validate="number" id="evaluacion">
-                            <option value="">Seleccione...</option>
-                        </select>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="evaluacion_positiva" id="menor_minimo" value="1" checked>
+                            Menor a mínimo ideal
+                          </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="evaluacion_positiva" id="mayor_maximo" value="2">
+                            Mayor a máximo ideal
+                          </label>
+                        </div>
                     </div>
                 </div>
 
@@ -134,7 +143,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="real" data-validate="number" class="form-control required" placeholder="Indicador real" required>
+                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real">
                     </div>
                 </div>
 
@@ -143,7 +152,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required>
+                        <input type="text" name="minimo" id="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required onkeyup="sumar();" value="<?= $indicador->indicador_minimo;?>">
                     </div>
                 </div>
 
@@ -152,7 +161,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required>
+                        <input type="text" name="maximo" id="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required onkeyup="sumar();" value="<?= $indicador->indicador_maximo;?>">
                     </div>
                 </div>
 
@@ -175,3 +184,62 @@
     </div>
 
 </div>
+
+
+<script>
+
+    $('#area').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/secciones_por_area/' + $(this).val(),
+            success: function(response){
+                $('#seccion').html(response);
+            }
+        });
+    });
+
+    $('#seccion').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/procesos_por_seccion/' + $(this).val(),
+            success: function(response){
+                $('#proceso').html(response);
+            }
+        });
+    });
+
+
+    $('#proceso').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
+            success: function(response){
+                $('#superior').html(response);
+            }
+        });
+    });
+
+
+    $('#proceso').on('change', function(){
+        $.ajax({
+            type: 'post',
+            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
+            success: function(response){
+                $('#inferior').html(response);
+            }
+        });
+    });
+
+
+    function sumar(){
+
+        var valor_minimo = $('#minimo').val();
+        var valor_maximo = $('#maximo').val();
+        var resultado = parseFloat(valor_minimo) + parseFloat(valor_maximo);
+        var resultado2 = resultado / 2;
+        $('#real').val(resultado2);
+    }  
+
+
+
+</script>

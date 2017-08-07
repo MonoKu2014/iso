@@ -142,7 +142,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real" disabled="disabled">
+                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real">
                     </div>
                 </div>
 
