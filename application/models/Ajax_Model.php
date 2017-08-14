@@ -32,6 +32,13 @@ class Ajax_Model extends CI_Model {
         return $query->result();
     }
 
+    public function obtener_indicadores_por_procesos($id_proceso)
+    {
+        $this->db->where('proceso_fk', $id_proceso);
+        $query = $this->db->get('indicadores');
+        return $query->result();
+    }
+
     public function ver_permiso($perfil_id, $modulo_id, $accion)
     {
         $this->db->where('perfil_fk', $perfil_id);

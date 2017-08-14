@@ -92,6 +92,7 @@
                         <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
                         <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
                         <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+                        <li><a href="<?= base_url(); ?>indicadores_procesos">Indicadores-Procesos</a></li>
                     </ul>
                 </li>
 
