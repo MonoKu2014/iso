@@ -89,11 +89,29 @@
                 <li <?= active('procesos')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#procesos"><i class="fa fa-folder-open"></i> Estructura <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="procesos" class="collapse">
-                        <li><a href="<?= base_url(); ?>areas">Áreas</a></li>
-                        <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
-                        <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
-                        <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
-                        <li><a href="<?= base_url(); ?>indicadores_procesos">Indicadores-Procesos</a></li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#orientada_procesos">
+                            <i class="fa fa-caret-right"></i> Orientada a Procesos</a>
+                            <ul id="orientada_procesos" class="collapse">
+                                <li><a class="last" href="<?= base_url(); ?>areas">Áreas</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>secciones">Secciones</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>procesos">Procesos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#orientada_calidad">
+                            <i class="fa fa-caret-right"></i> Orientada a Calidad</a>
+                            <ul id="orientada_calidad" class="collapse">
+                                <li><a class="last" href="<?= base_url(); ?>areas">Contexto y Organización</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>secciones">Riesgos y Oportunidades</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>procesos">Objetivos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
 
@@ -103,7 +121,7 @@
                     <ul id="parametros" class="collapse">
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#responsables_down">
+                            <a href="javascript;" data-toggle="collapse" data-target="#responsables_down">
                             <i class="fa fa-caret-right"></i> Responsables</a>
                             <ul id="responsables_down" class="collapse">
                                 <li><a class="last" href="<?= base_url(); ?>departamentos">Departamentos</a></li>
@@ -154,7 +172,8 @@
                     <ul id="registros" class="collapse">
                         <li><a href="<?= base_url();?>registros_indicadores">Registro de Indicadores</a></li>
                         <li><a href="<?= base_url();?>registros_incidencias">Registro de Incidencias</a></li>
-                        <li><a href="<?= base_url();?>mejoras">Acciones de Mejora</a></li>
+                        <li><a href="<?= base_url(); ?>accion_mejoras">Acciones de Mejoras</a></li>
+                        <li><a href="<?= base_url(); ?>modificacion_documentos">Modificación Documentos</a></li>
                     </ul>
                 </li>
 
@@ -166,8 +185,6 @@
                     <ul id="consultas" class="collapse">
                         <li><a href="<?= base_url(); ?>">Reporte 1</a></li>
                         <li><a href="<?= base_url(); ?>">Reporte 2</a></li>
-                        <li><a href="<?= base_url(); ?>accion_mejoras">Acciones de Mejoras</a></li>
-                        <li><a href="<?= base_url(); ?>modificacion_documentos">Modificación Documentos</a></li>
                     </ul>
                 </li>
 
