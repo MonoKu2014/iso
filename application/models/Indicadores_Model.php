@@ -17,8 +17,11 @@ class Indicadores_Model extends CI_Model {
 
     public function obtener_indicador($id)
     {
-        $this->db->where('indicador_id', $id);
-        $query = $this->db->get('indicadores');
+        $this->db->where('i.indicador_id', $id);
+        $this->db->join('secciones s', 's.seccion_id = i.seccion_fk');
+        $this->db->join('procesos p', 'p.proceso_id = i.proceso_fk');
+        $this->db->join('datos d', 'd.dato_id = i.dato_superior_fk');        
+        $query = $this->db->get('indicadores i');
         return $query->row();
     }
 

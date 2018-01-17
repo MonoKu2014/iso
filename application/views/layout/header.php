@@ -92,6 +92,7 @@
                         <li><a href="<?= base_url(); ?>secciones">Secciones</a></li>
                         <li><a href="<?= base_url(); ?>procesos">Procesos</a></li>
                         <li><a href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+                        <li><a href="<?= base_url(); ?>indicadores_procesos">Indicadores-Procesos</a></li>
                     </ul>
                 </li>
 
@@ -152,6 +153,8 @@
                     <ul id="consultas" class="collapse">
                         <li><a href="<?= base_url(); ?>">Reporte 1</a></li>
                         <li><a href="<?= base_url(); ?>">Reporte 2</a></li>
+                        <li><a href="<?= base_url(); ?>accion_mejoras">Acciones de Mejoras</a></li>
+                        <li><a href="<?= base_url(); ?>modificacion_documentos">Modificación Documentos</a></li>
                     </ul>
                 </li>
 

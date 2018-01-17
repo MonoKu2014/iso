@@ -32,6 +32,13 @@ class Ajax_Model extends CI_Model {
         return $query->result();
     }
 
+    public function obtener_indicadores_por_procesos($id_proceso)
+    {
+        $this->db->where('proceso_fk', $id_proceso);
+        $query = $this->db->get('indicadores');
+        return $query->result();
+    }
+
     public function ver_permiso($perfil_id, $modulo_id, $accion)
     {
         $this->db->where('perfil_fk', $perfil_id);
@@ -46,6 +53,13 @@ class Ajax_Model extends CI_Model {
         $this->db->where('perfil_fk', $perfil_id);
         $this->db->where('modulo_fk', $modulo_id);
         return $this->db->update('permisos', $data);
+    }
+
+    public function obtener_documentos_por_seccion($id_seccion)
+    {
+        $this->db->where('seccion_fk', $id_seccion);
+        $query = $this->db->get('documentos');
+        return $query->result();
     }
 
 

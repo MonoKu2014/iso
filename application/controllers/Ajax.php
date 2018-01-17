@@ -72,6 +72,25 @@ class Ajax extends CI_Controller {
 
     }
 
+    public function indicadores_por_procesos($id_proceso)
+    {
+        $indicadores = $this->ajax->obtener_indicadores_por_procesos($id_proceso);
+
+        $select = '';
+
+        if(count($indicadores) == 0){
+            $select .= '<option value="">Proceso sin datos</option>';
+        } else {
+            $select .= '<option value="">Seleccione indicador...</option>';
+            foreach($indicadores as $i){
+                $select .= '<option value="'.$i->indicador_id.'">'.$i->indicador_codigo.'</option>';
+            }
+        }
+
+        echo $select;
+
+    }
+
 
     public function guardar_permiso()
     {
@@ -93,6 +112,65 @@ class Ajax extends CI_Controller {
 
         $actualizar = $this->ajax->cambiar_permiso($perfil_id, $modulo_id, $data);
         query_logger();
+
+    }
+
+
+    public function documentos_por_seccion($id_seccion)
+    {
+        $documentos = $this->ajax->obtener_documentos_por_seccion($id_seccion);
+
+        $select = '';
+
+        if(count($documentos) == 0){
+            $select .= '<option value="">Sin documentos</option>';
+        } else {
+            $select .= '<option value="">Seleccione Documento...</option>';
+            foreach($documentos as $d){
+                $select .= '<option value="'.$d->documento_id.'">'.$d->documento.'</option>';
+            }
+        }
+
+        echo $select;
+
+    }
+
+
+    public function seccion_por_incidencia($id_incidencia)
+    {
+        $seccion = $this->ajax->obtener_seccion_por_incidencia($id_incidencia);
+
+        $select = '';
+
+        if(count($seccion) == 0){
+            $select .= '<option value="">Sin Seccion</option>';
+        } else {
+            $select .= '<option value="">Seleccione Seccion...</option>';
+            foreach($seccion as $s){
+                $select .= '<option value="'.$s->documento_id.'">'.$s->documento.'</option>';
+            }
+        }
+
+        echo $select;
+
+    }
+
+    public function proceso_por_incidencia($id_incidencia)
+    {
+        $seccion = $this->ajax->obtener_seccion_por_incidencia($id_incidencia);
+
+        $select = '';
+
+        if(count($seccion) == 0){
+            $select .= '<option value="">Sin Seccion</option>';
+        } else {
+            $select .= '<option value="">Seleccione Seccion...</option>';
+            foreach($seccion as $s){
+                $select .= '<option value="'.$s->documento_id.'">'.$s->documento.'</option>';
+            }
+        }
+
+        echo $select;
 
     }
 

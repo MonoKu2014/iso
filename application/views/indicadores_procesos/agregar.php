@@ -2,8 +2,8 @@
 
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Procesos</li>
-        <li><a href="<?= base_url();?>indicadores">Indicadores</a></li>
+        <li>Estructura</li>
+        <li><a href="<?= base_url();?>indicadores_procesos">Indicadores-Procesos</a></li>
         <li class="active">Agregar</li>
     </ol>
 
@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Agregar Indicador
-                <a href="<?= base_url(); ?>indicadores" class="btn btn-default pull-right">
+                Agregar Indicador-Proceso
+                <a href="<?= base_url(); ?>indicadores_procesos" class="btn btn-default pull-right">
                 	<i class="fa fa-chevron-left"></i> Volver
                 </a>
             </h2>
@@ -22,30 +22,12 @@
 
     <div class="row">
     	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>indicadores/guardar" class="form">
+        <form method="post" action="<?= base_url(); ?>indicadores_procesos/guardar" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <input type="text" name="indicador" data-validate="string" class="form-control required" placeholder="indicador" required>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Nombre (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del indicador" required>
-                    </div>
-                </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Área (*)
@@ -85,90 +67,72 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Objetivo (*)
+                    Indicador(*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                    <textarea name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del indicador" required></textarea>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Dato Superior (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <select class="form-control required" name="superior" required data-validate="number" id="superior">
-                            <option value="">Seleccione...</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Dato Inferior (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <select class="form-control required" name="inferior" required data-validate="number" id="inferior">
-                            <option value="">Seleccione...</option>
+                        <select class="form-control required" name="indicador" required data-validate="number" id="indicador">
+                            <option value="">Seleccione indicador...</option>
                         </select>
                     </div>
                 </div>
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Evaluación Positiva (*)
+                    Valor Dato Superior (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="evaluacion_positiva" id="menor_minimo" value="1" checked>
-                            Menor a mínimo ideal
-                          </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="evaluacion_positiva" id="mayor_maximo" value="2">
-                            Mayor a máximo ideal
-                          </label>
-                        </div>
+                        <input type="text" name="dato_superior" id="dato_superior" data-validate="number" class="form-control required" placeholder="Valor dato superior" required onkeyup="sumar();">
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Valor Dato Inferior (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="text" name="dato_inferior" id="dato_inferior" data-validate="number" class="form-control required" placeholder="Valor dato inferior" required onkeyup="sumar();">
                     </div>
                 </div>
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador Real (*)
+                    Indicador % (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real">
+                        <input type="text" name="total_indidicador" id="total_indidicador" data-validate="number" class="form-control" placeholder="Indicador %">
+                    </div>
+                </div>           
+
+
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Fecha (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="text" name="fecha" data-validate="string" class="form-control" placeholder="Fecha">
                     </div>
                 </div>
 
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador Mínimo Ideal (*)
+                    Observaciones (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="minimo" id="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required onkeyup="sumar();">
+                    <input name="observaciones" data-validate="string" class="form-control required" placeholder="Observaciones" required>
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador Máximo Ideal (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <input type="text" name="maximo" id="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required onkeyup="sumar();">
-                    </div>
-                </div>
 
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
                         <button type="submit" class="btn btn-success save">Guardar</button>
-                        <a href="<?= base_url(); ?>indicadores" class="btn btn-default">Cancelar</a>
+                        <a href="<?= base_url(); ?>indicadores_procesos" class="btn btn-default">Cancelar</a>
                     </div>
                 </div>
 
@@ -210,20 +174,9 @@
     $('#proceso').on('change', function(){
         $.ajax({
             type: 'post',
-            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
+            url: _URL + 'ajax/indicadores_por_procesos/' + $(this).val(),
             success: function(response){
-                $('#superior').html(response);
-            }
-        });
-    });
-
-
-    $('#proceso').on('change', function(){
-        $.ajax({
-            type: 'post',
-            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
-            success: function(response){
-                $('#inferior').html(response);
+                $('#indicador').html(response);
             }
         });
     });
@@ -231,11 +184,11 @@
 
     function sumar(){
 
-        var valor_minimo = $('#minimo').val();
-        var valor_maximo = $('#maximo').val();
+        var valor_minimo = $('#dato_superior').val();
+        var valor_maximo = $('#dato_inferior').val();
         var resultado = parseFloat(valor_minimo) + parseFloat(valor_maximo);
         var resultado2 = resultado / 2;
-        $('#real').val(resultado2);
+        $('#total_indidicador').val(resultado2);
     }        
 
 
