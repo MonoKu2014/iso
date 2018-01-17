@@ -17,10 +17,11 @@ class Accion_mejoras_Model extends CI_Model {
 
     public function obtener_mejora($id)
     {
-        $this->db->where('doc.solicitud_doc_id', $id);
-        $this->db->join('secciones sec', 'sec.seccion_id = doc.seccion_fk');        
-        $this->db->select('doc.*, sec.seccion_id, sec.seccion');
-        $query = $this->db->get('accion_mejora doc');
+        $this->db->where('acc.accion_id', $id);
+        $this->db->join('secciones sec', 'sec.seccion_id = acc.acc_seccion_fk');
+        $this->db->join('procesos pro', 'pro.proceso_id = acc.acc_proceso_fk');        
+        //$this->db->select('acc.*, sec.seccion_id, sec.seccion');
+        $query = $this->db->get('accion_mejora acc');
 
         //query_logger();
 
@@ -34,14 +35,14 @@ class Accion_mejoras_Model extends CI_Model {
 
     public function eliminar($id)
     {
-        $this->db->where('solicitud_doc_id', $id);
+        $this->db->where('accion_id', $id);
         return $this->db->delete('accion_mejora');
     }
 
 
     public function editar($data, $id)
     {
-        $this->db->where('solicitud_doc_id', $id);
+        $this->db->where('accion_id', $id);
         return $this->db->update('accion_mejora', $data);
     }
 
@@ -57,16 +58,15 @@ class Accion_mejoras_Model extends CI_Model {
         return $query->result();
     }
 
-
     public function obtener_responsables()
     {
         $query = $this->db->get('responsables');
         return $query->result();
     }
 
-    public function obtener_documentos()
+    public function obtener_tipos_acciones()
     {
-        $query = $this->db->get('documentos');
+        $query = $this->db->get('acciones');
         return $query->result();
     }
 

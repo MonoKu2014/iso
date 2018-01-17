@@ -34,7 +34,7 @@
     					<tr>
     						<td><?= $a->accion_id;?></td>
     						<td><?= $a->acc_asunto;?></td>
-                            <td><?= $a->acc_justificacion;?></td>                           
+                            <td><?= $a->acc_resultado;?></td>                           
     						<td>
 
 							  <a href="<?= base_url(); ?>accion_mejoras/editar/<?= $a->accion_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">

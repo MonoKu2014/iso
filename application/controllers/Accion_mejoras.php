@@ -27,6 +27,7 @@ class Accion_mejoras extends CI_Controller {
         $data['incidencias'] = $this->accion_mejora->obtener_inicidencias();
         $data['estados'] = $this->accion_mejora->obtener_estados();
         $data['responsables'] = $this->accion_mejora->obtener_responsables();
+        $data['tipo_accion'] = $this->accion_mejora->obtener_tipos_acciones();
         $this->load->view('layout/header');
         $this->load->view('accion_mejoras/agregar', $data);
         $this->load->view('layout/footer');
@@ -41,15 +42,17 @@ class Accion_mejoras extends CI_Controller {
 
         $error = 0;
 
-        $this->form_validation->set_rules('area', '', 'required');
+        $this->form_validation->set_rules('asunto', '', 'required');
+        $this->form_validation->set_rules('incidencia', '', 'required');
         $this->form_validation->set_rules('seccion', '', 'required');
-        $this->form_validation->set_rules('documento', '', 'required');
+        $this->form_validation->set_rules('proceso', '', 'required');
+        $this->form_validation->set_rules('fecha_creacion', '', 'required');        
+        $this->form_validation->set_rules('accion', '', 'required');
         $this->form_validation->set_rules('responsable', '', 'required');        
-        $this->form_validation->set_rules('version', '', 'required');
-        $this->form_validation->set_rules('nueva_version', '', 'required');        
-        $this->form_validation->set_rules('fecha_modificacion', '', '');
-        $this->form_validation->set_rules('justificacion', '', 'required');
+        $this->form_validation->set_rules('resultado', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
+        $this->form_validation->set_rules('fecha_inicio', '', 'required');
+        $this->form_validation->set_rules('fecha_termino', '', 'required');
 
         if($this->form_validation->run() === FALSE){
 
@@ -58,15 +61,17 @@ class Accion_mejoras extends CI_Controller {
         } else {            
 
             $data = array(
-                'area_fk'               => $this->input->post('area'),
-                'seccion_fk'            => $this->input->post('seccion'),
-                'documento_fk'          => $this->input->post('documento'),
-                'responsable_fk'        => $this->input->post('responsable'),
-                'version_actual'        => $this->input->post('version'),
-                'version_nueva'         => $this->input->post('nueva_version'),
-                'fecha_modificacion'    => $this->input->post('fecha_modificacion'),
-                'justificacion'         => $this->input->post('justificacion'),
-                'estado_fk'             => $this->input->post('estado')
+                'acc_asunto'            => $this->input->post('asunto'),
+                'acc_incidencia_fk'     => $this->input->post('incidencia'),
+                'acc_seccion_fk'        => $this->input->post('seccion'),
+                'acc_proceso_fk'        => $this->input->post('proceso'),
+                'acc_fecha_creacion'    => $this->input->post('fecha_creacion'),
+                'acc_accion_fk'         => $this->input->post('accion'),
+                'acc_responsable_fk'    => $this->input->post('responsable'),
+                'acc_resultado'         => $this->input->post('resultado'),
+                'acc_estado_fk'         => $this->input->post('estado'),
+                'acc_fecha_inicio'      => $this->input->post('fecha_inicio'),
+                'acc_fecha_termino'     => $this->input->post('fecha_termino')
             );            
 
             $insert = $this->accion_mejora->insertar($data);
@@ -89,10 +94,10 @@ class Accion_mejoras extends CI_Controller {
 
     public function editar($id)
     {
-        $data['solicitud'] = $this->accion_mejora->obtener_mejora($id);
-        $data['areas'] = $this->accion_mejora->areas();
-        $data['documentos'] = $this->accion_mejora->obtener_documentos();
+        $data['mejora'] = $this->accion_mejora->obtener_mejora($id);
+        $data['incidencias'] = $this->accion_mejora->obtener_inicidencias();         
         $data['responsables'] = $this->accion_mejora->obtener_responsables();
+        $data['tipo_accion'] = $this->accion_mejora->obtener_tipos_acciones();
         $data['estados'] = $this->accion_mejora->obtener_estados();
         $this->load->view('layout/header');
         $this->load->view('accion_mejoras/editar', $data);
@@ -104,15 +109,17 @@ class Accion_mejoras extends CI_Controller {
     {
         $error = 0;
         
-        $this->form_validation->set_rules('area', '', 'required');
+        $this->form_validation->set_rules('asunto', '', 'required');
+        $this->form_validation->set_rules('incidencia', '', 'required');
         $this->form_validation->set_rules('seccion', '', 'required');
-        $this->form_validation->set_rules('documento', '', 'required');
+        $this->form_validation->set_rules('proceso', '', 'required');
+        $this->form_validation->set_rules('fecha_creacion', '', 'required');        
+        $this->form_validation->set_rules('accion', '', 'required');
         $this->form_validation->set_rules('responsable', '', 'required');        
-        $this->form_validation->set_rules('version', '', 'required');
-        $this->form_validation->set_rules('nueva_version', '', 'required');        
-        $this->form_validation->set_rules('fecha_modificacion', '', '');
-        $this->form_validation->set_rules('justificacion', '', 'required');
+        $this->form_validation->set_rules('resultado', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
+        $this->form_validation->set_rules('fecha_inicio', '', 'required');
+        $this->form_validation->set_rules('fecha_termino', '', 'required');
 
         if($this->form_validation->run() === FALSE){
 
@@ -121,18 +128,20 @@ class Accion_mejoras extends CI_Controller {
         } else {
 
             $data = array(
-                'area_fk'               => $this->input->post('area'),
-                'seccion_fk'            => $this->input->post('seccion'),
-                'documento_fk'          => $this->input->post('documento'),
-                'responsable_fk'        => $this->input->post('responsable'),
-                'version_actual'        => $this->input->post('version'),
-                'version_nueva'         => $this->input->post('nueva_version'),
-                'fecha_modificacion'    => $this->input->post('fecha_modificacion'),
-                'justificacion'         => $this->input->post('justificacion'),
-                'estado_fk'             => $this->input->post('estado')
+                'acc_asunto'            => $this->input->post('asunto'),
+                'acc_incidencia_fk'     => $this->input->post('incidencia'),
+                'acc_seccion_fk'        => $this->input->post('seccion'),
+                'acc_proceso_fk'        => $this->input->post('proceso'),
+                'acc_fecha_creacion'    => $this->input->post('fecha_creacion'),
+                'acc_accion_fk'         => $this->input->post('accion'),
+                'acc_responsable_fk'    => $this->input->post('responsable'),
+                'acc_resultado'         => $this->input->post('resultado'),
+                'acc_estado_fk'         => $this->input->post('estado'),
+                'acc_fecha_inicio'      => $this->input->post('fecha_inicio'),
+                'acc_fecha_termino'     => $this->input->post('fecha_termino')
             );
 
-            $update = $this->accion_mejora->editar($data, $this->input->post('solicitud_doc_id'));
+            $update = $this->accion_mejora->editar($data, $this->input->post('accion_id'));
             
             if($update === false){
                 $error = 1;
@@ -141,7 +150,7 @@ class Accion_mejoras extends CI_Controller {
 
         if($error == 1){
             $this->session->set_flashdata('message', alert_danger('No se ha podido actualizar el registro'));
-            redirect(base_url().'accion_mejoras/editar/'.$this->input->post('solicitud_doc_id'));
+            redirect(base_url().'accion_mejoras/editar/'.$this->input->post('accion_id'));
         } else {
             $this->session->set_flashdata('message', alert_success('Registro actualizado con éxito'));
             redirect(base_url().'accion_mejoras');

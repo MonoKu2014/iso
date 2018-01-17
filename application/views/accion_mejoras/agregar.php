@@ -30,6 +30,15 @@
                 <p id="message"></p>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Asunto (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="text" name="asunto" id="asunto" class="form-control required" placeholder="Asunto" required>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Incidencia (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
@@ -60,8 +69,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="documento" required data-validate="number" id="documento">
-                            <option value="">Seleccione docummento...</option>
+                        <select class="form-control required" name="proceso" required data-validate="number" id="proceso">
+                            <option value="">Seleccione Proceso...</option>
                         </select>
                     </div>
                 </div>
@@ -80,10 +89,10 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="responsable" required data-validate="number" id="responsable">
-                            <option value="">Seleccione Responsable</option>
-                        <?php foreach ($responsables as $r): ?>
-                            <option value="<?= $r->responsable_id; ?>"><?= $r->responsable; ?></option>
+                        <select class="form-control required" name="accion" required data-validate="number" id="accion">
+                            <option value="">Seleccione Acción</option>
+                        <?php foreach ($tipo_accion as $a): ?>
+                            <option value="<?= $a->accion_id; ?>"><?= $a->accion; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -108,7 +117,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="version" id="version" class="form-control required" placeholder="Versión" required>
+                        <input type="text" name="resultado" id="resultado" class="form-control required" placeholder="Resultado" required>
                     </div>
                 </div>
 
@@ -175,12 +184,12 @@
     });
 
 
-    $('#seccion').on('change', function(){
+    $('#incidencia').on('change', function(){
         $.ajax({
             type: 'post',
-            url: _URL + 'ajax/documentos_por_seccion/' + $(this).val(),
+            url: _URL + 'ajax/proceso_por_incidencia/' + $(this).val(),
             success: function(response){
-                $('#documento').html(response);
+                $('#proceso').html(response);
             }
         });
     });      

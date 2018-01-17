@@ -48,17 +48,30 @@ class Ajax_Model extends CI_Model {
     }
 
 
-    public function cambiar_permiso($perfil_id, $modulo_id, $data)
+    public function obtener_seccion_por_incidencia($id_incidencia)
     {
-        $this->db->where('perfil_fk', $perfil_id);
-        $this->db->where('modulo_fk', $modulo_id);
-        return $this->db->update('permisos', $data);
+        $this->db->where('ind.incidencia_id', $id_incidencia);
+        $this->db->join('secciones sec', 'sec.seccion_id = ind.seccion_fk');
+        $query = $this->db->get('incidencias ind');
+        return $query->result();
+
+/*
+        $this->db->where('doc.solicitud_doc_id', $id);
+        $this->db->join('secciones sec', 'sec.seccion_id = doc.seccion_fk');        
+        $this->db->select('doc.*, sec.seccion_id, sec.seccion');
+        $query = $this->db->get('accion_mejora doc');*/
+
+
+
+
+
     }
 
-    public function obtener_documentos_por_seccion($id_seccion)
+    public function obtener_proceso_por_incidencia($id_incidencia)
     {
-        $this->db->where('seccion_fk', $id_seccion);
-        $query = $this->db->get('documentos');
+        $this->db->where('ind.incidencia_id', $id_incidencia);
+        $this->db->join('procesos pro', 'pro.proceso_id = ind.proceso_fk');
+        $query = $this->db->get('incidencias ind');
         return $query->result();
     }
 

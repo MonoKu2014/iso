@@ -91,7 +91,7 @@ class Ajax extends CI_Controller {
 
     }
 
-
+/*
     public function indicadores_por_procesos($id_proceso)
     {
         $datos = $this->ajax->obtener_indicadores_por_procesos($id_proceso);
@@ -110,7 +110,7 @@ class Ajax extends CI_Controller {
         echo $select;
 
     }
-
+*/
 
     public function guardar_permiso()
     {
@@ -167,7 +167,7 @@ class Ajax extends CI_Controller {
         } else {
             $select .= '<option value="">Seleccione Seccion...</option>';
             foreach($seccion as $s){
-                $select .= '<option value="'.$s->documento_id.'">'.$s->documento.'</option>';
+                $select .= '<option value="'.$s->seccion_id.'">'.$s->seccion.'</option>';
             }
         }
 
@@ -177,16 +177,16 @@ class Ajax extends CI_Controller {
 
     public function proceso_por_incidencia($id_incidencia)
     {
-        $seccion = $this->ajax->obtener_seccion_por_incidencia($id_incidencia);
+        $proceso = $this->ajax->obtener_proceso_por_incidencia($id_incidencia);
 
         $select = '';
 
-        if(count($seccion) == 0){
-            $select .= '<option value="">Sin Seccion</option>';
+        if(count($proceso) == 0){
+            $select .= '<option value="">Sin proceso</option>';
         } else {
-            $select .= '<option value="">Seleccione Seccion...</option>';
-            foreach($seccion as $s){
-                $select .= '<option value="'.$s->documento_id.'">'.$s->documento.'</option>';
+            $select .= '<option value="">Seleccione Proceso...</option>';
+            foreach($proceso as $p){
+                $select .= '<option value="'.$p->proceso_id.'">'.$p->proceso_nombre.'</option>';
             }
         }
 
