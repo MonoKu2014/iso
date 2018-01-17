@@ -1,18 +1,18 @@
 <div class="container-fluid">
 
-        <ol class="breadcrumb">
-          <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-          <li>Procesos</li>
-          <li><a href="<?= base_url();?>indicadores">Indicadores</a></li>
-          <li class="active">Editar</li>
-        </ol>
+    <ol class="breadcrumb">
+        <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+        <li>Registros</li>
+        <li><a href="<?= base_url();?>registros_indicadores">Registro de Indicadores</a></li>
+        <li class="active">Editar</li>
+    </ol>
 
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Editar Indicador
-                <a href="<?= base_url(); ?>indicadores" class="btn btn-default pull-right">
+                Editar Registro de Indicador
+                <a href="<?= base_url(); ?>registros_indicadores" class="btn btn-default pull-right">
                     <i class="fa fa-chevron-left"></i> Volver
                 </a>
             </h2>
@@ -22,31 +22,14 @@
 
     <div class="row">
         <div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>indicadores/guardar_edicion" class="form">
+        <form method="post" action="<?= base_url(); ?>registros_indicadores/guardar_edicion" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
+                <?= $this->session->flashdata('message');?>
                 <input type="hidden" name="indicador_id" value="<?= $indicador->indicador_id; ?>">
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <input type="text" name="indicador" data-validate="string" class="form-control required" placeholder="indicador" required value="<?= $indicador->indicador_codigo;?>">
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Nombre (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del indicador" required value="<?= $indicador->indicador_nombre;?>">
-                    </div>
-                </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Área (*)
@@ -86,22 +69,22 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Objetivo (*)
+                    Código Indicador (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                    <input name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del indicador" required value="<?= $indicador->indicador_objetivo;?>"></input>
+                        <select class="form-control required" name="codigo" required data-validate="number" id="codigo">
+                            <option value="<?= $indicador->indicador_codigo; ?>"><?= $indicador->indicador_id; ?></option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Dato Superior (*)
+                    Valor Dato Superior (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="superior" required data-validate="number" id="superior">
-                            <option value="<?= $indicador->dato_superior_fk; ?>"><?= $indicador->dato_nombre; ?></option>
-                        </select>
+                        <input type="number" name="valor_dato_superior" id="valor_dato_superior" data-validate="number" min="0" class="form-control" placeholder="Valor dato superior" onblur="sumar();" value="<?= $indicador->valor_dato_superior;?>">
                     </div>
                 </div>
 
@@ -110,66 +93,39 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="inferior" required data-validate="number" id="inferior">
-                            <option value="<?= $indicador->dato_inferior_fk; ?>"><?= $indicador->dato_nombre; ?></option>
-                        </select>
+                        <input type="number" name="valor_dato_inferior" id="valor_dato_inferior" data-validate="number" min="0" class="form-control" placeholder="Valor dato inferior" onblur="sumar();" value="<?= $indicador->valor_dato_inferior;?>">
                     </div>
                 </div>
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Evaluación Positiva (*)
+                    Indicador (*) %
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="evaluacion_positiva" id="menor_minimo" value="1" checked>
-                            Menor a mínimo ideal
-                          </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="evaluacion_positiva" id="mayor_maximo" value="2">
-                            Mayor a máximo ideal
-                          </label>
-                        </div>
+                        <input type="number" readonly name="indicador_final" id="indicador_final" data-validate="number" class="form-control" value="<?= $indicador->valor_indicador;?>">
                     </div>
                 </div>
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador Real (*)
+                    Fecha (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-<<<<<<< Updated upstream
-                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real">
-=======
-                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real" value="<?= $indicador->indicador_real;?>">
->>>>>>> Stashed changes
+                        <input type="ntext" readonly name="fecha" id="fecha" data-validate="number" class="form-control" value="<?= $indicador->fecha_indicador; ?>">
                     </div>
                 </div>
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador Mínimo Ideal (*)
+                    Observaciones (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="minimo" id="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required onkeyup="sumar();" value="<?= $indicador->indicador_minimo;?>">
+                        <textarea name="observaciones" data-validate="string" class="form-control required" placeholder="Observaciones" required><?= $indicador->indicador_observaciones; ?></textarea>
                     </div>
                 </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Indicador Máximo Ideal (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <input type="text" name="maximo" id="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required onkeyup="sumar();" value="<?= $indicador->indicador_maximo;?>">
-                    </div>
-                </div>
-
-
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
@@ -189,7 +145,6 @@
 
 </div>
 
-
 <script>
 
     $('#area').on('change', function(){
@@ -201,6 +156,7 @@
             }
         });
     });
+
 
     $('#seccion').on('change', function(){
         $.ajax({
@@ -216,38 +172,22 @@
     $('#proceso').on('change', function(){
         $.ajax({
             type: 'post',
-            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
+            url: _URL + 'ajax/indicadores_por_procesos/' + $(this).val(),
             success: function(response){
-                $('#superior').html(response);
-            }
-        });
-    });
-
-
-    $('#proceso').on('change', function(){
-        $.ajax({
-            type: 'post',
-            url: _URL + 'ajax/datos_por_procesos/' + $(this).val(),
-            success: function(response){
-                $('#inferior').html(response);
+                $('#codigo').html(response);
             }
         });
     });
 
 
     function sumar(){
-
-        var valor_minimo = $('#minimo').val();
-        var valor_maximo = $('#maximo').val();
-        var resultado = parseFloat(valor_minimo) + parseFloat(valor_maximo);
-        var resultado2 = resultado / 2;
-        $('#real').val(resultado2);
-<<<<<<< Updated upstream
-    }  
-=======
+        var inferior = $('#valor_dato_inferior').val();
+        var superior = $('#valor_dato_superior').val();
+        if(inferior != '' || superior != ''){
+            var resultado2 = (parseInt(superior) * 100) / parseInt(inferior);
+            $('#indicador_final').val(resultado2);
+        }
     }
->>>>>>> Stashed changes
-
 
 
 </script>

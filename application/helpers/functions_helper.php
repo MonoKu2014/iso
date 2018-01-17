@@ -309,3 +309,26 @@ function copia($copia)
 
     return '<a target="_blank" href="'.base_url().'assets/documentos/'.$copia.'">'.$copia.'</a>';
 }
+
+
+function responsable($id)
+{
+    $ci =& get_instance();
+    $ci->db->where('responsable_id', $id);
+    $responsable = $ci->db->get('responsables')->row();
+    return $responsable->responsable;
+}
+
+
+function estado_incidencia($id)
+{
+    if($id == 1){
+        return 'Iniciada';
+    } elseif ($id == 2){
+        return 'Suspendida';
+    } else {
+        return 'Finalizada';
+    }
+
+    return '';
+}

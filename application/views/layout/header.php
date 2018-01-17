@@ -9,6 +9,7 @@
 	<script src="<?= base_url(); ?>assets/js/tooltipsy.min.js"></script>
 	<script src="<?= base_url(); ?>assets/data-tables/jquery.dataTables.js"></script>
 	<script src="<?= base_url(); ?>assets/data-tables/dataTables.bootstrap.js"></script>
+    <script src="<?= base_url(); ?>assets/jquery-ui/jquery-ui.min.js"></script>
 	<script src="<?= base_url(); ?>assets/js/main.js"></script>
 
 	<script>
@@ -25,7 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/sweetalert/dist/sweetalert.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/sweetalert/themes/google/google.css">
 
-
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/jquery-ui/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/data-tables/dataTables.bootstrap.css">
 
 </head>
@@ -146,9 +147,21 @@
 
 
 
+                <li <?= active('registros')?>>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#registros">
+                        <i class="fa fa-file-o"></i> Registros <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="registros" class="collapse">
+                        <li><a href="<?= base_url();?>registros_indicadores">Registro de Indicadores</a></li>
+                        <li><a href="<?= base_url();?>registros_incidencias">Registro de Incidencias</a></li>
+                        <li><a href="<?= base_url();?>mejoras">Acciones de Mejora</a></li>
+                    </ul>
+                </li>
+
+
                 <li <?= active('consultas')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#consultas">
-                        <i class="fa fa-bar-cogs"></i> Consultas <i class="fa fa-fw fa-caret-down"></i>
+                        <i class="fa fa-cog"></i> Consultas <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <ul id="consultas" class="collapse">
                         <li><a href="<?= base_url(); ?>">Reporte 1</a></li>
@@ -164,7 +177,7 @@
 
                 <li <?= active('administracion')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#administracion">
-                        <i class="fa fa-bar-cogs"></i> Administración <i class="fa fa-fw fa-caret-down"></i>
+                        <i class="fa fa-cogs"></i> Administración <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <ul id="administracion" class="collapse">
                         <?php if(can_see(1)){ ?>

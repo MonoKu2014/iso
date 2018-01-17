@@ -20,7 +20,7 @@ class Ajax extends CI_Controller {
         $select = '';
 
         if(count($secciones) == 0){
-            $select .= '<option value="">Área sin secciones</option>';
+            $select .= '<option value="">No hay registros asociados</option>';
         } else {
             $select .= '<option value="">Seleccione sección...</option>';
             foreach($secciones as $s){
@@ -40,7 +40,7 @@ class Ajax extends CI_Controller {
         $select = '';
 
         if(count($procesos) == 0){
-            $select .= '<option value="">Sección sin procesos</option>';
+            $select .= '<option value="">No hay registros asociados</option>';
         } else {
             $select .= '<option value="">Seleccione proceso...</option>';
             foreach($procesos as $p){
@@ -51,7 +51,7 @@ class Ajax extends CI_Controller {
         echo $select;
 
     }
-    
+
 
     public function datos_por_procesos($id_proceso)
     {
@@ -60,7 +60,7 @@ class Ajax extends CI_Controller {
         $select = '';
 
         if(count($datos) == 0){
-            $select .= '<option value="">Proceso sin datos</option>';
+            $select .= '<option value="">No hay registros asociados</option>';
         } else {
             $select .= '<option value="">Seleccione dato...</option>';
             foreach($datos as $d){
@@ -84,6 +84,26 @@ class Ajax extends CI_Controller {
             $select .= '<option value="">Seleccione indicador...</option>';
             foreach($indicadores as $i){
                 $select .= '<option value="'.$i->indicador_id.'">'.$i->indicador_codigo.'</option>';
+            }
+        }
+
+        echo $select;
+
+    }
+
+
+    public function indicadores_por_procesos($id_proceso)
+    {
+        $datos = $this->ajax->obtener_indicadores_por_procesos($id_proceso);
+
+        $select = '';
+
+        if(count($datos) == 0){
+            $select .= '<option value="">No hay registros asociados</option>';
+        } else {
+            $select .= '<option value="">Seleccione indicador...</option>';
+            foreach($datos as $d){
+                $select .= '<option value="'.$d->indicador_id.'">'.$d->indicador_codigo.'</option>';
             }
         }
 
