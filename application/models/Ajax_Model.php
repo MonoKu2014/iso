@@ -55,5 +55,12 @@ class Ajax_Model extends CI_Model {
         return $this->db->update('permisos', $data);
     }
 
+    public function obtener_documentos_por_seccion($id_seccion)
+    {
+        $this->db->where('seccion_fk', $id_seccion);
+        $query = $this->db->get('documentos');
+        return $query->result();
+    }
+
 
 }
