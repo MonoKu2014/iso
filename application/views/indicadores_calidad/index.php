@@ -11,7 +11,7 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Indicadores
-                <a href="<?= base_url(); ?>indicadores/agregar" class="btn btn-info pull-right">
+                <a href="<?= base_url(); ?>indicadores_calidad/agregar" class="btn btn-info pull-right">
                 	<i class="fa fa-plus"></i> Agregar indicador
                 </a>
             </h2>
@@ -39,7 +39,7 @@
                             <td><?= $i->indicador_objetivo;?></td>
     						<td>
 
-							  <a href="<?= base_url(); ?>indicadores/editar/<?= $i->indicador_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
+							  <a href="<?= base_url(); ?>indicadores_calidad/editar/<?= $i->indicador_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
 							  	<i class="fa fa-pencil"></i>
 							  </a>
 
@@ -79,7 +79,7 @@ $('.delete').on('click', function(e){
 	  closeOnConfirm: false
 	},
 	function(){
-        window.location = _URL + 'indicadores/eliminar/' + data_id;
+        window.location = _URL + 'indicadores_calidad/eliminar/' + data_id;
 	});
 
 });

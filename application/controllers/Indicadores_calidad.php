@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Indicadores extends CI_Controller {
+class Indicadores_calidad extends CI_Controller {
+
 
 
     public function __construct()
@@ -10,20 +11,20 @@ class Indicadores extends CI_Controller {
         parent::__construct();
         //validate session es para validar que la sesión este iniciada
         validate_session();
-        $this->load->model('indicadores_Model', 'indicador');
+        $this->load->model('indicadores_calidad_Model', 'indicador');
     }
     public function index()
     {
         $data['indicadores'] = $this->indicador->obtener_indicadores();
         $this->load->view('layout/header');
-        $this->load->view('indicadores/index', $data);
+        $this->load->view('indicadores_calidad/index', $data);
         $this->load->view('layout/footer');
     }
     public function agregar()
     {
         $data['areas'] = $this->indicador->areas();
         $this->load->view('layout/header');
-        $this->load->view('indicadores/agregar', $data);
+        $this->load->view('indicadores_calidad/agregar', $data);
         $this->load->view('layout/footer');
     }
     public function guardar()
@@ -87,10 +88,10 @@ class Indicadores extends CI_Controller {
         }
         if($error == 1){
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
-            redirect(base_url().'indicadores/agregar');
+            redirect(base_url().'indicadores_calidad/agregar');
         } else {
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
-            redirect(base_url().'indicadores');
+            redirect(base_url().'indicadores_calidad');
         }
     }
     public function editar($id)
@@ -98,7 +99,7 @@ class Indicadores extends CI_Controller {
         $data['indicador'] = $this->indicador->obtener_indicador($id);
         $data['areas'] = $this->indicador->areas();
         $this->load->view('layout/header');
-        $this->load->view('indicadores/editar', $data);
+        $this->load->view('indicadores_calidad/editar', $data);
         $this->load->view('layout/footer');
     }
     public function guardar_edicion()
@@ -166,10 +167,10 @@ class Indicadores extends CI_Controller {
         }
         if($error == 1){
             $this->session->set_flashdata('message', alert_danger('No se ha podido actualizar el registro'));
-            redirect(base_url().'indicadores/editar/'.$this->input->post('indicador_id'));
+            redirect(base_url().'indicadores_calidad/editar/'.$this->input->post('indicador_id'));
         } else {
             $this->session->set_flashdata('message', alert_success('Registro actualizado con éxito'));
-            redirect(base_url().'indicadores');
+            redirect(base_url().'indicadores_calidad');
         }
     }
     public function eliminar($id)
@@ -177,10 +178,10 @@ class Indicadores extends CI_Controller {
         $delete = $this->indicador->eliminar($id);
         if($delete === false){
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
-            redirect(base_url().'indicadores');
+            redirect(base_url().'indicadores_calidad');
         } else {
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
-            redirect(base_url().'indicadores');
+            redirect(base_url().'indicadores_calidad');
         }
     }
     public function exportar()

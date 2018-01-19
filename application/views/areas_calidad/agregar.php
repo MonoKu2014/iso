@@ -4,7 +4,7 @@
 <ol class="breadcrumb">
   <li><a href="<?= base_url();?>panel">Dashboard</a></li>
   <li>Estructura</li>
-  <li><a href="<?= base_url();?>areas">Áreas</a></li>
+  <li><a href="<?= base_url();?>areas_calidad">Contexto y Organización</a></li>
   <li class="active">Agregar</li>
 </ol>
 
@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Agregar área
-                <a href="<?= base_url(); ?>areas" class="btn btn-default pull-right">
+                Agregar Contexto y Organización
+                <a href="<?= base_url(); ?>areas_calidad" class="btn btn-default pull-right">
                 	<i class="fa fa-chevron-left"></i> Volver
                 </a>
             </h2>
@@ -23,14 +23,14 @@
 
     <div class="row">
     	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>areas/guardar" class="form">
+        <form method="post" action="<?= base_url(); ?>areas_calidad/guardar" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Área (*)
+                    Contexto y Organización (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
                         <button type="submit" class="btn btn-success save">Guardar</button>
-                        <a href="<?= base_url(); ?>areas" class="btn btn-default">Cancelar</a>
+                        <a href="<?= base_url(); ?>areas_calidad" class="btn btn-default">Cancelar</a>
                     </div>
                 </div>
 

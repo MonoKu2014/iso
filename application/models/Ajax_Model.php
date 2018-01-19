@@ -54,17 +54,6 @@ class Ajax_Model extends CI_Model {
         $this->db->join('secciones sec', 'sec.seccion_id = ind.seccion_fk');
         $query = $this->db->get('incidencias ind');
         return $query->result();
-
-/*
-        $this->db->where('doc.solicitud_doc_id', $id);
-        $this->db->join('secciones sec', 'sec.seccion_id = doc.seccion_fk');        
-        $this->db->select('doc.*, sec.seccion_id, sec.seccion');
-        $query = $this->db->get('accion_mejora doc');*/
-
-
-
-
-
     }
 
     public function obtener_proceso_por_incidencia($id_incidencia)
@@ -75,5 +64,21 @@ class Ajax_Model extends CI_Model {
         return $query->result();
     }
 
+
+    public function obtener_riesgos_por_contexto($id_area)
+    {
+        $this->db->where('area_fk', $id_area);
+        $this->db->where('sin_proceso', self::CON_PROCESO);
+        $query = $this->db->get('secciones_calidad');
+        return $query->result();
+    }
+
+
+    public function obtener_objetivos_por_riesgo($id_seccion)
+    {
+        $this->db->where('seccion_fk', $id_seccion);
+        $query = $this->db->get('objetivos');
+        return $query->result();
+    }
 
 }

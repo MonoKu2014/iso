@@ -23,7 +23,7 @@ class Accion_mejoras extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $data['incidencias'] = $this->accion_mejora->obtener_inicidencias();
         $data['estados'] = $this->accion_mejora->obtener_estados();
         $data['responsables'] = $this->accion_mejora->obtener_responsables();
@@ -36,9 +36,6 @@ class Accion_mejoras extends CI_Controller {
 
     public function guardar()
     {
-        //var_dump($this->input->post());
-        //var_dump($this->input->post());
-        //exit();
 
         $error = 0;
 
@@ -46,9 +43,9 @@ class Accion_mejoras extends CI_Controller {
         $this->form_validation->set_rules('incidencia', '', 'required');
         $this->form_validation->set_rules('seccion', '', 'required');
         $this->form_validation->set_rules('proceso', '', 'required');
-        $this->form_validation->set_rules('fecha_creacion', '', 'required');        
+        $this->form_validation->set_rules('fecha_creacion', '', 'required');
         $this->form_validation->set_rules('accion', '', 'required');
-        $this->form_validation->set_rules('responsable', '', 'required');        
+        $this->form_validation->set_rules('responsable', '', 'required');
         $this->form_validation->set_rules('resultado', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
         $this->form_validation->set_rules('fecha_inicio', '', 'required');
@@ -58,7 +55,7 @@ class Accion_mejoras extends CI_Controller {
 
             $error = 1;
 
-        } else {            
+        } else {
 
             $data = array(
                 'acc_asunto'            => $this->input->post('asunto'),
@@ -72,10 +69,10 @@ class Accion_mejoras extends CI_Controller {
                 'acc_estado_fk'         => $this->input->post('estado'),
                 'acc_fecha_inicio'      => $this->input->post('fecha_inicio'),
                 'acc_fecha_termino'     => $this->input->post('fecha_termino')
-            );            
+            );
 
             $insert = $this->accion_mejora->insertar($data);
-            
+
             if($insert === false){
                 $error = 1;
             }
@@ -95,7 +92,7 @@ class Accion_mejoras extends CI_Controller {
     public function editar($id)
     {
         $data['mejora'] = $this->accion_mejora->obtener_mejora($id);
-        $data['incidencias'] = $this->accion_mejora->obtener_inicidencias();         
+        $data['incidencias'] = $this->accion_mejora->obtener_inicidencias();
         $data['responsables'] = $this->accion_mejora->obtener_responsables();
         $data['tipo_accion'] = $this->accion_mejora->obtener_tipos_acciones();
         $data['estados'] = $this->accion_mejora->obtener_estados();
@@ -108,14 +105,14 @@ class Accion_mejoras extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-        
+
         $this->form_validation->set_rules('asunto', '', 'required');
         $this->form_validation->set_rules('incidencia', '', 'required');
         $this->form_validation->set_rules('seccion', '', 'required');
         $this->form_validation->set_rules('proceso', '', 'required');
-        $this->form_validation->set_rules('fecha_creacion', '', 'required');        
+        $this->form_validation->set_rules('fecha_creacion', '', 'required');
         $this->form_validation->set_rules('accion', '', 'required');
-        $this->form_validation->set_rules('responsable', '', 'required');        
+        $this->form_validation->set_rules('responsable', '', 'required');
         $this->form_validation->set_rules('resultado', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
         $this->form_validation->set_rules('fecha_inicio', '', 'required');
@@ -142,7 +139,7 @@ class Accion_mejoras extends CI_Controller {
             );
 
             $update = $this->accion_mejora->editar($data, $this->input->post('accion_id'));
-            
+
             if($update === false){
                 $error = 1;
             }

@@ -33,6 +33,26 @@ class Ajax extends CI_Controller {
     }
 
 
+    public function riesgo_por_contexto($id_area)
+    {
+        $secciones = $this->ajax->obtener_riesgos_por_contexto($id_area);
+
+        $select = '';
+
+        if(count($secciones) == 0){
+            $select .= '<option value="">No hay registros asociados</option>';
+        } else {
+            $select .= '<option value="">Seleccione riesgo...</option>';
+            foreach($secciones as $s){
+                $select .= '<option value="'.$s->seccion_id.'">'.$s->seccion.'</option>';
+            }
+        }
+
+        echo $select;
+
+    }
+
+
     public function procesos_por_seccion($id_seccion)
     {
         $procesos = $this->ajax->obtener_procesos_por_seccion($id_seccion);
@@ -45,6 +65,26 @@ class Ajax extends CI_Controller {
             $select .= '<option value="">Seleccione proceso...</option>';
             foreach($procesos as $p){
                 $select .= '<option value="'.$p->proceso_id.'">'.$p->proceso_nombre.'</option>';
+            }
+        }
+
+        echo $select;
+
+    }
+
+
+    public function objetivos_por_riesgo($id_seccion)
+    {
+        $objetivos = $this->ajax->obtener_objetivos_por_riesgo($id_seccion);
+
+        $select = '';
+
+        if(count($objetivos) == 0){
+            $select .= '<option value="">No hay registros asociados</option>';
+        } else {
+            $select .= '<option value="">Seleccione objetivo...</option>';
+            foreach($objetivos as $p){
+                $select .= '<option value="'.$p->objetivo_id.'">'.$p->objetivo_nombre.'</option>';
             }
         }
 
@@ -91,26 +131,6 @@ class Ajax extends CI_Controller {
 
     }
 
-/*
-    public function indicadores_por_procesos($id_proceso)
-    {
-        $datos = $this->ajax->obtener_indicadores_por_procesos($id_proceso);
-
-        $select = '';
-
-        if(count($datos) == 0){
-            $select .= '<option value="">No hay registros asociados</option>';
-        } else {
-            $select .= '<option value="">Seleccione indicador...</option>';
-            foreach($datos as $d){
-                $select .= '<option value="'.$d->indicador_id.'">'.$d->indicador_codigo.'</option>';
-            }
-        }
-
-        echo $select;
-
-    }
-*/
 
     public function guardar_permiso()
     {

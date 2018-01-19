@@ -1,18 +1,18 @@
 <div class="container-fluid">
 
-        <ol class="breadcrumb">
-          <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-          <li>Estructura</li>
-          <li><a href="<?= base_url();?>indicadores">Indicadores</a></li>
-          <li class="active">Editar</li>
-        </ol>
+    <ol class="breadcrumb">
+        <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+        <li>Estructura</li>
+        <li><a href="<?= base_url();?>indicadores_calidad">Indicadores</a></li>
+        <li class="active">Agregar</li>
+    </ol>
 
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Editar Indicador
-                <a href="<?= base_url(); ?>indicadores" class="btn btn-default pull-right">
+                Agregar Indicador
+                <a href="<?= base_url(); ?>indicadores_calidad" class="btn btn-default pull-right">
                     <i class="fa fa-chevron-left"></i> Volver
                 </a>
             </h2>
@@ -22,20 +22,19 @@
 
     <div class="row">
         <div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>indicadores/guardar_edicion" class="form">
+        <form method="post" action="<?= base_url(); ?>indicadores_calidad/guardar" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
-                <input type="hidden" name="indicador_id" value="<?= $indicador->indicador_id; ?>">
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Indicador (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="indicador" data-validate="string" class="form-control required" placeholder="indicador" required value="<?= $indicador->indicador_codigo;?>">
+                        <input type="text" name="indicador" data-validate="string" class="form-control required" placeholder="indicador" required>
                     </div>
                 </div>
 
@@ -44,19 +43,19 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del indicador" required value="<?= $indicador->indicador_nombre;?>">
+                        <input type="text" name="nombre" data-validate="string" class="form-control required" placeholder="Nombre del indicador" required>
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Área (*)
+                    Contexto y Organización (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="area" required data-validate="number" id="area">
-                            <option value="">Seleccione área...</option>
+                            <option value="">Seleccione contexto...</option>
                         <?php foreach ($areas as $a): ?>
-                            <option <?php if($a->area_id == $indicador->area_fk){ echo 'selected'; } ?> value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
+                            <option value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -64,23 +63,12 @@
 
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Sección (*)
+                    Riesgo y Oportunidad (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="seccion" required data-validate="number" id="seccion">
-                            <option value="<?= $indicador->seccion_fk; ?>"><?= $indicador->seccion; ?></option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Proceso (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <select class="form-control required" name="proceso" required data-validate="number" id="proceso">
-                            <option value="<?= $indicador->proceso_fk; ?>"><?= $indicador->proceso_nombre; ?></option>
+                            <option value="">Seleccione riesgo...</option>
                         </select>
                     </div>
                 </div>
@@ -90,7 +78,18 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                    <input name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del indicador" required value="<?= $indicador->indicador_objetivo;?>"></input>
+                        <select class="form-control required" name="proceso" required data-validate="number" id="proceso">
+                            <option value="">Seleccione proceso...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Objetivo (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                    <textarea name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo del indicador" required></textarea>
                     </div>
                 </div>
 
@@ -100,7 +99,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="superior" required data-validate="number" id="superior">
-                            <option value="<?= $indicador->dato_superior_fk; ?>"><?= $indicador->dato_nombre; ?></option>
+                            <option value="">Seleccione...</option>
                         </select>
                     </div>
                 </div>
@@ -111,7 +110,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="inferior" required data-validate="number" id="inferior">
-                            <option value="<?= $indicador->dato_inferior_fk; ?>"><?= $indicador->dato_nombre; ?></option>
+                            <option value="">Seleccione...</option>
                         </select>
                     </div>
                 </div>
@@ -143,7 +142,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real" value="<?= $indicador->indicador_real;?>">
+                        <input type="text" name="real" id="real" data-validate="number" class="form-control" placeholder="Indicador real">
                     </div>
                 </div>
 
@@ -152,7 +151,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="minimo" id="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required onkeyup="sumar();" value="<?= $indicador->indicador_minimo;?>">
+                        <input type="text" name="minimo" id="minimo" data-validate="number" class="form-control required" placeholder="Indicador mínimo ideal" required onkeyup="sumar();">
                     </div>
                 </div>
 
@@ -161,16 +160,15 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="maximo" id="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required onkeyup="sumar();" value="<?= $indicador->indicador_maximo;?>">
+                        <input type="text" name="maximo" id="maximo" data-validate="number" class="form-control required" placeholder="Indicador máximo ideal" required onkeyup="sumar();">
                     </div>
                 </div>
-
 
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
                         <button type="submit" class="btn btn-success save">Guardar</button>
-                        <a href="<?= base_url(); ?>indicadores" class="btn btn-default">Cancelar</a>
+                        <a href="<?= base_url(); ?>indicadores_calidad" class="btn btn-default">Cancelar</a>
                     </div>
                 </div>
 
@@ -185,23 +183,23 @@
 
 </div>
 
-
 <script>
 
     $('#area').on('change', function(){
         $.ajax({
             type: 'post',
-            url: _URL + 'ajax/secciones_por_area/' + $(this).val(),
+            url: _URL + 'ajax/riesgo_por_contexto/' + $(this).val(),
             success: function(response){
                 $('#seccion').html(response);
             }
         });
     });
 
+
     $('#seccion').on('change', function(){
         $.ajax({
             type: 'post',
-            url: _URL + 'ajax/procesos_por_seccion/' + $(this).val(),
+            url: _URL + 'ajax/objetivos_por_riesgo/' + $(this).val(),
             success: function(response){
                 $('#proceso').html(response);
             }
@@ -239,7 +237,6 @@
         var resultado2 = resultado / 2;
         $('#real').val(resultado2);
     }
-
 
 
 </script>

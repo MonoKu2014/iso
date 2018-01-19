@@ -2,7 +2,7 @@
 
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Procesos</li>
+        <li>Estructura</li>
         <li><a href="<?= base_url();?>indicadores">Indicadores</a></li>
         <li class="active">Agregar</li>
     </ol>

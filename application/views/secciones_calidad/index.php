@@ -3,16 +3,15 @@
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
         <li>Estructura</li>
-        <li class="active">Indicadores</li>
+        <li class="active">Riesgos y Oportunidades</li>
     </ol>
-
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Indicadores
-                <a href="<?= base_url(); ?>indicadores/agregar" class="btn btn-info pull-right">
-                	<i class="fa fa-plus"></i> Agregar indicador
+                Riesgos y Oportunidades
+                <a href="<?= base_url(); ?>secciones_calidad/agregar" class="btn btn-info pull-right">
+                	<i class="fa fa-plus"></i> Agregar Riesgo y Oportunidad
                 </a>
             </h2>
             <?= $this->session->flashdata('message');?>
@@ -25,25 +24,29 @@
     		<table class="table table-bordered table-striped table-hover table-condensed">
     			<thead>
     				<th>Id</th>
-    				<th>Código Indicador</th>
-                    <th>Nombre</th>
-                    <th>Objetivo</th>
+    				<th>Sección</th>
+                    <th>Responsable</th>
+                    <th>Área</th>
+                    <th>Frecuencia</th>
+                    <th>Genera indicador</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>
-    				<?php foreach ($indicadores as $i): ?>
+    				<?php foreach ($secciones as $s): ?>
     					<tr>
-    						<td><?= $i->indicador_id;?></td>
-    						<td><?= $i->indicador_codigo;?></td>
-                            <td><?= $i->indicador_nombre;?></td>
-                            <td><?= $i->indicador_objetivo;?></td>
+    						<td><?= $s->seccion_id;?></td>
+    						<td><?= $s->seccion;?></td>
+                            <td><?= $s->usuario_nombre;?></td>
+                            <td><?= $s->area;?></td>
+                            <td><?= $s->frecuencia;?></td>
+                            <td><?= ($s->seccion_genera == 1) ? 'Sí' : 'No'; ?></td>
     						<td>
 
-							  <a href="<?= base_url(); ?>indicadores/editar/<?= $i->indicador_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
+							  <a href="<?= base_url(); ?>secciones_calidad/editar/<?= $s->seccion_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
 							  	<i class="fa fa-pencil"></i>
 							  </a>
 
-							  <a class="btn btn-danger btn-small delete hastip" data-id="<?= $i->indicador_id;?>" title="Eliminar registro">
+							  <a class="btn btn-danger btn-small delete hastip" data-id="<?= $s->seccion_id;?>" title="Eliminar registro">
 							  	<i class="fa fa-remove"></i>
 							  </a>
 
@@ -79,7 +82,7 @@ $('.delete').on('click', function(e){
 	  closeOnConfirm: false
 	},
 	function(){
-        window.location = _URL + 'indicadores/eliminar/' + data_id;
+        window.location = _URL + 'secciones_calidad/eliminar/' + data_id;
 	});
 
 });
