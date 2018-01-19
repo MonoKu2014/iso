@@ -3,7 +3,8 @@
 <ol class="breadcrumb">
   <li><a href="<?= base_url();?>panel">Dashboard</a></li>
   <li>Parámetros</li>
-  <li><a href="<?= base_url();?>cargos">Cargos Responsables</a></li>
+  <li>Responsables</li>
+  <li><a href="<?= base_url();?>cargos">Cargos</a></li>
   <li class="active">Editar</li>
 </ol>
 

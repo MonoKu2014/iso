@@ -1,6 +1,16 @@
 <div class="container-fluid">
 
 
+    <ol class="breadcrumb">
+        <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+        <li>Parámetros</li>
+        <li>Documentos</li>
+        <li><a href="<?= base_url();?>tipos_documentos">Tipos</a></li>
+        <li class="active">Agregar</li>
+    </ol>
+
+
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
