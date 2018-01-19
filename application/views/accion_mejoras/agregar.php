@@ -2,7 +2,7 @@
 
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Estructura</li>
+        <li>Registros</li>
         <li><a href="<?= base_url();?>accion_mejoras">Acción de Mejora</a></li>
         <li class="active">Agregar</li>
     </ol>
@@ -192,7 +192,7 @@
                 $('#proceso').html(response);
             }
         });
-    });      
+    });
 
 
 </script>

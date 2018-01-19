@@ -2,7 +2,7 @@
 
         <ol class="breadcrumb">
           <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-          <li>Estructura</li>
+          <li>Registros</li>
           <li><a href="<?= base_url();?>accion_mejoras">Acción de Mejora</a></li>
           <li class="active">Editar</li>
         </ol>
@@ -38,7 +38,7 @@
                         <input type="text" name="asunto" id="asunto" class="form-control required" placeholder="Asunto" required value="<?= $mejora->acc_asunto;?>">
                     </div>
                 </div>
-                
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Incidencia (*)
                 </div>
@@ -47,10 +47,10 @@
                         <select class="form-control required" name="incidencia" required data-validate="number" id="incidencia">
                             <option value="">Seleccione Incidencia...</option>
                             <?php foreach ($incidencias as $i): ?>
-                                <option <?php 
-                                        if($mejora->acc_incidencia_fk == $i->incidencia_id){ 
-                                            echo 'selected'; 
-                                        } ?> 
+                                <option <?php
+                                        if($mejora->acc_incidencia_fk == $i->incidencia_id){
+                                            echo 'selected';
+                                        } ?>
                                         value="<?= $i->incidencia_id; ?>"><?= $i->asunto_incidencia; ?></option>
                             <?php endforeach ?>
                         </select>
@@ -157,7 +157,7 @@
                     <div class="form-group">
                         <input type="text" name="fecha_termino" id="fecha_termino" data-validate="string" class="form-control" placeholder="Fecha" value="<?= $mejora->acc_fecha_termino;?>">
                     </div>
-                </div>              
+                </div>
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">

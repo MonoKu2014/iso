@@ -105,10 +105,10 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#orientada_calidad">
                             <i class="fa fa-caret-right"></i> Orientada a Calidad</a>
                             <ul id="orientada_calidad" class="collapse">
-                                <li><a class="last" href="<?= base_url(); ?>areas">Contexto y Organización</a></li>
-                                <li><a class="last" href="<?= base_url(); ?>secciones">Riesgos y Oportunidades</a></li>
-                                <li><a class="last" href="<?= base_url(); ?>procesos">Objetivos</a></li>
-                                <li><a class="last" href="<?= base_url(); ?>indicadores">Indicadores</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>areas_calidad">Contexto y Organización</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>secciones_calidad">Riesgos y Oportunidades</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>objetivos">Objetivos</a></li>
+                                <!--<li><a class="last" href="<?= base_url(); ?>indicadores_calidad">Indicadores</a></li>-->
                             </ul>
                         </li>
 
@@ -121,7 +121,7 @@
                     <ul id="parametros" class="collapse">
 
                         <li>
-                            <a href="javascript;" data-toggle="collapse" data-target="#responsables_down">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#responsables_down">
                             <i class="fa fa-caret-right"></i> Responsables</a>
                             <ul id="responsables_down" class="collapse">
                                 <li><a class="last" href="<?= base_url(); ?>departamentos">Departamentos</a></li>
@@ -178,7 +178,7 @@
                 </li>
 
 
-                <li <?= active('consultas')?>>
+                <!--<li <?= active('consultas')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#consultas">
                         <i class="fa fa-cog"></i> Consultas <i class="fa fa-fw fa-caret-down"></i>
                     </a>
@@ -186,7 +186,7 @@
                         <li><a href="<?= base_url(); ?>">Reporte 1</a></li>
                         <li><a href="<?= base_url(); ?>">Reporte 2</a></li>
                     </ul>
-                </li>
+                </li>-->
 
 
 

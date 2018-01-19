@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+
 class Indicadores extends CI_Controller {
+
+
     public function __construct()
     {
         parent::__construct();
@@ -24,12 +28,6 @@ class Indicadores extends CI_Controller {
     }
     public function guardar()
     {
-<<<<<<< Updated upstream
-        //var_dump($this->input->post());
-        //var_dump($this->input->post());
-        //exit();
-=======
->>>>>>> Stashed changes
 
         $error = 0;
         $this->form_validation->set_rules('indicador', '', 'required');
@@ -106,22 +104,7 @@ class Indicadores extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-<<<<<<< Updated upstream
-        
-            $this->form_validation->set_rules('indicador', '', 'required');
-            $this->form_validation->set_rules('nombre', '', 'required');
-            $this->form_validation->set_rules('area', '', 'required');
-            $this->form_validation->set_rules('seccion', '', 'required');
-            $this->form_validation->set_rules('proceso', '', 'required');
-            $this->form_validation->set_rules('objetivo', '', 'required');
-            $this->form_validation->set_rules('superior', '', 'required');
-            $this->form_validation->set_rules('inferior', '', 'required');
-            $this->form_validation->set_rules('evaluacion_positiva', '', 'required');
-            $this->form_validation->set_rules('real', '', 'required');
-            $this->form_validation->set_rules('minimo', '', 'required');
-            $this->form_validation->set_rules('maximo', '', 'required');
-=======
->>>>>>> Stashed changes
+
 
             $this->form_validation->set_rules('indicador', '', 'required');
             $this->form_validation->set_rules('nombre', '', 'required');
@@ -138,15 +121,8 @@ class Indicadores extends CI_Controller {
         if($this->form_validation->run() === FALSE){
             $error = 1;
         } else {
-<<<<<<< Updated upstream
-
             /* Valor Mínimo*/
             if($this->input->post('evaluacion_positiva') == 1){
-
-=======
-            /* Valor Mínimo*/
-            if($this->input->post('evaluacion_positiva') == 1){
->>>>>>> Stashed changes
                 $data = array(
                     'indicador_codigo'              => $this->input->post('indicador'),
                     'indicador_nombre'              => $this->input->post('nombre'),
@@ -162,13 +138,9 @@ class Indicadores extends CI_Controller {
                     'indicador_minimo'              => $this->input->post('minimo'),
                     'indicador_maximo'              => $this->input->post('maximo')
                 );
-<<<<<<< Updated upstream
 
             } else {
 
-=======
-            } else {
->>>>>>> Stashed changes
                 $data = array(
                     'indicador_codigo'              => $this->input->post('indicador'),
                     'indicador_nombre'              => $this->input->post('nombre'),
@@ -184,12 +156,9 @@ class Indicadores extends CI_Controller {
                     'indicador_minimo'              => $this->input->post('minimo'),
                     'indicador_maximo'              => $this->input->post('maximo')
                 );
-<<<<<<< Updated upstream
-            } 
 
-=======
             }
->>>>>>> Stashed changes
+
             $update = $this->indicador->editar($data, $this->input->post('indicador_id'));
             if($update === false){
                 $error = 1;

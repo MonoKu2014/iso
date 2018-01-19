@@ -2,7 +2,7 @@
 
         <ol class="breadcrumb">
           <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-          <li>Estructura</li>
+          <li>Registros</li>
           <li><a href="<?= base_url();?>modificacion_documentos">Modificar Documentos</a></li>
           <li class="active">Editar</li>
         </ol>
@@ -38,10 +38,10 @@
                         <select class="form-control required" name="area" required data-validate="number" id="area">
                             <option value="">Seleccione área...</option>
                             <?php foreach ($areas as $a): ?>
-                                <option <?php 
-                                        if($solicitud->area_fk == $a->area_id){ 
-                                            echo 'selected'; 
-                                        } ?> 
+                                <option <?php
+                                        if($solicitud->area_fk == $a->area_id){
+                                            echo 'selected';
+                                        } ?>
                                         value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
                             <?php endforeach ?>
                         </select>
@@ -68,10 +68,10 @@
                         <select class="form-control required" name="documento" required data-validate="number" id="documento">
                             <option value="">Seleccione Documento...</option>
                             <?php foreach ($documentos as $d): ?>
-                                <option <?php 
-                                        if($solicitud->documento_fk == $d->documento_id){ 
-                                            echo 'selected'; 
-                                        } ?> 
+                                <option <?php
+                                        if($solicitud->documento_fk == $d->documento_id){
+                                            echo 'selected';
+                                        } ?>
                                         value="<?= $d->documento_id; ?>"><?= $d->documento; ?></option>
                             <?php endforeach ?>
                         </select>
