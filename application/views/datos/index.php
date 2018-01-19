@@ -4,7 +4,8 @@
 <ol class="breadcrumb">
   <li><a href="<?= base_url();?>panel">Dashboard</a></li>
   <li>Parámetros</li>
-  <li class="active">Datos Indicadores</li>
+  <li>Indicadores</li>
+  <li class="active">Datos</li>
 </ol>
 
 

@@ -1,6 +1,14 @@
 <div class="container-fluid">
 
- 
+
+    <ol class="breadcrumb">
+        <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+        <li>Parámetros</li>
+        <li>Responsables</li>
+        <li class="active">Departamentos</li>
+    </ol>
+
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -51,7 +59,7 @@
 
 
 <script>
-	
+
 
 $('.delete').on('click', function(e){
 	e.preventDefault();

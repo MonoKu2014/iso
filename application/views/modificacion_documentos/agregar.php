@@ -2,7 +2,7 @@
 
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Estructura</li>
+        <li>Registros</li>
         <li><a href="<?= base_url();?>modificacion_documentos">Modificación Documento</a></li>
         <li class="active">Agregar</li>
     </ol>
@@ -173,7 +173,7 @@
                 $('#documento').html(response);
             }
         });
-    });      
+    });
 
 
 </script>

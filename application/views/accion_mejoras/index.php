@@ -2,11 +2,11 @@
 
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Estructura</li>
+        <li>Registros</li>
         <li class="active">Acción Mejoras</li>
     </ol>
 
- 
+
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -26,7 +26,7 @@
     			<thead>
     				<th>Nº Acción</th>
                     <th>Asunto</th>
-                    <th>Justificación</th>                                       
+                    <th>Justificación</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>
@@ -34,7 +34,7 @@
     					<tr>
     						<td><?= $a->accion_id;?></td>
     						<td><?= $a->acc_asunto;?></td>
-                            <td><?= $a->acc_resultado;?></td>                           
+                            <td><?= $a->acc_resultado;?></td>
     						<td>
 
 							  <a href="<?= base_url(); ?>accion_mejoras/editar/<?= $a->accion_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
@@ -59,7 +59,7 @@
 
 
 <script>
-	
+
 
 $('.delete').on('click', function(e){
 	e.preventDefault();
