@@ -1,18 +1,18 @@
 <div class="container-fluid">
 
-    <ol class="breadcrumb">
-        <li><a href="<?= base_url();?>panel">Dashboard</a></li>
-        <li>Registros</li>
-        <li>Orientado a Calidad</li>
-        <li><a href="<?= base_url();?>calidad_mejoras">Acción de Mejora</a></li>
-        <li class="active">Agregar</li>
-    </ol>
+        <ol class="breadcrumb">
+          <li><a href="<?= base_url();?>panel">Dashboard</a></li>
+          <li>Registros</li>
+          <li>Orientado a Calidad</li>
+          <li><a href="<?= base_url();?>calidad_mejoras">Acción de Mejora</a></li>
+          <li class="active">Editar</li>
+        </ol>
 
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Agregar Acción de Mejora
+                Editar Acción de Mejora
                 <a href="<?= base_url(); ?>calidad_mejoras" class="btn btn-default pull-right">
                 	<i class="fa fa-chevron-left"></i> Volver
                 </a>
@@ -23,19 +23,20 @@
 
     <div class="row">
     	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>calidad_mejoras/guardar" class="form">
+        <form method="post" action="<?= base_url(); ?>calidad_mejoras/guardar_edicion" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
+                <input type="hidden" name="accion_id" value="<?= $mejora->accion_id; ?>">
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Asunto (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="asunto" id="asunto" class="form-control required" placeholder="Asunto" required>
+                        <input type="text" name="asunto" id="asunto" class="form-control required" placeholder="Asunto" required value="<?= $mejora->acc_asunto;?>">
                     </div>
                 </div>
 
@@ -46,9 +47,13 @@
                     <div class="form-group">
                         <select class="form-control required" name="incidencia" required data-validate="number" id="incidencia">
                             <option value="">Seleccione Incidencia...</option>
-                        <?php foreach ($incidencias as $i): ?>
-                            <option value="<?= $i->incidencia_id; ?>"><?= $i->asunto_incidencia; ?></option>
-                        <?php endforeach ?>
+                            <?php foreach ($incidencias as $i): ?>
+                                <option <?php
+                                        if($mejora->acc_incidencia_fk == $i->incidencia_id){
+                                            echo 'selected';
+                                        } ?>
+                                        value="<?= $i->incidencia_id; ?>"><?= $i->asunto_incidencia; ?></option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                 </div>
@@ -60,7 +65,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="seccion" required data-validate="number" id="seccion">
-                            <option value="">Seleccione sección...</option>
+                            <option value="<?= $mejora->acc_seccion_fk; ?>"><?= $mejora->seccion; ?></option>
                         </select>
                     </div>
                 </div>
@@ -71,7 +76,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="proceso" required data-validate="number" id="proceso">
-                            <option value="">Seleccione Proceso...</option>
+                            <option value="<?= $mejora->acc_proceso_fk; ?>"><?= $mejora->proceso_nombre; ?></option>
                         </select>
                     </div>
                 </div>
@@ -81,7 +86,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_creacion" id="fecha_creacion" data-validate="string" class="form-control" placeholder="Fecha Creación">
+                        <input type="text" name="fecha_creacion" id="fecha_creacion" data-validate="string" class="form-control" placeholder="Fecha Creación" value="<?= $mejora->acc_fecha_creacion;?>">
                     </div>
                 </div>
 
@@ -92,12 +97,13 @@
                     <div class="form-group">
                         <select class="form-control required" name="accion" required data-validate="number" id="accion">
                             <option value="">Seleccione Acción</option>
-                        <?php foreach ($tipo_accion as $a): ?>
-                            <option value="<?= $a->accion_id; ?>"><?= $a->accion; ?></option>
-                        <?php endforeach ?>
+                            <?php foreach ($tipo_accion as $a): ?>
+                                <option <?php if($a->accion_id == $mejora->acc_accion_fk){ echo 'selected'; } ?> value="<?= $a->accion_id; ?>"><?= $a->accion; ?></option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                 </div>
+
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Responsable (*)
@@ -105,10 +111,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="responsable" required data-validate="number" id="responsable">
-                            <option value="">Seleccione Responsable</option>
-                        <?php foreach ($responsables as $r): ?>
-                            <option value="<?= $r->responsable_id; ?>"><?= $r->responsable; ?></option>
-                        <?php endforeach ?>
+                            <option value="">Seleccione Responsable...</option>
+                            <?php foreach ($responsables as $r): ?>
+                                <option <?php if($r->responsable_id == $mejora->acc_responsable_fk){ echo 'selected'; } ?> value="<?= $r->responsable_id; ?>"><?= $r->responsable; ?></option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                 </div>
@@ -118,7 +124,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="resultado" id="resultado" class="form-control required" placeholder="Resultado" required>
+                        <input type="text" name="resultado" id="resultado" class="form-control required" placeholder="Resultado" required value="<?= $mejora->acc_resultado;?>">
                     </div>
                 </div>
 
@@ -127,11 +133,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <select class="form-control required" name="estado" required data-validate="number">
-                            <option value="">Selecccione Estado</option>
-                            <?php foreach ($estados as $e): ?>
-                                <option value="<?= $e->estado_id; ?>"><?= $e->estado; ?></option>
-                            <?php endforeach ?>
+                        <select class="form-control required" name="estado" required data-validate="number" id="estado">
+                            <option value="">Seleccione Estado</option>
+                        <?php foreach ($estados as $e): ?>
+                            <option <?php if($e->estado_id == $mejora->acc_estado_fk){ echo 'selected'; } ?> value="<?= $e->estado_id; ?>"><?= $e->estado; ?></option>
+                        <?php endforeach ?>
                         </select>
                     </div>
                 </div>
@@ -141,7 +147,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_inicio" id="fecha_inicio" data-validate="string" class="form-control" placeholder="Fecha">
+                        <input type="text" name="fecha_inicio" id="fecha_inicio" data-validate="string" class="form-control" placeholder="Fecha" value="<?= $mejora->acc_fecha_inicio;?>">
                     </div>
                 </div>
 
@@ -150,7 +156,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_termino" id="fecha_termino" data-validate="string" class="form-control" placeholder="Fecha">
+                        <input type="text" name="fecha_termino" id="fecha_termino" data-validate="string" class="form-control" placeholder="Fecha" value="<?= $mejora->acc_fecha_termino;?>">
                     </div>
                 </div>
 
@@ -171,6 +177,7 @@
     </div>
 
 </div>
+
 
 <script>
 

@@ -5,14 +5,14 @@
         <li>Registros</li>
         <li>Orientado a Calidad</li>
         <li><a href="<?= base_url();?>calidad_indicadores">Registro de Indicadores</a></li>
-        <li class="active">Agregar</li>
+        <li class="active">Editar</li>
     </ol>
 
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Agregar Registro de Indicador
+                Editar Registro de Indicador
                 <a href="<?= base_url(); ?>calidad_indicadores" class="btn btn-default pull-right">
                     <i class="fa fa-chevron-left"></i> Volver
                 </a>
@@ -23,12 +23,14 @@
 
     <div class="row">
         <div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>calidad_indicadores/guardar" class="form">
+        <form method="post" action="<?= base_url(); ?>calidad_indicadores/guardar_edicion" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
+                <?= $this->session->flashdata('message');?>
+                <input type="hidden" name="calidad_indicador_id" value="<?= $indicador->calidad_indicador_id; ?>">
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Área (*)
@@ -38,7 +40,7 @@
                         <select class="form-control required" name="area" required data-validate="number" id="area">
                             <option value="">Seleccione área...</option>
                         <?php foreach ($areas as $a): ?>
-                            <option value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
+                            <option <?php if($a->area_id == $indicador->area_fk){ echo 'selected'; } ?> value="<?= $a->area_id; ?>"><?= $a->area; ?></option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -51,7 +53,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="seccion" required data-validate="number" id="seccion">
-                            <option value="">Seleccione sección...</option>
+                            <option value="<?= $indicador->seccion_fk; ?>"><?= $indicador->seccion; ?></option>
                         </select>
                     </div>
                 </div>
@@ -62,7 +64,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="proceso" required data-validate="number" id="proceso">
-                            <option value="">Seleccione proceso...</option>
+                            <option value="<?= $indicador->proceso_fk; ?>"><?= $indicador->proceso_nombre; ?></option>
                         </select>
                     </div>
                 </div>
@@ -73,7 +75,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
                         <select class="form-control required" name="codigo" required data-validate="number" id="codigo">
-                            <option value="">Seleccione código...</option>
+                            <option value="<?= $indicador->indicador_id; ?>"><?= $indicador->indicador_codigo; ?></option>
                         </select>
                     </div>
                 </div>
@@ -83,7 +85,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="number" name="valor_dato_superior" id="valor_dato_superior" data-validate="number" min="0" class="form-control" placeholder="Valor dato superior" onblur="sumar();">
+                        <input type="number" name="valor_dato_superior" id="valor_dato_superior" data-validate="number" min="0" class="form-control" placeholder="Valor dato superior" onblur="sumar();" value="<?= $indicador->valor_dato_superior;?>">
                     </div>
                 </div>
 
@@ -92,7 +94,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="number" name="valor_dato_inferior" id="valor_dato_inferior" data-validate="number" min="0" class="form-control" placeholder="Valor dato inferior" onblur="sumar();">
+                        <input type="number" name="valor_dato_inferior" id="valor_dato_inferior" data-validate="number" min="0" class="form-control" placeholder="Valor dato inferior" onblur="sumar();" value="<?= $indicador->valor_dato_inferior;?>">
                     </div>
                 </div>
 
@@ -102,7 +104,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="number" readonly name="indicador_final" id="indicador_final" data-validate="number" class="form-control">
+                        <input type="number" readonly name="indicador_final" id="indicador_final" data-validate="number" class="form-control" value="<?= $indicador->valor_indicador;?>">
                     </div>
                 </div>
 
@@ -112,7 +114,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="ntext" readonly name="fecha" id="fecha" data-validate="number" class="form-control" value="<?= date('d-m-Y'); ?>">
+                        <input type="ntext" readonly name="fecha" id="fecha" data-validate="number" class="form-control" value="<?= $indicador->fecha_indicador; ?>">
                     </div>
                 </div>
 
@@ -122,7 +124,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <textarea name="observaciones" data-validate="string" class="form-control required" placeholder="Observaciones" required></textarea>
+                        <textarea name="observaciones" data-validate="string" class="form-control required" placeholder="Observaciones" required><?= $indicador->indicador_observaciones; ?></textarea>
                     </div>
                 </div>
 

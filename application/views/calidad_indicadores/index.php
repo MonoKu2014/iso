@@ -37,7 +37,7 @@
                 <tbody>
                     <?php foreach ($indicadores as $i): ?>
                         <tr>
-                            <td><?= $i->indicador_id;?></td>
+                            <td><?= $i->calidad_indicador_id;?></td>
                             <td><?= $i->indicador_codigo;?></td>
                             <td><?= $i->valor_indicador;?></td>
                             <td><?= $i->area;?></td>
@@ -45,11 +45,11 @@
                             <td><?= $i->proceso_nombre;?></td>
                             <td><?= $i->indicador_observaciones;?></td>
                             <td>
-                              <a href="<?= base_url(); ?>calidad_indicadores/editar/<?= $i->indicador_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
+                              <a href="<?= base_url(); ?>calidad_indicadores/editar/<?= $i->calidad_indicador_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
                                 <i class="fa fa-pencil"></i>
                               </a>
 
-                              <a class="btn btn-danger btn-small delete hastip" data-id="<?= $i->indicador_id;?>" title="Eliminar registro">
+                              <a class="btn btn-danger btn-small delete hastip" data-id="<?= $i->calidad_indicador_id;?>" title="Eliminar registro">
                                 <i class="fa fa-remove"></i>
                               </a>
                             </td>

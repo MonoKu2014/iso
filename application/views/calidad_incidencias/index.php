@@ -35,7 +35,26 @@
                     <th>Acciones</th>
                 </thead>
                 <tbody>
+                    <?php foreach ($incidencias as $i): ?>
+                        <tr>
+                            <td><?= $i->incidencia_id;?></td>
+                            <td><?= $i->origen_incidencia;?></td>
+                            <td><?= $i->fecha_creacion_incidencia;?></td>
+                            <td><?= responsable($i->responsable_deteccion_fk);?></td>
+                            <td><?= $i->asunto_incidencia;?></td>
+                            <td><?= responsable($i->responsable_solucion_fk);?></td>
+                            <td><?= estado_incidencia($i->estado_incidencia_fk);?></td>
+                            <td>
+                              <a href="<?= base_url(); ?>calidad_incidencias/editar/<?= $i->incidencia_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
+                                <i class="fa fa-pencil"></i>
+                              </a>
 
+                              <a class="btn btn-danger btn-small delete hastip" data-id="<?= $i->incidencia_id;?>" title="Eliminar registro">
+                                <i class="fa fa-remove"></i>
+                              </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

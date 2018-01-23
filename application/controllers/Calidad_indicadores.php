@@ -9,13 +9,13 @@ class Calidad_indicadores extends CI_Controller {
         parent::__construct();
         //validate session es para validar que la sesión este iniciada
         validate_session();
-        $this->load->model('calidad_indicadores_Model', 'registro_indicador');
+        $this->load->model('calidad_indicadores_Model', 'calidad_indicador');
     }
 
 
 	public function index()
 	{
-        $data['indicadores'] = $this->registro_indicador->obtener_calidad_indicadores();
+        $data['indicadores'] = $this->calidad_indicador->obtener_calidad_indicadores();
         $this->load->view('layout/header');
 		$this->load->view('calidad_indicadores/index', $data);
         $this->load->view('layout/footer');
@@ -25,7 +25,7 @@ class Calidad_indicadores extends CI_Controller {
 
     public function agregar()
     {
-        $data['areas'] = $this->registro_indicador->areas();
+        $data['areas'] = $this->calidad_indicador->areas();
         $this->load->view('layout/header');
         $this->load->view('calidad_indicadores/agregar', $data);
         $this->load->view('layout/footer');
@@ -62,7 +62,7 @@ class Calidad_indicadores extends CI_Controller {
                 'fecha_indicador'               => $this->input->post('fecha')
             );
 
-            $insert = $this->registro_indicador->insertar($data);
+            $insert = $this->calidad_indicador->insertar($data);
             if($insert === false){
                 $error = 1;
             }
@@ -82,7 +82,7 @@ class Calidad_indicadores extends CI_Controller {
 
     public function eliminar($id)
     {
-        $delete = $this->registro_indicador->eliminar($id);
+        $delete = $this->calidad_indicador->eliminar($id);
         if($delete === false){
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'calidad_indicadores');
@@ -94,9 +94,9 @@ class Calidad_indicadores extends CI_Controller {
 
 
     public function editar($id)
-    {
-        $data['areas'] = $this->registro_indicador->areas();
-        $data['indicador'] = $this->registro_indicador->obtener_registro_indicador($id);
+    {   
+        $data['indicador'] = $this->calidad_indicador->obtener_calidad_indicador($id);
+        $data['areas'] = $this->calidad_indicador->areas();        
         $this->load->view('layout/header');
         $this->load->view('calidad_indicadores/editar', $data);
         $this->load->view('layout/footer');
@@ -134,7 +134,7 @@ class Calidad_indicadores extends CI_Controller {
                 'fecha_indicador'               => $this->input->post('fecha')
             );
 
-            $insert = $this->registro_indicador->editar($data, $this->input->post('indicador_id'));
+            $insert = $this->calidad_indicador->editar($data, $this->input->post('calidad_indicador_id'));
             if($insert === false){
                 $error = 1;
             }
@@ -142,7 +142,7 @@ class Calidad_indicadores extends CI_Controller {
 
         if($error == 1){
             $this->session->set_flashdata('message', alert_danger('No se ha podido editar el registro'));
-            redirect(base_url().'calidad_indicadores/editar/'.$this->input->post('indicador_id'));
+            redirect(base_url().'calidad_indicadores/editar/'.$this->input->post('calidad_indicador_id'));
         } else {
             $this->session->set_flashdata('message', alert_success('Registro editado con éxito'));
             redirect(base_url().'calidad_indicadores');
