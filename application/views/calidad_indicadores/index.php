@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
         <li>Registros</li>
-        <li>Orientado a Procesos</li>
+        <li>Orientado a Calidad</li>
         <li class="active">Registros de Indicadores</li>
     </ol>
 
@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Indicadores
-                <a href="<?= base_url(); ?>registros_indicadores/agregar" class="btn btn-info pull-right">
+                <a href="<?= base_url(); ?>calidad_indicadores/agregar" class="btn btn-info pull-right">
                     <i class="fa fa-plus"></i> Agregar registro de indicador
                 </a>
             </h2>
@@ -35,26 +35,7 @@
                     <th>Acciones</th>
                 </thead>
                 <tbody>
-                    <?php foreach ($indicadores as $i): ?>
-                        <tr>
-                            <td><?= $i->indicador_id;?></td>
-                            <td><?= $i->indicador_codigo;?></td>
-                            <td><?= $i->valor_indicador;?></td>
-                            <td><?= $i->area;?></td>
-                            <td><?= $i->seccion_nombre;?></td>
-                            <td><?= $i->proceso_nombre;?></td>
-                            <td><?= $i->indicador_observaciones;?></td>
-                            <td>
-                              <a href="<?= base_url(); ?>registros_indicadores/editar/<?= $i->indicador_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
-                                <i class="fa fa-pencil"></i>
-                              </a>
 
-                              <a class="btn btn-danger btn-small delete hastip" data-id="<?= $i->indicador_id;?>" title="Eliminar registro">
-                                <i class="fa fa-remove"></i>
-                              </a>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
@@ -83,7 +64,7 @@ $('.delete').on('click', function(e){
       closeOnConfirm: false
     },
     function(){
-        window.location = _URL + 'registros_indicadores/eliminar/' + data_id;
+        window.location = _URL + 'calidad_indicadores/eliminar/' + data_id;
     });
 
 });

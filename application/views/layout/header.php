@@ -170,12 +170,31 @@
                         <i class="fa fa-file-o"></i> Registros <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <ul id="registros" class="collapse">
-                        <li><a href="<?= base_url();?>registros_indicadores">Registro de Indicadores</a></li>
-                        <li><a href="<?= base_url();?>registros_incidencias">Registro de Incidencias</a></li>
-                        <li><a href="<?= base_url(); ?>accion_mejoras">Acciones de Mejoras</a></li>
-                        <li><a href="<?= base_url(); ?>modificacion_documentos">Modificación Documentos</a></li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#registros_procesos">
+                            <i class="fa fa-caret-right"></i> Orientada a Procesos</a>
+                            <ul id="registros_procesos" class="collapse">
+                                <li><a class="last" href="<?= base_url();?>registros_indicadores">Registro de Indicadores</a></li>
+                                <li><a class="last" href="<?= base_url();?>registros_incidencias">Registro de Incidencias</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>accion_mejoras">Acciones de Mejoras</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>modificacion_documentos">Modificación Documentos</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#registros_calidad">
+                            <i class="fa fa-caret-right"></i> Orientada a Calidad</a>
+                            <ul id="registros_calidad" class="collapse">
+                                <li><a class="last" href="<?= base_url();?>calidad_indicadores">Registro de Indicadores</a></li>
+                                <li><a class="last" href="<?= base_url();?>calidad_incidencias">Registro de Incidencias</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>calidad_mejoras">Acciones de Mejoras</a></li></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
+
 
 
                 <!--<li <?= active('consultas')?>>
@@ -187,9 +206,6 @@
                         <li><a href="<?= base_url(); ?>">Reporte 2</a></li>
                     </ul>
                 </li>-->
-
-
-
 
 
                 <li <?= active('administracion')?>>

@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
         <li>Registros</li>
-        <li>Orientado a Procesos</li>
+        <li>Orientado a Calidad</li>
         <li class="active">Registros de Incidencias</li>
     </ol>
 
@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Incidencias
-                <a href="<?= base_url(); ?>registros_incidencias/agregar" class="btn btn-info pull-right">
+                <a href="<?= base_url(); ?>calidad_incidencias/agregar" class="btn btn-info pull-right">
                     <i class="fa fa-plus"></i> Agregar registro de incidencia
                 </a>
             </h2>
@@ -35,26 +35,7 @@
                     <th>Acciones</th>
                 </thead>
                 <tbody>
-                    <?php foreach ($incidencias as $i): ?>
-                        <tr>
-                            <td><?= $i->incidencia_id;?></td>
-                            <td><?= $i->origen_incidencia;?></td>
-                            <td><?= $i->fecha_creacion_incidencia;?></td>
-                            <td><?= responsable($i->responsable_deteccion_fk);?></td>
-                            <td><?= $i->asunto_incidencia;?></td>
-                            <td><?= responsable($i->responsable_solucion_fk);?></td>
-                            <td><?= estado_incidencia($i->estado_incidencia_fk);?></td>
-                            <td>
-                              <a href="<?= base_url(); ?>registros_incidencias/editar/<?= $i->incidencia_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
-                                <i class="fa fa-pencil"></i>
-                              </a>
 
-                              <a class="btn btn-danger btn-small delete hastip" data-id="<?= $i->incidencia_id;?>" title="Eliminar registro">
-                                <i class="fa fa-remove"></i>
-                              </a>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
@@ -83,7 +64,7 @@ $('.delete').on('click', function(e){
       closeOnConfirm: false
     },
     function(){
-        window.location = _URL + 'registros_incidencias/eliminar/' + data_id;
+        window.location = _URL + 'calidad_incidencias/eliminar/' + data_id;
     });
 
 });

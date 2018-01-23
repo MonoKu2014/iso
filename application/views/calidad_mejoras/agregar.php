@@ -3,8 +3,7 @@
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
         <li>Registros</li>
-        <li>Orientado a Procesos</li>
-        <li><a href="<?= base_url();?>accion_mejoras">Acción de Mejora</a></li>
+        <li><a href="<?= base_url();?>calidad_mejoras">Acción de Mejora</a></li>
         <li class="active">Agregar</li>
     </ol>
 
@@ -13,7 +12,7 @@
         <div class="col-lg-12">
             <h2 class="page-header">
                 Agregar Acción de Mejora
-                <a href="<?= base_url(); ?>accion_mejoras" class="btn btn-default pull-right">
+                <a href="<?= base_url(); ?>calidad_mejoras" class="btn btn-default pull-right">
                 	<i class="fa fa-chevron-left"></i> Volver
                 </a>
             </h2>
@@ -23,7 +22,7 @@
 
     <div class="row">
     	<div class="col-lg-12">
-        <form method="post" action="<?= base_url(); ?>accion_mejoras/guardar" class="form">
+        <form method="post" action="<?= base_url(); ?>calidad_mejoras/guardar" class="form">
 
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
@@ -157,7 +156,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">
                         <button type="submit" class="btn btn-success save">Guardar</button>
-                        <a href="<?= base_url(); ?>accion_mejoras" class="btn btn-default">Cancelar</a>
+                        <a href="<?= base_url(); ?>calidad_mejoras" class="btn btn-default">Cancelar</a>
                     </div>
                 </div>
 

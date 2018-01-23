@@ -3,6 +3,7 @@
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
         <li>Registros</li>
+        <li>Orientado a Procesos</li>
         <li><a href="<?= base_url();?>registros_indicadores">Registro de Indicadores</a></li>
         <li class="active">Editar</li>
     </ol>
