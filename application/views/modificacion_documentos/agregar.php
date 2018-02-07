@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_modificacion" id="fecha_modificacion" data-validate="string" class="form-control" placeholder="Fecha">
+                        <input type="text" name="fecha_modificacion" id="fecha_modificacion" data-validate="string" class="form-control date required" placeholder="Fecha">
                     </div>
                 </div>
 

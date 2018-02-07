@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_creacion" id="fecha_creacion" data-validate="string" class="form-control" placeholder="Fecha Creación" value="<?= $mejora->acc_fecha_creacion;?>">
+                        <input type="text" name="fecha_creacion" id="fecha_creacion" data-validate="string" class="form-control date" placeholder="Fecha Creación" value="<?= $mejora->acc_fecha_creacion;?>">
                     </div>
                 </div>
 
@@ -147,7 +147,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_inicio" id="fecha_inicio" data-validate="string" class="form-control" placeholder="Fecha" value="<?= $mejora->acc_fecha_inicio;?>">
+                        <input type="text" name="fecha_inicio" id="fecha_inicio" data-validate="string" class="form-control date" placeholder="Fecha" value="<?= $mejora->acc_fecha_inicio;?>">
                     </div>
                 </div>
 
@@ -156,7 +156,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_termino" id="fecha_termino" data-validate="string" class="form-control" placeholder="Fecha" value="<?= $mejora->acc_fecha_termino;?>">
+                        <input type="text" name="fecha_termino" id="fecha_termino" data-validate="string" class="form-control date" placeholder="Fecha" value="<?= $mejora->acc_fecha_termino;?>">
                     </div>
                 </div>
 

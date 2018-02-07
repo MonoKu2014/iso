@@ -4,16 +4,16 @@
     <ol class="breadcrumb">
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
         <li>Estructura</li>
-        <li class="active">Objetivos</li>
+        <li class="active">Indicadores</li>
     </ol>
 
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Objetivos
+                Indicadores
                 <a href="<?= base_url(); ?>objetivos/agregar" class="btn btn-info pull-right">
-                	<i class="fa fa-plus"></i> Agregar objetivo
+                	<i class="fa fa-plus"></i> Agregar indicador
                 </a>
             </h2>
             <?= $this->session->flashdata('message');?>
@@ -28,7 +28,7 @@
     				<th>Id</th>
     				<th>Código</th>
                     <th>Nombre</th>
-                    <th>Objetivo</th>
+                    <th>Indicador</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>

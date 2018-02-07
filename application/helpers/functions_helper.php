@@ -332,3 +332,10 @@ function estado_incidencia($id)
 
     return '';
 }
+
+
+function datos()
+{
+    $ci =& get_instance();
+    return $ci->db->get('datos')->result();
+}

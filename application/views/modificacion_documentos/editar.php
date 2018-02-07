@@ -116,7 +116,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" id="fecha_modificacion" name="fecha_modificacion" data-validate="string" class="form-control" placeholder="Fecha" value="<?= $solicitud->fecha_modificacion;?>">
+                        <input type="text" id="fecha_modificacion" name="fecha_modificacion" data-validate="string" class="form-control date required" placeholder="Fecha" value="<?= $solicitud->fecha_modificacion;?>">
                     </div>
                 </div>
 

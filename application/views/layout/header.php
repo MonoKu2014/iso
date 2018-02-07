@@ -107,7 +107,7 @@
                             <ul id="orientada_calidad" class="collapse">
                                 <li><a class="last" href="<?= base_url(); ?>areas_calidad">Contexto y Organización</a></li>
                                 <li><a class="last" href="<?= base_url(); ?>secciones_calidad">Riesgos y Oportunidades</a></li>
-                                <li><a class="last" href="<?= base_url(); ?>objetivos">Objetivos</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>objetivos">Indicadores</a></li>
                                 <!--<li><a class="last" href="<?= base_url(); ?>indicadores_calidad">Indicadores</a></li>-->
                             </ul>
                         </li>
@@ -187,8 +187,8 @@
                             <i class="fa fa-caret-right"></i> Orientada a Calidad</a>
                             <ul id="registros_calidad" class="collapse">
                                 <li><a class="last" href="<?= base_url();?>calidad_indicadores">Registro de Indicadores</a></li>
-                                <li><a class="last" href="<?= base_url();?>calidad_incidencias">Registro de Incidencias</a></li>
-                                <li><a class="last" href="<?= base_url(); ?>calidad_mejoras">Acciones de Mejoras</a></li></li>
+                                <!--<li><a class="last" href="<?= base_url();?>calidad_incidencias">Registro de Incidencias</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>calidad_mejoras">Acciones de Mejoras</a></li></li>-->
                             </ul>
                         </li>
 

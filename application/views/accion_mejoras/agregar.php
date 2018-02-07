@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_creacion" id="fecha_creacion" data-validate="string" class="form-control" placeholder="Fecha Creación">
+                        <input type="text" name="fecha_creacion" id="fecha_creacion" data-validate="string" class="form-control date" placeholder="Fecha Creación">
                     </div>
                 </div>
 
@@ -141,7 +141,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_inicio" id="fecha_inicio" data-validate="string" class="form-control" placeholder="Fecha">
+                        <input type="text" name="fecha_inicio" id="fecha_inicio" data-validate="string" class="form-control date" placeholder="Fecha">
                     </div>
                 </div>
 
@@ -150,7 +150,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="fecha_termino" id="fecha_termino" data-validate="string" class="form-control" placeholder="Fecha">
+                        <input type="text" name="fecha_termino" id="fecha_termino" data-validate="string" class="form-control date" placeholder="Fecha">
                     </div>
                 </div>
 
