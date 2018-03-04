@@ -45,7 +45,6 @@ class Secciones_calidad extends CI_Controller {
         $this->form_validation->set_rules('frecuencia', '', 'required');
         $this->form_validation->set_rules('nombre', '', 'required');
         $this->form_validation->set_rules('objetivo', '', 'required');
-        $this->form_validation->set_rules('indicadores', '', 'required');
 
 
         if($this->form_validation->run() === FALSE){
@@ -64,8 +63,9 @@ class Secciones_calidad extends CI_Controller {
                 'frecuencia_fk'     => $this->input->post('frecuencia'),
                 'seccion_nombre'    => $this->input->post('nombre'),
                 'seccion_objetivo'  => $this->input->post('objetivo'),
-                'seccion_genera'    => $this->input->post('indicadores'),
-                'sin_proceso'       => $sin_proceso
+                'seccion_genera'    => 0,
+                'sin_proceso'       => $sin_proceso,
+                'seccion_tipo'      => $this->input->post('tipo')
             );
 
             $insert = $this->secciones->insertar($data);
@@ -108,7 +108,6 @@ class Secciones_calidad extends CI_Controller {
         $this->form_validation->set_rules('frecuencia', '', 'required');
         $this->form_validation->set_rules('nombre', '', 'required');
         $this->form_validation->set_rules('objetivo', '', 'required');
-        $this->form_validation->set_rules('indicadores', '', 'required');
 
 
         if($this->form_validation->run() === FALSE){
@@ -127,8 +126,9 @@ class Secciones_calidad extends CI_Controller {
                 'frecuencia_fk'     => $this->input->post('frecuencia'),
                 'seccion_nombre'    => $this->input->post('nombre'),
                 'seccion_objetivo'  => $this->input->post('objetivo'),
-                'seccion_genera'    => $this->input->post('indicadores'),
-                'sin_proceso'       => $sin_proceso
+                'seccion_genera'    => 0,
+                'sin_proceso'       => $sin_proceso,
+                'seccion_tipo'      => $this->input->post('tipo')
             );
 
             $update = $this->secciones->editar($data, $this->input->post('seccion_id'));

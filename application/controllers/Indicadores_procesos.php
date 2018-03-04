@@ -23,7 +23,7 @@ class Indicadores_procesos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $data['areas'] = $this->indicador_proceso->areas();
         $this->load->view('layout/header');
         $this->load->view('indicadores_procesos/agregar', $data);
@@ -33,18 +33,15 @@ class Indicadores_procesos extends CI_Controller {
 
     public function guardar()
     {
-        //var_dump($this->input->post());
-        //var_dump($this->input->post());
-        //exit();
 
         $error = 0;
 
         $this->form_validation->set_rules('area', '', 'required');
         $this->form_validation->set_rules('seccion', '', 'required');
         $this->form_validation->set_rules('proceso', '', 'required');
-        $this->form_validation->set_rules('indicador', '', 'required');        
+        $this->form_validation->set_rules('indicador', '', 'required');
         $this->form_validation->set_rules('dato_superior', '', 'required');
-        $this->form_validation->set_rules('dato_inferior', '', 'required');        
+        $this->form_validation->set_rules('dato_inferior', '', 'required');
         $this->form_validation->set_rules('total_indidicador', '', 'required');
         $this->form_validation->set_rules('fecha', '', '');
         $this->form_validation->set_rules('observaciones', '', 'required');
@@ -53,7 +50,7 @@ class Indicadores_procesos extends CI_Controller {
 
             $error = 1;
 
-        } else {            
+        } else {
 
             $data = array(
                 'area_fk'                       => $this->input->post('area'),
@@ -65,10 +62,10 @@ class Indicadores_procesos extends CI_Controller {
                 'indicador_proceso_indicador'   => $this->input->post('total_indidicador'),
                 'indicador_proceso_fecha'       => $this->input->post('fecha'),
                 'indicador_proceso_observacion' => $this->input->post('observaciones')
-            );            
+            );
 
             $insert = $this->indicador_proceso->insertar($data);
-            
+
             if($insert === false){
                 $error = 1;
             }
@@ -98,13 +95,13 @@ class Indicadores_procesos extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-        
+
             $this->form_validation->set_rules('area', '', 'required');
             $this->form_validation->set_rules('seccion', '', 'required');
             $this->form_validation->set_rules('proceso', '', 'required');
-            $this->form_validation->set_rules('indicador', '', 'required');        
+            $this->form_validation->set_rules('indicador', '', 'required');
             $this->form_validation->set_rules('dato_superior', '', 'required');
-            $this->form_validation->set_rules('dato_inferior', '', 'required');        
+            $this->form_validation->set_rules('dato_inferior', '', 'required');
             $this->form_validation->set_rules('total_indidicador', '', 'required');
             $this->form_validation->set_rules('fecha', '', '');
             $this->form_validation->set_rules('observaciones', '', 'required');
@@ -128,7 +125,7 @@ class Indicadores_procesos extends CI_Controller {
             );
 
             $update = $this->indicador_proceso->editar($data, $this->input->post('indicador_proceso_id'));
-            
+
             if($update === false){
                 $error = 1;
             }

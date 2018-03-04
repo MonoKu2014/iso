@@ -42,7 +42,8 @@ class Areas_calidad extends CI_Controller {
         } else {
 
             $data = array(
-                'area'    => $this->input->post('area')
+                'area'    => $this->input->post('area'),
+                'area_tipo'    => $this->input->post('tipo')
             );
 
             $insert = $this->area->insertar($data);
@@ -83,7 +84,8 @@ class Areas_calidad extends CI_Controller {
         } else {
 
             $data = array(
-                'area'    => $this->input->post('area')
+                'area'    => $this->input->post('area'),
+                'area_tipo'    => $this->input->post('tipo')
             );
 
             $update = $this->area->editar($data, $this->input->post('area_id'));

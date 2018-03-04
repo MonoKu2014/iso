@@ -29,6 +29,18 @@
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Tipo (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="radio" name="tipo" value="1" checked> Contexto<br>
+                        <input type="radio" name="tipo" value="2"> Organización<br>
+                    </div>
+                </div>
+
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Contexto y Organización (*)
                 </div>

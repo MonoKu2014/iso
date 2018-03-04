@@ -19,7 +19,7 @@
         <div class="col-lg-12">
             <?= $this->session->flashdata('message');?>
             <h2>
-                Usted tiene pendientes:
+                DashBoard ISO Quality
             </h2>
         </div>
     </div>
@@ -27,6 +27,7 @@
 
     <div class="row">
 
+    <br>
 
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
@@ -36,12 +37,12 @@
                             <i class="fa fa-info fa-4x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">3</div>
+                            <div class="huge"><?= cantidad_documentos();?></div>
                             <div>Modificaciones <br>de Documentos</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="<?= base_url();?>modificacion_documentos">
                     <div class="panel-footer">
                         <span class="pull-left">Ver detalles</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -60,12 +61,12 @@
                             <i class="fa fa-info fa-4x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">7</div>
-                            <div>Registros <br>de Indicadores</div>
+                            <div class="huge"><?= cantidad_usuarios();?></div>
+                            <div>Usuarios <br>registrados</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="<?= base_url();?>usuarios">
                     <div class="panel-footer">
                         <span class="pull-left">Ver detalles</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -84,12 +85,12 @@
                             <i class="fa fa-info fa-4x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">4</div>
-                            <div>Cambios <br>de Documentos</div>
+                            <div class="huge"><?= cantidad_mejoras();?></div>
+                            <div>Acciones <br>de Mejora</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="<?= base_url();?>accion_mejoras">
                     <div class="panel-footer">
                         <span class="pull-left">Ver detalles</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -100,28 +101,28 @@
         </div>
 
 
-       <!-- <div class="col-lg-3 col-md-6">
+       <div class="col-lg-3 col-md-6">
             <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-warning fa-5x"></i>
+                            <i class="fa fa-info fa-4x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">5</div>
-                            <div>Indicadores cancelados</div>
+                            <div class="huge"><?= cantidad_incidencias();?></div>
+                            <div>Registros <br>de Incidencias</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="<?= base_url();?>registros_incidencias">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left">Ver detalles</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
-        </div> -->
+        </div>
     </div>
 
 

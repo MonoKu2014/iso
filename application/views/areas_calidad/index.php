@@ -30,6 +30,7 @@
     			<thead>
     				<th>Id</th>
     				<th>Nombre</th>
+                    <th>Tipo</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>
@@ -37,6 +38,9 @@
     					<tr>
     						<td><?= $a->area_id;?></td>
     						<td><?= $a->area;?></td>
+                            <td>
+                                <?= ($a->area_tipo == 1) ? 'Contexto' : 'Organización'; ?>
+                            </td>
     						<td>
 
 							  <a href="<?= base_url(); ?>areas_calidad/editar/<?= $a->area_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">

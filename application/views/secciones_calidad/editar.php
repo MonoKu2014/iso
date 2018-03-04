@@ -31,6 +31,16 @@
                 <input type="hidden" name="seccion_id" value="<?= $seccion->seccion_id; ?>">
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Tipo (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="radio" name="tipo" value="1" <?php if($seccion->seccion_tipo == 1){echo 'checked';} ?>> Riesgo<br>
+                        <input type="radio" name="tipo" value="2" <?php if($seccion->seccion_tipo == 2){echo 'checked';} ?>> Oportunidad<br>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Sección (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-7">
@@ -41,7 +51,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <input type="checkbox" value="1" name="sin_proceso" <?= is_checked($seccion->sin_proceso); ?> > Sin objetivo
-                        <i class="fa fa-question-circle hastip pointer" title="Sí marca esta opción la sección que está a punto de crear no tendrá objetivo asociado"></i>
+                        <i class="fa fa-question-circle hastip pointer" title="Sí marca esta opción el riesgo u oportunidad que está a punto de crear no tendrá objetivo asociado"></i>
                     </div>
                 </div>
 
@@ -116,28 +126,13 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Objetivo (*)
+                    Descripción (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" value="<?= $seccion->seccion_objetivo; ?>" name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo" required>
+                        <input type="text" value="<?= $seccion->seccion_objetivo; ?>" name="objetivo" data-validate="string" class="form-control required" placeholder="Descripción" required>
                     </div>
                 </div>
-
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Genera Indicadores (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <select class="form-control required" name="indicadores" required data-validate="number" id="indicadores">
-                            <option value="">Seleccione Indicadores</option>
-                            <option <?php if($seccion->seccion_genera == 1){ echo 'selected'; } ?> value="1">Sí</option>
-                            <option <?php if($seccion->seccion_genera == 0){ echo 'selected'; } ?> value="0">No</option>
-                        </select>
-                    </div>
-                </div>
-
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">

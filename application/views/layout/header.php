@@ -107,7 +107,7 @@
                             <ul id="orientada_calidad" class="collapse">
                                 <li><a class="last" href="<?= base_url(); ?>areas_calidad">Contexto y Organización</a></li>
                                 <li><a class="last" href="<?= base_url(); ?>secciones_calidad">Riesgos y Oportunidades</a></li>
-                                <li><a class="last" href="<?= base_url(); ?>objetivos">Indicadores</a></li>
+                                <li><a class="last" href="<?= base_url(); ?>objetivos">Objetivos por Indicadores</a></li>
                                 <!--<li><a class="last" href="<?= base_url(); ?>indicadores_calidad">Indicadores</a></li>-->
                             </ul>
                         </li>
@@ -197,15 +197,15 @@
 
 
 
-                <!--<li <?= active('consultas')?>>
+                <li <?= active('consultas')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#consultas">
                         <i class="fa fa-cog"></i> Consultas <i class="fa fa-fw fa-caret-down"></i>
                     </a>
                     <ul id="consultas" class="collapse">
-                        <li><a href="<?= base_url(); ?>">Reporte 1</a></li>
-                        <li><a href="<?= base_url(); ?>">Reporte 2</a></li>
+                        <li><a href="<?= base_url(); ?>reportes/documentos_secciones">Documentos secciones</a></li>
+                        <!--<li><a href="<?= base_url(); ?>">Reporte 2</a></li>-->
                     </ul>
-                </li>-->
+                </li>
 
 
                 <li <?= active('administracion')?>>

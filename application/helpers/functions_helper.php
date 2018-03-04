@@ -339,3 +339,44 @@ function datos()
     $ci =& get_instance();
     return $ci->db->get('datos')->result();
 }
+
+
+function cantidad_documentos()
+{
+    $ci =& get_instance();
+    return $ci->db->count_all_results('solicitud_documento');
+}
+
+function cantidad_usuarios()
+{
+    $ci =& get_instance();
+    return $ci->db->count_all_results('usuarios');
+}
+
+
+function cantidad_mejoras()
+{
+    $ci =& get_instance();
+    return $ci->db->count_all_results('accion_mejora');
+}
+
+
+function cantidad_incidencias()
+{
+    $ci =& get_instance();
+    return $ci->db->count_all_results('incidencias');
+}
+
+
+function documentos_por_seccion($id)
+{
+    $ci =& get_instance();
+    $ci->db->where('seccion_fk', $id);
+    return $ci->db->count_all_results('documentos');
+}
+
+
+function random_color()
+{
+    return 'rgba('.mt_rand(0, 255).','.mt_rand(0, 255).','.mt_rand(0, 255).',1)';
+}

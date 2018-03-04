@@ -76,7 +76,7 @@ class Documentos extends CI_Controller {
                 'version'               => $this->input->post('version'),
                 'fecha_vigencia'        => $this->input->post('vigencia'),
                 'fecha_publicacion'     => $this->input->post('publicacion'),
-                'estado_documento'      => $this->input->post('publicacion'),
+                'estado_documento'      => 'Activo',
                 'palabras_claves'       => $this->input->post('claves'),
                 'observacion'           => $this->input->post('observacion')
             );
@@ -156,7 +156,7 @@ class Documentos extends CI_Controller {
                 'version'               => $this->input->post('version'),
                 'fecha_vigencia'        => $this->input->post('vigencia'),
                 'fecha_publicacion'     => $this->input->post('publicacion'),
-                'estado_documento'      => $this->input->post('publicacion'),
+                'estado_documento'      => 'Activo',
                 'palabras_claves'       => $this->input->post('claves'),
                 'observacion'           => $this->input->post('observacion')
             );

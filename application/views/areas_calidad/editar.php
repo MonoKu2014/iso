@@ -30,6 +30,17 @@
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
                 <p id="message"></p>
                 <input type="hidden" name="area_id" value="<?= $area->area_id; ?>">
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Tipo (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="radio" name="tipo" value="1" <?php if($area->area_tipo == 1){echo 'checked';} ?>> Contexto<br>
+                        <input type="radio" name="tipo" value="2" <?php if($area->area_tipo == 2){echo 'checked';} ?>> Organización<br>
+                    </div>
+                </div>
+
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Contexto y Organización (*)
                 </div>

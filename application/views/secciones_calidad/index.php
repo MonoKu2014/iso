@@ -28,7 +28,7 @@
                     <th>Responsable</th>
                     <th>Área</th>
                     <th>Frecuencia</th>
-                    <th>Genera indicador</th>
+                    <th>Tipo</th>
     				<th>Acciones</th>
     			</thead>
     			<tbody>
@@ -39,7 +39,7 @@
                             <td><?= $s->usuario_nombre;?></td>
                             <td><?= $s->area;?></td>
                             <td><?= $s->frecuencia;?></td>
-                            <td><?= ($s->seccion_genera == 1) ? 'Sí' : 'No'; ?></td>
+                            <td><?= ($s->seccion_tipo == 1) ? 'Riesgo' : 'Oportunidad'; ?></td>
     						<td>
 
 							  <a href="<?= base_url(); ?>secciones_calidad/editar/<?= $s->seccion_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">

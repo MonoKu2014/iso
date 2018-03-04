@@ -29,7 +29,16 @@
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
-                <p id="message"></p>
+
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Tipo (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="radio" name="tipo" value="1" checked> Riesgo<br>
+                        <input type="radio" name="tipo" value="2"> Oportunidad<br>
+                    </div>
+                </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Riesgo y Oportunidad (*)
@@ -117,25 +126,11 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Objetivo (*)
+                    Descripcion (*)
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9">
                     <div class="form-group">
-                        <input type="text" name="objetivo" data-validate="string" class="form-control required" placeholder="Objetivo" required>
-                    </div>
-                </div>
-
-
-                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
-                    Genera Indicadores (*)
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-9">
-                    <div class="form-group">
-                        <select class="form-control required" name="indicadores" required data-validate="number" id="indicadores">
-                            <option value="">Seleccione Indicadores</option>
-                            <option value="1">Sí</option>
-                            <option value="0">No</option>
-                        </select>
+                        <input type="text" name="objetivo" data-validate="string" class="form-control required" placeholder="Descripcion" required>
                     </div>
                 </div>
 
