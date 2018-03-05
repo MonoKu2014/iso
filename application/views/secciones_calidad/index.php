@@ -50,6 +50,10 @@
 							  	<i class="fa fa-remove"></i>
 							  </a>
 
+                              <a href="<?= base_url(); ?>detalles_ejecucion/index/<?= $s->seccion_id;?>" class="btn btn-info btn-small hastip" title="listado detalle ejecución">
+                                <i class="fa fa-check"></i>
+                              </a>
+
     						</td>
 
     					</tr>

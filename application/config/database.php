@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$active_group = 'default';
+$active_group = 'bm';
 $query_builder = TRUE;
 $active_record = TRUE;
 
