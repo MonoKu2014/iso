@@ -10,8 +10,9 @@ class Detalles_Ejecucion_Model extends CI_Model {
 
     public function obtener_detalles_ejecucion($id)
     {
-        $this->db->where('riesgo_oportunidad_fk', $id);
-        $query = $this->db->get('detalles_ejecucion');
+        $this->db->where('d.riesgo_oportunidad_fk', $id);
+        $this->db->join('estado_ejecucion s', 's.estado_ejecucion_id = d.detalle_estado_fk');
+        $query = $this->db->get('detalles_ejecucion d');
         return $query->result();
     }
 
@@ -23,7 +24,7 @@ class Detalles_Ejecucion_Model extends CI_Model {
 
 
     public function obtener_detalle_ejecucion($id)
-    {   
+    {
         $this->db->join('estado_ejecucion s', 's.estado_ejecucion_id = d.detalle_estado_fk');
         $this->db->where('d.detalle_ejecucion_id', $id);
         $query = $this->db->get('detalles_ejecucion d');
@@ -52,6 +53,14 @@ class Detalles_Ejecucion_Model extends CI_Model {
     {
         $query = $this->db->get('estado_ejecucion');
         return $query->result();
+    }
+
+
+    public function obtener_riesgo($id)
+    {
+        $this->db->where('seccion_id', $id);
+        $query = $this->db->get('secciones_calidad');
+        return $query->row();
     }
 
 }

@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <input type="text" name="observacion" data-validate="string" class="form-control required" placeholder="Observación" required value="<?=$detalle_ejecucion->detalle_observacion;?>">
                     </div>
-                </div>            
+                </div>
 
 
                 <div class="row">

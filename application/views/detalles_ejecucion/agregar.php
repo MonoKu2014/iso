@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <p><em>Todos los campos marcados con (*) son de caracter obligatorio</em></p>
-
+                <p id="message"></p>
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Fecha Ejecución (*)
                 </div>
@@ -73,7 +73,7 @@
                         <input type="text" name="observacion" data-validate="string" class="form-control required" placeholder="Observación" required>
                     </div>
                 </div>
-                
+
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-12">

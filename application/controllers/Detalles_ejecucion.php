@@ -16,6 +16,7 @@ class Detalles_ejecucion extends CI_Controller {
 	public function index($id)
 	{
         $data['detalles_ejecucion'] = $this->detalle_ejecucion->obtener_detalles_ejecucion($id);
+        $data['riesgo'] = $this->detalle_ejecucion->obtener_riesgo($id);
         $data['id_riesgo_oportunidad'] = $id;
         $this->load->view('layout/header');
 		$this->load->view('detalles_ejecucion/index', $data);
@@ -24,7 +25,7 @@ class Detalles_ejecucion extends CI_Controller {
 
 
     public function agregar($id)
-    {   
+    {
         $data['estados'] = $this->detalle_ejecucion->obtener_estados();
         $data['id_riesgo_oportunidad'] = $id;
         $this->load->view('layout/header');
@@ -47,19 +48,14 @@ class Detalles_ejecucion extends CI_Controller {
             $error = 1;
 
         } else {
-
-            $fecha_actual = date("Y-m-d");
-
-            $fecha_ejecucion = date("Y-m-d", strtotime($this->input->post('fecha_ejecucion')));
-
+            $fecha_actual = date('d/m/Y');
             $data = array(
-
                 'riesgo_oportunidad_fk'     => $this->input->post('id_riesgo'),
                 'detalle_fecha_creacion'    => $fecha_actual,
-                'detalle_fecha_ejecucion'   => $fecha_ejecucion,
+                'detalle_fecha_ejecucion'   => $this->input->post('fecha_ejecucion'),
                 'detalle_descripcion'       => $this->input->post('descripcion'),
                 'detalle_estado_fk'         => $this->input->post('estado'),
-                'detalle_observacion'       => $this->input->post('observacion')    
+                'detalle_observacion'       => $this->input->post('observacion')
             );
 
             $insert = $this->detalle_ejecucion->insertar($data);
@@ -92,7 +88,7 @@ class Detalles_ejecucion extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-        
+
         $this->form_validation->set_rules('fecha_ejecucion', '', 'required');
         $this->form_validation->set_rules('descripcion', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
@@ -105,17 +101,13 @@ class Detalles_ejecucion extends CI_Controller {
 
         } else {
 
-
-            $fecha_ejecucion = date("Y-m-d", strtotime($this->input->post('fecha_ejecucion')));
-
             $data = array(
-
-                'detalle_fecha_ejecucion'   => $fecha_ejecucion,
+                'riesgo_oportunidad_fk'     => $this->input->post('id_riesgo'),
+                'detalle_fecha_ejecucion'   => $this->input->post('fecha_ejecucion'),
                 'detalle_descripcion'       => $this->input->post('descripcion'),
                 'detalle_estado_fk'         => $this->input->post('estado'),
-                'detalle_observacion'       => $this->input->post('observacion')    
+                'detalle_observacion'       => $this->input->post('observacion')
             );
-
 
             $update = $this->detalle_ejecucion->editar($data, $this->input->post('detalle_ejecucion_id'));
             if($update === false){

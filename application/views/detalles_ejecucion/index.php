@@ -4,13 +4,13 @@
         <li><a href="<?= base_url();?>panel">Dashboard</a></li>
         <li>Estructura</li>
         <li><a href="<?= base_url();?>secciones_calidad">Riesgos y Oportunidades</a></li>
-        <li class="active">Listado Detalle Ejecución</li>
+        <li class="active">Detalle de ejecución de <?= $riesgo->seccion;?></li>
     </ol>
 
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
-                Listado Detalle Ejecución
+                Detalle de ejecución de <?= $riesgo->seccion;?>
                 <a href="<?= base_url(); ?>detalles_ejecucion/agregar/<?= $id_riesgo_oportunidad; ?>" class="btn btn-info pull-right">
                 	<i class="fa fa-plus"></i> Agregar Detalle Ejecución
                 </a>
@@ -25,7 +25,7 @@
     		<table class="table table-bordered table-striped table-hover table-condensed">
     			<thead>
     				<th>Id Riesgo-Oportunidad</th>
-    				<th>Id Detalle ejecución</th>
+    				<th>N° Detalle ejecución</th>
                     <th>Fecha de Creación</th>
                     <th>Fecha de Ejecución</th>
                     <th>Descripción</th>
@@ -36,13 +36,21 @@
     			<tbody>
                     <?php foreach ($detalles_ejecucion as $det): ?>
                         <tr>
-                            <td><?= $id_riesgo_oportunidad;?></td>
+                            <td><?= $id_riesgo_oportunidad;?> - <?= $riesgo->seccion;?></td>
                             <td><?= $det->detalle_ejecucion_id;?></td>
-                            <td><?= date("d-m-Y", strtotime($det->detalle_fecha_creacion));?></td>
-                            <td><?= date("d-m-Y", strtotime($det->detalle_fecha_ejecucion));?></td>
+                            <td><?= $det->detalle_fecha_creacion;?></td>
+                            <td><?= $det->detalle_fecha_ejecucion;?></td>
                             <td><?= $det->detalle_descripcion;?></td>
-                            <td><?= if($det->estado_ejecucion);?></td>
-                            <td><?= $det->detalle_observacion;?></td>                            
+                            <td>
+                                <?php if($det->detalle_estado_fk == 1){ ?>
+                                    <label class="label label-danger"><?= $det->estado_ejecucion;?></label>
+                                <?php } elseif ($det->detalle_estado_fk == 2) { ?>
+                                    <label class="label label-warning"><?= $det->estado_ejecucion;?></label>
+                                <?php } else { ?>
+                                    <label class="label label-success"><?= $det->estado_ejecucion;?></label>
+                                <?php } ?>
+                            </td>
+                            <td><?= $det->detalle_observacion;?></td>
                             <td>
 
                               <a href="<?= base_url(); ?>detalles_ejecucion/editar/<?= $det->detalle_ejecucion_id;?>" class="btn btn-info btn-small hastip" title="Editar registro">
@@ -57,7 +65,7 @@
 
                         </tr>
                     <?php endforeach ?>
-    				
+
     			</tbody>
     		</table>
     	</div>
