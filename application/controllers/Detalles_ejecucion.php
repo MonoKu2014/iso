@@ -38,6 +38,7 @@ class Detalles_ejecucion extends CI_Controller {
     {
         $error = 0;
 
+        $this->form_validation->set_rules('fecha_creacion', '', 'required');
         $this->form_validation->set_rules('fecha_ejecucion', '', 'required');
         $this->form_validation->set_rules('descripcion', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
@@ -51,7 +52,7 @@ class Detalles_ejecucion extends CI_Controller {
             $fecha_actual = date('d/m/Y');
             $data = array(
                 'riesgo_oportunidad_fk'     => $this->input->post('id_riesgo'),
-                'detalle_fecha_creacion'    => $fecha_actual,
+                'detalle_fecha_creacion'    => $this->input->post('fecha_creacion'),
                 'detalle_fecha_ejecucion'   => $this->input->post('fecha_ejecucion'),
                 'detalle_descripcion'       => $this->input->post('descripcion'),
                 'detalle_estado_fk'         => $this->input->post('estado'),
@@ -89,6 +90,7 @@ class Detalles_ejecucion extends CI_Controller {
     {
         $error = 0;
 
+        $this->form_validation->set_rules('fecha_creacion', '', 'required');
         $this->form_validation->set_rules('fecha_ejecucion', '', 'required');
         $this->form_validation->set_rules('descripcion', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
@@ -103,6 +105,7 @@ class Detalles_ejecucion extends CI_Controller {
 
             $data = array(
                 'riesgo_oportunidad_fk'     => $this->input->post('id_riesgo'),
+                'detalle_fecha_creacion'    => $this->input->post('fecha_creacion'),
                 'detalle_fecha_ejecucion'   => $this->input->post('fecha_ejecucion'),
                 'detalle_descripcion'       => $this->input->post('descripcion'),
                 'detalle_estado_fk'         => $this->input->post('estado'),

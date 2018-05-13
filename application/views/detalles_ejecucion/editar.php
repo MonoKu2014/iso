@@ -32,6 +32,15 @@
                 <input type="hidden" name="detalle_ejecucion_id" value="<?= $detalle_ejecucion->detalle_ejecucion_id; ?>">
                 <input type="hidden" name="id_riesgo" value="<?= $detalle_ejecucion->riesgo_oportunidad_fk; ?>">
 
+                <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
+                    Fecha Creación (*)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9">
+                    <div class="form-group">
+                        <input type="text" name="fecha_creacion" id="fecha_creacion" data-validate="string" class="form-control date" placeholder="Fecha Creación" required value="<?= $detalle_ejecucion->detalle_fecha_creacion;?>">
+                    </div>
+                </div>
+                
 
                 <div class="col-xs-12 col-sm-6 col-md-3 bg-info information">
                     Fecha Ejecución (*)
