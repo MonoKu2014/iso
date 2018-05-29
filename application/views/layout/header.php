@@ -75,6 +75,13 @@
                 </li>
 
 
+                <li <?= active('pendientes')?>>
+                    <a href="<?= base_url(); ?>pendientes">
+                        <i class="fa fa-fw fa-exclamation"></i> Actividades Pendientes
+                    </a>
+                </li>
+
+
                 <li <?= active('elementos')?>>
                     <a href="javascript:;" data-toggle="collapse" data-target="#elementos"><i class="fa fa-sitemap"></i> Elementos <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="elementos" class="collapse">
@@ -202,7 +209,8 @@
                     </a>
                     <ul id="consultas" class="collapse">
                         <li><a href="<?= base_url(); ?>reportes/documentos_secciones">Documentos secciones</a></li>
-                        <!--<li><a href="<?= base_url(); ?>">Reporte 2</a></li>-->
+                        <li><a href="<?= base_url(); ?>trazabilidad">Registro de trazabilidad de <br>operaciones por usuario</a></li>
+                        <li><a href="<?= base_url(); ?>mapa">Mapa de Procesos</a></li>
                     </ul>
                 </li>
 
@@ -219,6 +227,7 @@
                         <?php if(can_see(2)){ ?>
                         <li><a href="<?= base_url(); ?>perfiles">Perfiles</a></li>
                         <?php } ?>
+
                     </ul>
                 </li>
 

@@ -14,7 +14,7 @@ class Tipo_datos extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['tipos'] = $this->tipo->obtener_tipos();
         $this->load->view('layout/header');
 		$this->load->view('tipos/index', $data);
@@ -23,7 +23,7 @@ class Tipo_datos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('tipos/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Tipo_datos extends CI_Controller {
         $this->form_validation->set_rules('tipo', 'tipo', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'tipo_dato'    => $this->input->post('tipo')
             );
@@ -55,6 +55,8 @@ class Tipo_datos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'tipo_datos/agregar');
         } else {
+            $texto = 'Se agrega un nuevo tipo dato: ' . $this->input->post('tipo');
+            insertar_traza(fecha(), hora(), $this->session->id, 'tipo_dato', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'tipo_datos');
         }
@@ -63,7 +65,7 @@ class Tipo_datos extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['tipo'] = $this->tipo->obtener_tipo($id);
         $this->load->view('layout/header');
         $this->load->view('tipos/editar', $data);
@@ -77,11 +79,11 @@ class Tipo_datos extends CI_Controller {
         $this->form_validation->set_rules('tipo', 'tipo', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'tipo_dato'    => $this->input->post('tipo')
             );
@@ -110,6 +112,8 @@ class Tipo_datos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'tipo_datos');
         } else {
+            $texto = 'Se elimina tipo dato con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'tipo_dato', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'tipo_datos');
         }

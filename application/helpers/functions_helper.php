@@ -63,21 +63,33 @@ function change_nav($controller)
     if($controller == 'departamentos' || $controller == 'cargos'){
         return 'parametros';
     }
+
     if($controller == 'areas' || $controller == 'procesos' || $controller == 'secciones' || $controller == 'indicadores'){
         return 'procesos';
     }
+
     if($controller == 'tipos_documentos' || $controller == 'formatos_documentos' || $controller == 'clausulas_documentos'){
         return 'parametros';
     }
+
     if($controller == 'estados_incidencias' || $controller == 'tipos_incidencias' || $controller == 'origenes_incidencias' || $controller == 'causas_incidencias'){
         return 'parametros';
     }
+
     if($controller == 'datos' || $controller == 'tipo_datos'){
         return 'parametros';
     }
 
     if($controller == 'usuarios' || $controller == 'perfiles'){
         return 'administracion';
+    }
+
+    if($controller == 'responsables' || $controller == 'documentos'){
+        return 'elementos';
+    }
+
+    if($controller == 'areas_calidad' || $controller == 'secciones_calidad' || $controller == 'objetivos'){
+        return 'procesos';
     }
 
     //para los que no necesitan un if
@@ -379,4 +391,100 @@ function documentos_por_seccion($id)
 function random_color()
 {
     return 'rgba('.mt_rand(0, 255).','.mt_rand(0, 255).','.mt_rand(0, 255).',1)';
+}
+
+
+function insertar_traza($fecha, $hora, $usuario, $tabla, $transaccion, $texto, $del = 0, $id_del = 0, $id_edit = 0)
+{
+
+    $data = array(
+        'traza_fecha'           => $fecha,
+        'traza_hora'            => $hora,
+        'traza_usuario'         => $usuario,
+        'traza_tabla'           => $tabla,
+        'traza_detalle'         => $transaccion,
+        'traza_texto'           => $texto,
+        'traza_elimina'         => $del,
+        'traza_id_eliminado'    => $id_del,
+        'traza_id_edita'        => $id_edit
+    );
+
+    $ci =& get_instance();
+    $ci->db->insert('trazabilidad', $data);
+    return $id_traza = $ci->db->insert_id();
+
+}
+
+
+function hora()
+{
+    return date('H:i:s');
+}
+
+function fecha()
+{
+    return date('Y-m-d');
+}
+
+
+function insertar_traza_edicion($id_traza, $old_data, $new_data)
+{
+
+    $data_anterior = '';
+    $data_actual   = '';
+
+    foreach ($old_data as $key => $value) {
+        $data_anterior .= $key.': '.$value.'<br>';
+    }
+
+    foreach ($new_data as $key => $value) {
+        $data_actual .= $key.': '.$value.'<br>';
+    }
+
+    $data = array(
+        'trazabilidad_fk'   => $id_traza,
+        'valor_anterior'    => $data_anterior,
+        'valor_actual'      => $data_actual
+    );
+
+    $ci =& get_instance();
+    $ci->db->insert('trazabilidad_edicion ', $data);
+    return $id_traza = $ci->db->insert_id();
+}
+
+
+function obtener_traza_edicion($id)
+{
+    $ci =& get_instance();
+    $ci->db->where('trazabilidad_fk', $id);
+    return $ci->db->get('trazabilidad_edicion')->row();
+}
+
+function salto($texto)
+{
+    return str_replace(',', '<br>', $texto);
+}
+
+
+function obtener_procesos_por_area($id)
+{
+    $ci =& get_instance();
+    $ci->db->where('area_fk', $id);
+    return $ci->db->get('procesos')->result();
+}
+
+
+function obtener_secciones_por_area($id)
+{
+    $ci =& get_instance();
+    $ci->db->where('area_fk', $id);
+    return $ci->db->get('secciones')->result();
+}
+
+
+function obtener_procesos_por_seccion($id)
+{
+    $ci =& get_instance();
+    $ci->db->where('seccion_fk', $id);
+    return $ci->db->get('procesos')->result();
 }

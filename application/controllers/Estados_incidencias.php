@@ -14,7 +14,7 @@ class Estados_incidencias extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['estados_incidencias'] = $this->estado_incidencia->obtener_estados_incidencias();
         $this->load->view('layout/header');
 		$this->load->view('estados_incidencias/index', $data);
@@ -23,7 +23,7 @@ class Estados_incidencias extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('estados_incidencias/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Estados_incidencias extends CI_Controller {
         $this->form_validation->set_rules('estado_incidencia', 'Estado_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'estado_incidencia'    => $this->input->post('estado_incidencia')
             );
@@ -55,6 +55,8 @@ class Estados_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'estados_incidencias/agregar');
         } else {
+            $texto = 'Se agrega un nuevo estado incidencia: ' . $this->input->post('estado_incidencia');
+            insertar_traza(fecha(), hora(), $this->session->id, 'estados_incidencias', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'estados_incidencias');
         }
@@ -63,7 +65,7 @@ class Estados_incidencias extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['estado_incidencia'] = $this->estado_incidencia->obtener_estado_incidencia($id);
         $this->load->view('layout/header');
         $this->load->view('estados_incidencias/editar', $data);
@@ -77,11 +79,11 @@ class Estados_incidencias extends CI_Controller {
         $this->form_validation->set_rules('estado_incidencia', 'Estado_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'estado_incidencia'    => $this->input->post('estado_incidencia')
             );
@@ -110,6 +112,8 @@ class Estados_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'estados_incidencias');
         } else {
+            $texto = 'Se elimina estado incidencia con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'estados_incidencias', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'estados_incidencias');
         }

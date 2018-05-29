@@ -14,7 +14,7 @@ class Tipos_documentos extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['tipos_documentos'] = $this->tipo_documento->obtener_tipos_documentos();
         $this->load->view('layout/header');
 		$this->load->view('tipos_documentos/index', $data);
@@ -23,7 +23,7 @@ class Tipos_documentos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('tipos_documentos/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Tipos_documentos extends CI_Controller {
         $this->form_validation->set_rules('tipo_documento', 'Tipo_documento', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'tipo_documento'    => $this->input->post('tipo_documento')
             );
@@ -55,6 +55,8 @@ class Tipos_documentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'tipos_documentos/agregar');
         } else {
+            $texto = 'Se agrega un nuevo tipo documento: ' . $this->input->post('tipo_documento');
+            insertar_traza(fecha(), hora(), $this->session->id, 'tipos_documentos', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'tipos_documentos');
         }
@@ -63,7 +65,7 @@ class Tipos_documentos extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['tipo_documento'] = $this->tipo_documento->obtener_tipo_documento($id);
         $this->load->view('layout/header');
         $this->load->view('tipos_documentos/editar', $data);
@@ -77,11 +79,11 @@ class Tipos_documentos extends CI_Controller {
         $this->form_validation->set_rules('tipo_documento', 'Tipo_documento', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'tipo_documento'    => $this->input->post('tipo_documento')
             );
@@ -110,6 +112,8 @@ class Tipos_documentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'tipos_documentos');
         } else {
+            $texto = 'Se elimina tipo documento con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'tipos_documentos', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'tipos_documentos');
         }

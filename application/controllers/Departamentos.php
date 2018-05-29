@@ -55,6 +55,8 @@ class Departamentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'departamentos/agregar');
         } else {
+            $texto = 'Se agrega un nuevo departamento: ' . $this->input->post('departamento');
+            insertar_traza(fecha(), hora(), $this->session->id, 'departamentos', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'departamentos');
         }
@@ -110,6 +112,8 @@ class Departamentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'departamentos');
         } else {
+            $texto = 'Se elimina departamento con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'departamentos', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'departamentos');
         }

@@ -100,6 +100,8 @@ class Responsables extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'responsables/agregar');
         } else {
+            $texto = 'Se agrega un nuevo responsable: ' . $this->input->post('funcionario');
+            insertar_traza(fecha(), hora(), $this->session->id, 'responsables', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'responsables');
         }
@@ -205,6 +207,8 @@ class Responsables extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'responsables');
         } else {
+            $texto = 'Se elimina funcionario con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'responsables', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'responsables');
         }

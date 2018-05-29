@@ -56,6 +56,8 @@ class Areas_calidad extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'areas_calidad/agregar');
         } else {
+            $texto = 'Se agrega una nueva área: ' . $this->input->post('area');
+            insertar_traza(fecha(), hora(), $this->session->id, 'areas_calidad', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'areas_calidad');
         }
@@ -118,6 +120,8 @@ class Areas_calidad extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'areas_calidad');
         } else {
+            $texto = 'Se elimina área con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'areas_calidad', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'areas_calidad');
         }

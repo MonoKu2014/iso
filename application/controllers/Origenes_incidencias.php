@@ -14,7 +14,7 @@ class Origenes_incidencias extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['origenes_incidencias'] = $this->origen_incidencia->obtener_origenes_incidencias();
         $this->load->view('layout/header');
 		$this->load->view('origenes_incidencias/index', $data);
@@ -23,7 +23,7 @@ class Origenes_incidencias extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('origenes_incidencias/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Origenes_incidencias extends CI_Controller {
         $this->form_validation->set_rules('origen_incidencia', 'Origen_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'origen_incidencia'    => $this->input->post('origen_incidencia')
             );
@@ -55,6 +55,8 @@ class Origenes_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'origenes_incidencias/agregar');
         } else {
+            $texto = 'Se agrega un nuevo origen incidencia: ' . $this->input->post('origen_incidencia');
+            insertar_traza(fecha(), hora(), $this->session->id, 'origenes_incidencias', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'origenes_incidencias');
         }
@@ -63,7 +65,7 @@ class Origenes_incidencias extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['origen_incidencia'] = $this->origen_incidencia->obtener_origen_incidencia($id);
         $this->load->view('layout/header');
         $this->load->view('origenes_incidencias/editar', $data);
@@ -77,11 +79,11 @@ class Origenes_incidencias extends CI_Controller {
         $this->form_validation->set_rules('origen_incidencia', 'Origen_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'origen_incidencia'    => $this->input->post('origen_incidencia')
             );
@@ -110,6 +112,8 @@ class Origenes_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'origenes_incidencias');
         } else {
+            $texto = 'Se elimina origen incidencia con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'origenes_incidencias', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'origenes_incidencias');
         }

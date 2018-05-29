@@ -67,6 +67,10 @@ class Usuarios extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'usuarios/agregar');
         } else {
+
+            $texto = 'Se agrega un nuevo usuario: ' . $this->input->post('nombre');
+            insertar_traza(fecha(), hora(), $this->session->id, 'usuarios', 'Agregar', $texto, 0);
+
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'usuarios');
         }
@@ -117,6 +121,23 @@ class Usuarios extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido editar el registro'));
             redirect(base_url().'usuarios/editar/' . $this->input->post('usuario_id'));
         } else {
+
+            $id_edit = $this->input->post('usuario_id');
+            $texto = 'Se edita usuario: ' . $this->input->post('nombre');
+            $id_traza = insertar_traza(fecha(), hora(), $this->session->id, 'usuarios', 'Editar', $texto, 0, 0, $id_edit);
+
+            $registro = $this->usuario->obtener_usuario($id_edit);
+
+            $old_data = array(
+                'usuario_nombre'    => $registro->usuario_nombre,
+                'usuario_email'     => $registro->usuario_email,
+                'usuario_password'  => $registro->usuario_password,
+                'perfil_fk'         => $registro->perfil_fk,
+                'estado_fk'         => $registro->estado_fk
+            );
+
+            insertar_traza_edicion($id_traza, $data, $old_data);
+
             $this->session->set_flashdata('message', alert_success('Registro editado con éxito'));
             redirect(base_url().'usuarios');
         }
@@ -130,6 +151,10 @@ class Usuarios extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'usuarios');
         } else {
+
+            $texto = 'Se elimina usuario con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'usuarios', 'Eliminar', $texto, 1, $id);
+
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'usuarios');
         }
@@ -145,6 +170,8 @@ class Usuarios extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido activar el registro'));
             redirect(base_url().'usuarios');
         } else {
+            $texto = 'Se activa usuario con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'usuarios', 'Activar', $texto, 0, 0, $id);
             $this->session->set_flashdata('message', alert_success('Registro activado con éxito'));
             redirect(base_url().'usuarios');
         }
@@ -160,6 +187,8 @@ class Usuarios extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido desactivar el registro'));
             redirect(base_url().'usuarios');
         } else {
+            $texto = 'Se desactiva usuario con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'usuarios', 'Desactivar', $texto, 0, 0, $id);
             $this->session->set_flashdata('message', alert_success('Registro desactivado con éxito'));
             redirect(base_url().'usuarios');
         }

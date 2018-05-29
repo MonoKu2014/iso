@@ -266,7 +266,15 @@ ul.alert-dropdown {
 }
 
 .nav > li.active {
+    background: #efefef;
+}
 
+.nav > li.active > a {
+    color: #222;
+}
+
+.nav > li.active > ul {
+    background: #fff;
 }
 
 .nav > li > a:hover, .nav > li > a:active, .nav > li > a:focus {

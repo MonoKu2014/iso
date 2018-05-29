@@ -23,7 +23,7 @@ class Modificacion_documentos extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $data['areas'] = $this->modificacion_documento->areas();
         $data['estados'] = $this->modificacion_documento->obtener_estados();
         $data['responsables'] = $this->modificacion_documento->obtener_responsables();
@@ -44,9 +44,9 @@ class Modificacion_documentos extends CI_Controller {
         $this->form_validation->set_rules('area', '', 'required');
         $this->form_validation->set_rules('seccion', '', 'required');
         $this->form_validation->set_rules('documento', '', 'required');
-        $this->form_validation->set_rules('responsable', '', 'required');        
+        $this->form_validation->set_rules('responsable', '', 'required');
         $this->form_validation->set_rules('version', '', 'required');
-        $this->form_validation->set_rules('nueva_version', '', 'required');        
+        $this->form_validation->set_rules('nueva_version', '', 'required');
         $this->form_validation->set_rules('fecha_modificacion', '', '');
         $this->form_validation->set_rules('justificacion', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
@@ -55,7 +55,7 @@ class Modificacion_documentos extends CI_Controller {
 
             $error = 1;
 
-        } else {            
+        } else {
 
             $data = array(
                 'area_fk'               => $this->input->post('area'),
@@ -67,10 +67,10 @@ class Modificacion_documentos extends CI_Controller {
                 'fecha_modificacion'    => $this->input->post('fecha_modificacion'),
                 'justificacion'         => $this->input->post('justificacion'),
                 'estado_fk'             => $this->input->post('estado')
-            );            
+            );
 
             $insert = $this->modificacion_documento->insertar($data);
-            
+
             if($insert === false){
                 $error = 1;
             }
@@ -80,6 +80,8 @@ class Modificacion_documentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'modificacion_documentos/agregar');
         } else {
+            $texto = 'Se agrega una nueva modificación documento: ' . $this->input->post('justificacion');
+            insertar_traza(fecha(), hora(), $this->session->id, 'solicitud_documento', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'modificacion_documentos');
         }
@@ -103,13 +105,13 @@ class Modificacion_documentos extends CI_Controller {
     public function guardar_edicion()
     {
         $error = 0;
-        
+
         $this->form_validation->set_rules('area', '', 'required');
         $this->form_validation->set_rules('seccion', '', 'required');
         $this->form_validation->set_rules('documento', '', 'required');
-        $this->form_validation->set_rules('responsable', '', 'required');        
+        $this->form_validation->set_rules('responsable', '', 'required');
         $this->form_validation->set_rules('version', '', 'required');
-        $this->form_validation->set_rules('nueva_version', '', 'required');        
+        $this->form_validation->set_rules('nueva_version', '', 'required');
         $this->form_validation->set_rules('fecha_modificacion', '', '');
         $this->form_validation->set_rules('justificacion', '', 'required');
         $this->form_validation->set_rules('estado', '', 'required');
@@ -133,7 +135,7 @@ class Modificacion_documentos extends CI_Controller {
             );
 
             $update = $this->modificacion_documento->editar($data, $this->input->post('solicitud_doc_id'));
-            
+
             if($update === false){
                 $error = 1;
             }
@@ -157,6 +159,8 @@ class Modificacion_documentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'modificacion_documentos');
         } else {
+            $texto = 'Se elimina modificación documento con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'solicitud_documento', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'modificacion_documentos');
         }

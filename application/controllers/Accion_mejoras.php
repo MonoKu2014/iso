@@ -82,6 +82,8 @@ class Accion_mejoras extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'accion_mejoras/agregar');
         } else {
+            $texto = 'Se agrega una nueva acción de mejora: ' . $this->input->post('asunto');
+            insertar_traza(fecha(), hora(), $this->session->id, 'accion_mejora', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'accion_mejoras');
         }
@@ -163,6 +165,8 @@ class Accion_mejoras extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'accion_mejoras');
         } else {
+            $texto = 'Se elimina acción de mejora con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'accion_mejora', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'accion_mejoras');
         }

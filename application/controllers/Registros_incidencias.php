@@ -103,6 +103,8 @@ class Registros_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'registros_incidencias/agregar');
         } else {
+            $texto = 'Se agrega un nuevo registro incidencia: ' . $this->input->post('descripcion');
+            insertar_traza(fecha(), hora(), $this->session->id, 'registros_incidencias', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'registros_incidencias');
         }
@@ -118,6 +120,8 @@ class Registros_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'registros_incidencias');
         } else {
+            $texto = 'Se elimina registro incidencia con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'registros_incidencias', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'registros_incidencias');
         }

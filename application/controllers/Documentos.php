@@ -91,6 +91,8 @@ class Documentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'documentos/agregar');
         } else {
+            $texto = 'Se agrega un nuevo documento: ' . $this->input->post('documento');
+            insertar_traza(fecha(), hora(), $this->session->id, 'documentos', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'documentos');
         }
@@ -185,6 +187,8 @@ class Documentos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'documentos');
         } else {
+            $texto = 'Se elimina documento con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'documentos', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'documentos');
         }

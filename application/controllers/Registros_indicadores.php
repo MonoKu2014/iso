@@ -73,6 +73,8 @@ class Registros_indicadores extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'registros_indicadores/agregar');
         } else {
+            $texto = 'Se agrega un nuevo registro indicador: ' . $this->input->post('codigo');
+            insertar_traza(fecha(), hora(), $this->session->id, 'registros_indicadores', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'registros_indicadores');
         }
@@ -145,6 +147,8 @@ class Registros_indicadores extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido editar el registro'));
             redirect(base_url().'registros_indicadores/editar/'.$this->input->post('indicador_id'));
         } else {
+            $texto = 'Se elimina registro indicador con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'registros_indicadores', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro editado con éxito'));
             redirect(base_url().'registros_indicadores');
         }

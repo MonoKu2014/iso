@@ -89,6 +89,8 @@ class Indicadores extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'indicadores/agregar');
         } else {
+            $texto = 'Se agrega un nuevo indicador: ' . $this->input->post('nombre');
+            insertar_traza(fecha(), hora(), $this->session->id, 'indicadores', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'indicadores');
         }
@@ -179,6 +181,8 @@ class Indicadores extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'indicadores');
         } else {
+            $texto = 'Se elimina indicador con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'indicadores', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'indicadores');
         }

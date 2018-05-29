@@ -14,7 +14,7 @@ class Frecuencias extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['frecuencias'] = $this->frecuencia->obtener_frecuencias();
         $this->load->view('layout/header');
 		$this->load->view('frecuencias/index', $data);
@@ -23,7 +23,7 @@ class Frecuencias extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('frecuencias/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Frecuencias extends CI_Controller {
         $this->form_validation->set_rules('frecuencia', 'Frecuencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'frecuencia'    => $this->input->post('frecuencia')
             );
@@ -55,6 +55,8 @@ class Frecuencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'frecuencias/agregar');
         } else {
+            $texto = 'Se agrega una nueva frecuencia: ' . $this->input->post('frecuencia');
+            insertar_traza(fecha(), hora(), $this->session->id, 'frecuencias', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'frecuencias');
         }
@@ -63,7 +65,7 @@ class Frecuencias extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['frecuencia'] = $this->frecuencia->obtener_frecuencia($id);
         $this->load->view('layout/header');
         $this->load->view('frecuencias/editar', $data);
@@ -77,11 +79,11 @@ class Frecuencias extends CI_Controller {
         $this->form_validation->set_rules('frecuencia', 'Frecuencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'frecuencia'    => $this->input->post('frecuencia')
             );
@@ -110,6 +112,8 @@ class Frecuencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'frecuencias');
         } else {
+            $texto = 'Se elimina frecuencia con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'frecuencias', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'frecuencias');
         }

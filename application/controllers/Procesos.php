@@ -71,6 +71,8 @@ class Procesos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'procesos/agregar');
         } else {
+            $texto = 'Se agrega un nuevo proceso: ' . $this->input->post('nombre');
+            insertar_traza(fecha(), hora(), $this->session->id, 'procesos', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'procesos');
         }
@@ -142,6 +144,8 @@ class Procesos extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'procesos');
         } else {
+            $texto = 'Se elimina proceso con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'procesos', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'procesos');
         }

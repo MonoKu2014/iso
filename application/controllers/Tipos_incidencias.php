@@ -14,7 +14,7 @@ class Tipos_incidencias extends CI_Controller {
 
 
 	public function index()
-	{	
+	{
         $data['tipos_incidencias'] = $this->tipo_incidencia->obtener_tipos_incidencias();
         $this->load->view('layout/header');
 		$this->load->view('tipos_incidencias/index', $data);
@@ -23,7 +23,7 @@ class Tipos_incidencias extends CI_Controller {
 
 
     public function agregar()
-    {   
+    {
         $this->load->view('layout/header');
         $this->load->view('tipos_incidencias/agregar');
         $this->load->view('layout/footer');
@@ -36,11 +36,11 @@ class Tipos_incidencias extends CI_Controller {
         $this->form_validation->set_rules('tipo_incidencia', 'Tipo_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'tipo_incidencia'    => $this->input->post('tipo_incidencia')
             );
@@ -55,6 +55,8 @@ class Tipos_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido crear el registro'));
             redirect(base_url().'tipos_incidencias/agregar');
         } else {
+            $texto = 'Se agrega un nuevo tipo incidencia: ' . $this->input->post('tipo_incidencia');
+            insertar_traza(fecha(), hora(), $this->session->id, 'tipos_incidencias', 'Agregar', $texto, 0);
             $this->session->set_flashdata('message', alert_success('Registro creado con éxito'));
             redirect(base_url().'tipos_incidencias');
         }
@@ -63,7 +65,7 @@ class Tipos_incidencias extends CI_Controller {
 
 
     public function editar($id)
-    {   
+    {
         $data['tipo_incidencia'] = $this->tipo_incidencia->obtener_tipo_incidencia($id);
         $this->load->view('layout/header');
         $this->load->view('tipos_incidencias/editar', $data);
@@ -77,11 +79,11 @@ class Tipos_incidencias extends CI_Controller {
         $this->form_validation->set_rules('tipo_incidencia', 'Tipo_incidencia', 'required');
 
         if($this->form_validation->run() === FALSE){
-            
+
             $error = 1;
 
         } else {
-            
+
             $data = array(
                 'tipo_incidencia'    => $this->input->post('tipo_incidencia')
             );
@@ -110,6 +112,8 @@ class Tipos_incidencias extends CI_Controller {
             $this->session->set_flashdata('message', alert_danger('No se ha podido eliminar el registro'));
             redirect(base_url().'tipos_incidencias');
         } else {
+            $texto = 'Se elimina tipo incidencia con ID: ' . $id;
+            insertar_traza(fecha(), hora(), $this->session->id, 'tipos_incidencias', 'Eliminar', $texto, 1, $id);
             $this->session->set_flashdata('message', alert_success('Registro eliminado con éxito'));
             redirect(base_url().'tipos_incidencias');
         }
